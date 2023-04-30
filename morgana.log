@@ -1,0 +1,3568 @@
+[18:37:32.924] INFO (19302): Logged in as Bento#3392!
+[18:37:32.927] INFO (19302): Connection to database has been established successfully.
+[18:37:32.946] ERROR (19302): Unable to connect to the database: SequelizeDatabaseError: SQLITE_ERROR: no such table: Players
+[13:00:25.215] INFO (6441): Logged in as Bento#3392!
+[13:00:25.220] INFO (6441): Connection to database has been established successfully.
+[13:00:25.262] ERROR (6441): Unable to connect to the database: SequelizeDatabaseError: SQLITE_ERROR: no such table: Players
+[13:00:36.964] INFO (6472): Logged in as Bento#3392!
+[13:00:36.970] INFO (6472): Connection to database has been established successfully.
+[13:00:37.000] ERROR (6472): Unable to connect to the database: SequelizeDatabaseError: SQLITE_ERROR: no such table: Players
+[13:03:38.569] INFO (6601): Logged in as Bento#3392!
+[13:03:38.575] INFO (6601): Connection to database has been established successfully.
+[13:03:38.606] ERROR (6601): Unable to connect to the database: SequelizeDatabaseError: SQLITE_ERROR: no such table: Players
+[13:04:16.229] INFO (6637): Logged in as Bento#3392!
+[13:04:16.235] INFO (6637): Connection to database has been established successfully.
+[13:04:16.266] ERROR (6637): Unable to connect to the database: SequelizeDatabaseError: SQLITE_ERROR: no such table: Players
+[13:06:55.775] INFO (6762): Logged in as Bento#3392!
+[13:06:55.780] INFO (6762): Connection to database has been established successfully.
+[13:06:55.780] INFO (6762): Rank updates have been processed successfully.
+[13:07:11.392] INFO (6794): Logged in as Bento#3392!
+[13:07:11.398] INFO (6794): Connection to database has been established successfully.
+[13:09:11.299] INFO (6893): Logged in as Bento#3392!
+[13:09:11.305] INFO (6893): Connection to database has been established successfully.
+[13:10:20.805] INFO (6942): Logged in as Bento#3392!
+[13:10:20.811] INFO (6942): Connection to database has been established successfully.
+[13:10:51.310] INFO (6982): Logged in as Bento#3392!
+[13:10:51.316] INFO (6982): Connection to database has been established successfully.
+[13:13:24.458] INFO (7211): Logged in as Bento#3392!
+[13:13:24.464] INFO (7211): Connection to database has been established successfully.
+[13:14:06.440] INFO (7262): Logged in as Bento#3392!
+[13:14:06.446] INFO (7262): Connection to database has been established successfully.
+[13:15:31.433] INFO (7307): Logged in as Bento#3392!
+[13:15:31.439] INFO (7307): Connection to database has been established successfully.
+[13:17:12.348] INFO (7400): Logged in as Bento#3392!
+[13:17:12.353] INFO (7400): Connection to database has been established successfully.
+[13:20:15.152] INFO (7459): Logged in as Bento#3392!
+[13:20:15.159] INFO (7459): Connection to database has been established successfully.
+[13:20:40.925] INFO (7531): Logged in as Bento#3392!
+[13:20:40.930] INFO (7531): Connection to database has been established successfully.
+[13:21:28.674] INFO (7608): Logged in as Bento#3392!
+[13:21:28.680] INFO (7608): Connection to database has been established successfully.
+[13:24:33.950] INFO (7827): Logged in as Bento#3392!
+[13:24:33.955] INFO (7827): Connection to database has been established successfully.
+[13:30:06.602] INFO (8044): Logged in as Bento#3392!
+[13:30:06.607] INFO (8044): Connection to database has been established successfully.
+[14:41:37.151] INFO (9474): Logged in as Bento#3392!
+[14:41:37.157] INFO (9474): Connection to database has been established successfully.
+[14:59:22.302] INFO (10219): Logged in as Bento#3392!
+[14:59:22.304] INFO (10219): Connection to database has been established successfully.
+[15:01:04.387] INFO (10411): Logged in as Bento#3392!
+[15:01:04.393] INFO (10411): Connection to database has been established successfully.
+[15:03:44.816] INFO (10711): Logged in as Bento#3392!
+[15:03:44.817] INFO (10711): Connection to database has been established successfully.
+[15:16:41.563] INFO (10711): [chatCommand] .e#0001 used /register region:Atlantic
+[15:16:49.106] INFO (10711): [chatCommand] .e#0001 used /leaderboard
+[15:17:24.910] INFO (10711): [helpers] isUnranked(187744229018042368)..
+[15:17:24.910] INFO (10711): [helpers] isUnranked(187744229018042368) counting matches..
+[15:17:24.923] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.923] INFO (10711): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[15:17:24.923] INFO (10711): [helpers] isUnranked(187744229018042368) = true
+[15:17:24.923] INFO (10711): [helpers] getTotalRankedPlayers() = 0
+[15:17:24.937] INFO (10711): [helpers] isUnranked(187744229018042368)..
+[15:17:24.937] INFO (10711): [helpers] isUnranked(187744229018042368) counting matches..
+[15:17:24.946] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.947] INFO (10711): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[15:17:24.947] INFO (10711): [helpers] isUnranked(187744229018042368) = true
+[15:17:24.947] INFO (10711): [helpers] getPlayersWithHigherElo() = 0
+[15:17:24.947] INFO (10711): [helpers] getRank(187744229018042368) = Unranked
+[15:17:24.947] INFO (10711): [helpers] isUnranked(187744229018042368)..
+[15:17:24.947] INFO (10711): [helpers] isUnranked(187744229018042368) counting matches..
+[15:17:24.957] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.957] INFO (10711): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[15:17:24.958] INFO (10711): [helpers] isUnranked(187744229018042368) = true
+[15:17:24.964] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.977] INFO (10711): [helpers] isUnranked(187744229018042368)..
+[15:17:24.977] INFO (10711): [helpers] isUnranked(187744229018042368) counting matches..
+[15:17:24.986] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.986] INFO (10711): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[15:17:24.986] INFO (10711): [helpers] isUnranked(187744229018042368) = true
+[15:17:24.986] INFO (10711): [helpers] getTotalRankedRegionPlayers() = 0
+[15:17:24.990] INFO (10711): [helpers] isUnranked(187744229018042368)..
+[15:17:24.990] INFO (10711): [helpers] isUnranked(187744229018042368) counting matches..
+[15:17:24.995] INFO (10711): [helpers] getMatchCount(187744229018042368) = 0
+[15:17:24.995] INFO (10711): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[15:17:24.995] INFO (10711): [helpers] isUnranked(187744229018042368) = true
+[15:17:24.995] INFO (10711): [helpers] getRegionPlayersWithHigherElo() = 0
+[15:17:25.204] INFO (10711): [chatCommand] .e#0001 used /getinfo mention:<@187744229018042368>
+[16:11:24.551] INFO (10603): Logged in as Bento#3392!
+[16:11:24.553] INFO (10603): Connection to database has been established successfully.
+[16:11:24.573] INFO (10603): [helpers] updateRank(187744229018042368)...
+[16:11:24.573] INFO (10603): [helpers] updateRank(187744229018042368) checking if unranked..
+[16:11:24.573] INFO (10603): [helpers] isUnranked(187744229018042368)..
+[16:11:24.573] INFO (10603): [helpers] isUnranked(187744229018042368) counting matches..
+[16:11:24.577] INFO (10603): [helpers] getMatchCount(187744229018042368) = 0
+[16:11:24.577] INFO (10603): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[16:11:24.577] INFO (10603): [helpers] isUnranked(187744229018042368) = true
+[16:11:24.578] INFO (10603): [helpers] updateRank(187744229018042368) = Unranked
+[16:11:24.578] INFO (10603): Rank updates have been processed successfully.
+[17:42:15.530] INFO (12629): Logged in as Bento#3392!
+[17:42:15.532] INFO (12629): Connection to database has been established successfully.
+[17:42:15.543] INFO (12629): [helpers] updateRank(187744229018042368)...
+[17:42:15.543] INFO (12629): [helpers] updateRank(187744229018042368) checking if unranked..
+[17:42:15.544] INFO (12629): [helpers] isUnranked(187744229018042368)..
+[17:42:15.544] INFO (12629): [helpers] isUnranked(187744229018042368) counting matches..
+[17:42:15.548] INFO (12629): [helpers] getMatchCount(187744229018042368) = 0
+[17:42:15.548] INFO (12629): [helpers] isUnranked(187744229018042368) checking if enough matches (0 <= 3)..
+[17:42:15.548] INFO (12629): [helpers] isUnranked(187744229018042368) = true
+[17:42:15.548] INFO (12629): [helpers] updateRank(187744229018042368) = Unranked
+[17:42:15.548] INFO (12629): Rank updates have been processed successfully.
+[18:30:28.434] INFO (13759): Logged in as Bento#3392!
+[18:30:28.435] INFO (13759): Connection to database has been established successfully.
+[18:32:16.426] INFO (13847): Logged in as Bento#3392!
+[18:32:16.427] INFO (13847): Connection to database has been established successfully.
+[18:32:29.543] INFO (13903): Logged in as Bento#3392!
+[18:32:29.544] INFO (13903): Connection to database has been established successfully.
+[18:35:42.607] INFO (14039): Logged in as Bento#3392!
+[18:35:42.608] INFO (14039): Connection to database has been established successfully.
+[18:38:30.099] INFO (14209): Logged in as Bento#3392!
+[18:38:30.100] INFO (14209): Connection to database has been established successfully.
+[18:38:45.375] INFO (14256): Logged in as Bento#3392!
+[18:38:45.377] INFO (14256): Connection to database has been established successfully.
+[18:40:31.360] INFO (14329): Logged in as Bento#3392!
+[18:40:31.362] INFO (14329): Connection to database has been established successfully.
+[18:41:22.863] INFO (14393): Logged in as Bento#3392!
+[18:41:22.864] INFO (14393): Connection to database has been established successfully.
+[21:00:04.917] INFO (18330): MTEwMjAyNTgxOTY5MTQxNzY4MA.G-Wsw4.iqOg8zSDtUYZx_KB4QNKf1l2oQ4SOVGNd4_coI
+[21:00:05.578] INFO (18330): Logged in as Morgana#4657!
+[21:00:22.140] INFO (18371): MTEwMjAyNTgxOTY5MTQxNzY4MA.G-Wsw4.iqOg8zSDtUYZx_KB4QNKf1l2oQ4SOVGNd4_coI
+[21:00:22.889] INFO (18371): Logged in as Morgana#4657!
+[21:00:28.136] INFO (18400): Logged in as Morgana#4657!
+[21:02:41.510] INFO (18527): Started refreshing 1 application (/) commands.
+[21:02:42.074] INFO (18527): [deploy-commands] Successfully reloaded 1 application (/) commands
+[21:02:45.732] INFO (18557): Logged in as Morgana#4657!
+[21:03:47.478] INFO (18622): Logged in as Morgana#4657!
+[21:03:58.745] INFO (18664): Started refreshing 1 application (/) commands.
+[21:03:59.152] INFO (18664): [deploy-commands] Successfully reloaded 1 application (/) commands
+[21:04:04.580] INFO (18700): Logged in as Morgana#4657!
+[21:05:59.740] INFO (18873): Started refreshing 2 application (/) commands.
+[21:06:00.189] INFO (18873): [deploy-commands] Successfully reloaded 2 application (/) commands
+[21:06:03.261] INFO (18904): Logged in as Morgana#4657!
+[21:06:10.952] INFO (18904): [chatCommand] .e#0001 used /admin
+[21:06:17.753] INFO (18904): [chatCommand] .e#0001 used /gpt3 prompt:hi
+[21:07:07.024] INFO (19066): Logged in as Morgana#4657!
+[21:07:11.662] INFO (19066): [chatCommand] .e#0001 used /gpt3 prompt:hi
+[21:08:18.634] INFO (19128): Logged in as Morgana#4657!
+[21:08:21.091] ERROR (19128): logger is not defined
+    err: {
+      "type": "ReferenceError",
+      "message": "logger is not defined",
+      "stack":
+          ReferenceError: logger is not defined
+              at Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:28:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+    }
+[21:08:44.541] INFO (19276): Logged in as Morgana#4657!
+[21:08:49.966] ERROR (19276): logger is not defined
+    err: {
+      "type": "ReferenceError",
+      "message": "logger is not defined",
+      "stack":
+          ReferenceError: logger is not defined
+              at Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:28:5)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+    }
+[21:09:11.987] INFO (19325): Logged in as Morgana#4657!
+[21:09:14.132] INFO (19325):
+    status: 200
+    statusText: "OK"
+    headers: {
+      "date": "Sun, 30 Apr 2023 01:09:14 GMT",
+      "content-type": "application/json",
+      "content-length": "320",
+      "connection": "close",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache, must-revalidate",
+      "openai-model": "text-davinci-003",
+      "openai-organization": "user-2jh8s2znamfef7us5t2gbs2u",
+      "openai-processing-ms": "840",
+      "openai-version": "2020-10-01",
+      "strict-transport-security": "max-age=15724800; includeSubDomains",
+      "x-ratelimit-limit-requests": "3000",
+      "x-ratelimit-limit-tokens": "250000",
+      "x-ratelimit-remaining-requests": "2999",
+      "x-ratelimit-remaining-tokens": "249983",
+      "x-ratelimit-reset-requests": "20ms",
+      "x-ratelimit-reset-tokens": "3ms",
+      "x-request-id": "4862a58504f409bdea8bdfa095e0c40a",
+      "cf-cache-status": "DYNAMIC",
+      "server": "cloudflare",
+      "cf-ray": "7bfbe5e509c6bee3-YYC",
+      "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+    }
+    config: {
+      "transitional": {
+        "silentJSONParsing": true,
+        "forcedJSONParsing": true,
+        "clarifyTimeoutError": false
+      },
+      "transformRequest": [
+        null
+      ],
+      "transformResponse": [
+        null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "User-Agent": "OpenAI/NodeJS/3.2.1",
+        "Authorization": "Bearer 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",
+        "Content-Length": 60
+      },
+      "method": "post",
+      "data": "{\"model\":\"text-davinci-003\",\"prompt\":\"hi\",\"temperature\":0.6}",
+      "url": "https://api.openai.com/v1/completions"
+    }
+    request: {
+      "_closed": false,
+      "_contentLength": 60,
+      "_defaultKeepAlive": true,
+      "_ended": true,
+      "_events": {},
+      "_eventsCount": 7,
+      "_hasBody": true,
+      "_header": "POST /v1/completions HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nUser-Agent: OpenAI/NodeJS/3.2.1\r\nAuthorization: Bearer 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\r\nContent-Length: 60\r\nHost: api.openai.com\r\nConnection: close\r\n\r\n",
+      "_headerSent": true,
+      "_keepAliveTimeout": 0,
+      "_last": true,
+      "_redirectable": {
+        "_currentRequest": "[Circular]",
+        "_currentUrl": "https://api.openai.com/v1/completions",
+        "_ended": true,
+        "_ending": true,
+        "_events": {},
+        "_eventsCount": 3,
+        "_options": {
+          "agents": {},
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Authorization": "Bearer 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",
+            "Content-Length": 60,
+            "Content-Type": "application/json",
+            "User-Agent": "OpenAI/NodeJS/3.2.1"
+          },
+          "hostname": "api.openai.com",
+          "maxBodyLength": 10485760,
+          "maxRedirects": 21,
+          "method": "POST",
+          "nativeProtocols": {
+            "http:": {
+              "METHODS": "[Array]",
+              "STATUS_CODES": "[Object]",
+              "globalAgent": "[Object]",
+              "maxHeaderSize": 16384
+            },
+            "https:": {
+              "globalAgent": "[Object]"
+            }
+          },
+          "path": "/v1/completions",
+          "pathname": "/v1/completions",
+          "port": null,
+          "protocol": "https:"
+        },
+        "_redirectCount": 0,
+        "_redirects": [],
+        "_requestBodyBuffers": [],
+        "_requestBodyLength": 60,
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": true,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": false,
+          "sync": true,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        }
+      },
+      "_removedConnection": false,
+      "_removedContLen": false,
+      "_removedTE": false,
+      "_trailer": "",
+      "aborted": false,
+      "agent": {
+        "_events": {},
+        "_eventsCount": 2,
+        "_sessionCache": {
+          "list": [
+            "api.openai.com:443:::::::::::::::::::::"
+          ],
+          "map": {
+            "api.openai.com:443:::::::::::::::::::::": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          }
+        },
+        "defaultPort": 443,
+        "freeSockets": {},
+        "keepAlive": false,
+        "keepAliveMsecs": 1000,
+        "maxCachedSessions": 100,
+        "maxFreeSockets": 256,
+        "maxSockets": null,
+        "maxTotalSockets": null,
+        "options": {
+          "noDelay": true,
+          "path": null
+        },
+        "protocol": "https:",
+        "requests": {},
+        "scheduling": "lifo",
+        "sockets": {
+          "api.openai.com:443:::::::::::::::::::::": [
+            {
+              "_SNICallback": null,
+              "_closeAfterHandlingError": false,
+              "_controlReleased": true,
+              "_events": "[Object]",
+              "_eventsCount": 10,
+              "_hadError": false,
+              "_host": "api.openai.com",
+              "_httpMessage": "[Circular]",
+              "_newSessionPending": false,
+              "_parent": null,
+              "_pendingData": null,
+              "_pendingEncoding": "",
+              "_readableState": "[Object]",
+              "_rejectUnauthorized": true,
+              "_requestCert": true,
+              "_secureEstablished": true,
+              "_securePending": false,
+              "_server": null,
+              "_sockname": null,
+              "_tlsOptions": "[Object]",
+              "_writableState": "[Object]",
+              "allowHalfOpen": false,
+              "alpnProtocol": false,
+              "authorizationError": null,
+              "authorized": true,
+              "connecting": false,
+              "encrypted": true,
+              "parser": null,
+              "secureConnecting": false,
+              "servername": "api.openai.com",
+              "ssl": "[Object]"
+            }
+          ]
+        },
+        "totalSocketCount": 1
+      },
+      "chunkedEncoding": false,
+      "destroyed": false,
+      "finished": true,
+      "host": "api.openai.com",
+      "maxHeadersCount": null,
+      "maxRequestsOnConnectionReached": false,
+      "method": "POST",
+      "outputData": [],
+      "outputSize": 0,
+      "parser": null,
+      "path": "/v1/completions",
+      "protocol": "https:",
+      "res": {
+        "_consuming": false,
+        "_dumped": false,
+        "_events": {
+          "end": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 4,
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": true,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": true,
+          "resumeScheduled": false,
+          "sync": true
+        },
+        "aborted": false,
+        "client": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 10,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": false,
+            "closed": false,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": false,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": false,
+            "ended": false,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": true,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": true,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": false,
+            "closed": false,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": false,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": false,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 1,
+            "prefinished": false,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": {
+            "_parent": {
+              "onconnection": null,
+              "reading": true
+            },
+            "_secureContext": {
+              "context": {}
+            },
+            "reading": true
+          }
+        },
+        "complete": true,
+        "httpVersion": "1.1",
+        "httpVersionMajor": 1,
+        "httpVersionMinor": 1,
+        "method": null,
+        "rawHeaders": [
+          "Date",
+          "Sun, 30 Apr 2023 01:09:14 GMT",
+          "Content-Type",
+          "application/json",
+          "Content-Length",
+          "320",
+          "Connection",
+          "close",
+          "access-control-allow-origin",
+          "*",
+          "Cache-Control",
+          "no-cache, must-revalidate",
+          "openai-model",
+          "text-davinci-003",
+          "openai-organization",
+          "user-2jh8s2znamfef7us5t2gbs2u",
+          "openai-processing-ms",
+          "840",
+          "openai-version",
+          "2020-10-01",
+          "strict-transport-security",
+          "max-age=15724800; includeSubDomains",
+          "x-ratelimit-limit-requests",
+          "3000",
+          "x-ratelimit-limit-tokens",
+          "250000",
+          "x-ratelimit-remaining-requests",
+          "2999",
+          "x-ratelimit-remaining-tokens",
+          "249983",
+          "x-ratelimit-reset-requests",
+          "20ms",
+          "x-ratelimit-reset-tokens",
+          "3ms",
+          "x-request-id",
+          "4862a58504f409bdea8bdfa095e0c40a",
+          "CF-Cache-Status",
+          "DYNAMIC",
+          "Server",
+          "cloudflare",
+          "CF-RAY",
+          "7bfbe5e509c6bee3-YYC",
+          "alt-svc",
+          "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+        ],
+        "rawTrailers": [],
+        "redirects": [],
+        "req": "[Circular]",
+        "responseUrl": "https://api.openai.com/v1/completions",
+        "socket": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 10,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": false,
+            "closed": false,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": false,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": false,
+            "ended": false,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": true,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": true,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": false,
+            "closed": false,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": false,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": false,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 1,
+            "prefinished": false,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": {
+            "_parent": {
+              "onconnection": null,
+              "reading": true
+            },
+            "_secureContext": {
+              "context": {}
+            },
+            "reading": true
+          }
+        },
+        "statusCode": 200,
+        "statusMessage": "OK",
+        "upgrade": false,
+        "url": ""
+      },
+      "reusedSocket": false,
+      "sendDate": false,
+      "shouldKeepAlive": false,
+      "socket": {
+        "_SNICallback": null,
+        "_closeAfterHandlingError": false,
+        "_controlReleased": true,
+        "_events": {
+          "close": [
+            null,
+            null,
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 10,
+        "_hadError": false,
+        "_host": "api.openai.com",
+        "_httpMessage": "[Circular]",
+        "_newSessionPending": false,
+        "_parent": null,
+        "_pendingData": null,
+        "_pendingEncoding": "",
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": false,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": false,
+          "ended": false,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": true,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": true,
+          "readingMore": false,
+          "resumeScheduled": false,
+          "sync": false
+        },
+        "_rejectUnauthorized": true,
+        "_requestCert": true,
+        "_secureEstablished": true,
+        "_securePending": false,
+        "_server": null,
+        "_sockname": null,
+        "_tlsOptions": {
+          "isServer": false,
+          "pipe": false,
+          "rejectUnauthorized": true,
+          "requestCert": true,
+          "secureContext": {
+            "context": {}
+          }
+        },
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": false,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": false,
+          "ended": true,
+          "ending": true,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": true,
+          "finished": false,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 1,
+          "prefinished": false,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        },
+        "allowHalfOpen": false,
+        "alpnProtocol": false,
+        "authorizationError": null,
+        "authorized": true,
+        "connecting": false,
+        "encrypted": true,
+        "parser": null,
+        "secureConnecting": false,
+        "servername": "api.openai.com",
+        "ssl": {
+          "_parent": {
+            "onconnection": null,
+            "reading": true
+          },
+          "_secureContext": {
+            "context": {}
+          },
+          "reading": true
+        }
+      },
+      "strictContentLength": false,
+      "timeoutCb": null,
+      "upgradeOrConnect": false,
+      "useChunkedEncodingByDefault": true,
+      "writable": true
+    }
+    data: {
+      "id": "cmpl-7Apqrxbj0WDfK43O3UrJMZqiZO317",
+      "object": "text_completion",
+      "created": 1682816953,
+      "model": "text-davinci-003",
+      "choices": [
+        {
+          "text": ",\n\nI am using IBM Rational Application Developer 8.0.4.",
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1,
+        "completion_tokens": 16,
+        "total_tokens": 17
+      }
+    }
+[21:09:14.134] INFO (19325): [chatCommand] .e#0001 used /gpt3 prompt:hi
+[21:11:47.223] INFO (19400): Logged in as Morgana#4657!
+[21:11:50.852] INFO (19400):
+    status: 200
+    statusText: "OK"
+    headers: {
+      "date": "Sun, 30 Apr 2023 01:11:50 GMT",
+      "content-type": "application/json",
+      "content-length": "325",
+      "connection": "close",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache, must-revalidate",
+      "openai-model": "text-davinci-003",
+      "openai-organization": "user-2jh8s2znamfef7us5t2gbs2u",
+      "openai-processing-ms": "953",
+      "openai-version": "2020-10-01",
+      "strict-transport-security": "max-age=15724800; includeSubDomains",
+      "x-ratelimit-limit-requests": "3000",
+      "x-ratelimit-limit-tokens": "250000",
+      "x-ratelimit-remaining-requests": "2999",
+      "x-ratelimit-remaining-tokens": "249983",
+      "x-ratelimit-reset-requests": "20ms",
+      "x-ratelimit-reset-tokens": "3ms",
+      "x-request-id": "5c1d49f3f3acf6786084857e8d2ff9c9",
+      "cf-cache-status": "DYNAMIC",
+      "server": "cloudflare",
+      "cf-ray": "7bfbe9b6595401d2-YYC",
+      "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+    }
+    config: {
+      "transitional": {
+        "silentJSONParsing": true,
+        "forcedJSONParsing": true,
+        "clarifyTimeoutError": false
+      },
+      "transformRequest": [
+        null
+      ],
+      "transformResponse": [
+        null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "User-Agent": "OpenAI/NodeJS/3.2.1",
+        "Authorization": "Bearer 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",
+        "Content-Length": 60
+      },
+      "method": "post",
+      "data": "{\"model\":\"text-davinci-003\",\"prompt\":\"hi\",\"temperature\":0.6}",
+      "url": "https://api.openai.com/v1/completions"
+    }
+    request: {
+      "_closed": true,
+      "_contentLength": 60,
+      "_defaultKeepAlive": true,
+      "_ended": true,
+      "_events": {},
+      "_eventsCount": 7,
+      "_hasBody": true,
+      "_header": "POST /v1/completions HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nUser-Agent: OpenAI/NodeJS/3.2.1\r\nAuthorization: Bearer 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\r\nContent-Length: 60\r\nHost: api.openai.com\r\nConnection: close\r\n\r\n",
+      "_headerSent": true,
+      "_keepAliveTimeout": 0,
+      "_last": true,
+      "_redirectable": {
+        "_currentRequest": "[Circular]",
+        "_currentUrl": "https://api.openai.com/v1/completions",
+        "_ended": true,
+        "_ending": true,
+        "_events": {},
+        "_eventsCount": 3,
+        "_options": {
+          "agents": {},
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Authorization": "Bearer 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",
+            "Content-Length": 60,
+            "Content-Type": "application/json",
+            "User-Agent": "OpenAI/NodeJS/3.2.1"
+          },
+          "hostname": "api.openai.com",
+          "maxBodyLength": 10485760,
+          "maxRedirects": 21,
+          "method": "POST",
+          "nativeProtocols": {
+            "http:": {
+              "METHODS": "[Array]",
+              "STATUS_CODES": "[Object]",
+              "globalAgent": "[Object]",
+              "maxHeaderSize": 16384
+            },
+            "https:": {
+              "globalAgent": "[Object]"
+            }
+          },
+          "path": "/v1/completions",
+          "pathname": "/v1/completions",
+          "port": null,
+          "protocol": "https:"
+        },
+        "_redirectCount": 0,
+        "_redirects": [],
+        "_requestBodyBuffers": [],
+        "_requestBodyLength": 60,
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": true,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": false,
+          "sync": true,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        }
+      },
+      "_removedConnection": false,
+      "_removedContLen": false,
+      "_removedTE": false,
+      "_trailer": "",
+      "aborted": false,
+      "agent": {
+        "_events": {},
+        "_eventsCount": 2,
+        "_sessionCache": {
+          "list": [
+            "api.openai.com:443:::::::::::::::::::::"
+          ],
+          "map": {
+            "api.openai.com:443:::::::::::::::::::::": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          }
+        },
+        "defaultPort": 443,
+        "freeSockets": {},
+        "keepAlive": false,
+        "keepAliveMsecs": 1000,
+        "maxCachedSessions": 100,
+        "maxFreeSockets": 256,
+        "maxSockets": null,
+        "maxTotalSockets": null,
+        "options": {
+          "noDelay": true,
+          "path": null
+        },
+        "protocol": "https:",
+        "requests": {},
+        "scheduling": "lifo",
+        "sockets": {},
+        "totalSocketCount": 0
+      },
+      "chunkedEncoding": false,
+      "destroyed": true,
+      "finished": true,
+      "host": "api.openai.com",
+      "maxHeadersCount": null,
+      "maxRequestsOnConnectionReached": false,
+      "method": "POST",
+      "outputData": [],
+      "outputSize": 0,
+      "parser": null,
+      "path": "/v1/completions",
+      "protocol": "https:",
+      "res": {
+        "_consuming": false,
+        "_dumped": false,
+        "_events": {
+          "end": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 4,
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": true,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": true,
+          "resumeScheduled": false,
+          "sync": true
+        },
+        "aborted": false,
+        "client": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": true,
+            "ended": true,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": false,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": false,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "complete": true,
+        "httpVersion": "1.1",
+        "httpVersionMajor": 1,
+        "httpVersionMinor": 1,
+        "method": null,
+        "rawHeaders": [
+          "Date",
+          "Sun, 30 Apr 2023 01:11:50 GMT",
+          "Content-Type",
+          "application/json",
+          "Content-Length",
+          "325",
+          "Connection",
+          "close",
+          "access-control-allow-origin",
+          "*",
+          "Cache-Control",
+          "no-cache, must-revalidate",
+          "openai-model",
+          "text-davinci-003",
+          "openai-organization",
+          "user-2jh8s2znamfef7us5t2gbs2u",
+          "openai-processing-ms",
+          "953",
+          "openai-version",
+          "2020-10-01",
+          "strict-transport-security",
+          "max-age=15724800; includeSubDomains",
+          "x-ratelimit-limit-requests",
+          "3000",
+          "x-ratelimit-limit-tokens",
+          "250000",
+          "x-ratelimit-remaining-requests",
+          "2999",
+          "x-ratelimit-remaining-tokens",
+          "249983",
+          "x-ratelimit-reset-requests",
+          "20ms",
+          "x-ratelimit-reset-tokens",
+          "3ms",
+          "x-request-id",
+          "5c1d49f3f3acf6786084857e8d2ff9c9",
+          "CF-Cache-Status",
+          "DYNAMIC",
+          "Server",
+          "cloudflare",
+          "CF-RAY",
+          "7bfbe9b6595401d2-YYC",
+          "alt-svc",
+          "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+        ],
+        "rawTrailers": [],
+        "redirects": [],
+        "req": "[Circular]",
+        "responseUrl": "https://api.openai.com/v1/completions",
+        "socket": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": true,
+            "ended": true,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": false,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": false,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "statusCode": 200,
+        "statusMessage": "OK",
+        "upgrade": false,
+        "url": ""
+      },
+      "reusedSocket": false,
+      "sendDate": false,
+      "shouldKeepAlive": false,
+      "socket": {
+        "_SNICallback": null,
+        "_closeAfterHandlingError": false,
+        "_controlReleased": true,
+        "_events": {
+          "close": [
+            null,
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 9,
+        "_hadError": false,
+        "_host": "api.openai.com",
+        "_httpMessage": "[Circular]",
+        "_newSessionPending": false,
+        "_parent": null,
+        "_pendingData": null,
+        "_pendingEncoding": "",
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": false,
+          "resumeScheduled": false,
+          "sync": false
+        },
+        "_rejectUnauthorized": true,
+        "_requestCert": true,
+        "_secureEstablished": true,
+        "_securePending": false,
+        "_server": null,
+        "_sockname": null,
+        "_tlsOptions": {
+          "isServer": false,
+          "pipe": false,
+          "rejectUnauthorized": true,
+          "requestCert": true,
+          "secureContext": {
+            "context": {}
+          }
+        },
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": false,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "ended": true,
+          "ending": true,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": true,
+          "finished": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": true,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        },
+        "allowHalfOpen": false,
+        "alpnProtocol": false,
+        "authorizationError": null,
+        "authorized": true,
+        "connecting": false,
+        "encrypted": true,
+        "parser": null,
+        "secureConnecting": false,
+        "servername": "api.openai.com",
+        "ssl": null
+      },
+      "strictContentLength": false,
+      "timeoutCb": null,
+      "upgradeOrConnect": false,
+      "useChunkedEncodingByDefault": true,
+      "writable": true
+    }
+    data: {
+      "id": "cmpl-7AptNL6oIMCvHqHx0KnfgMJhCIUcF",
+      "object": "text_completion",
+      "created": 1682817109,
+      "model": "text-davinci-003",
+      "choices": [
+        {
+          "text": "\n\nThe word \"hi\" is an informal greeting used to say hello.",
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 1,
+        "completion_tokens": 16,
+        "total_tokens": 17
+      }
+    }
+[21:11:50.853] INFO (19400): [chatCommand] .e#0001 used /gpt3 prompt:hi
+[21:19:10.208] INFO (19564): Logged in as Morgana#4657!
+[21:19:12.356] ERROR (19564): Request failed with status code 404
+    err: {
+      "message": "Request failed with status code 404",
+      "stack":
+          Error: Request failed with status code 404
+              at createError (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/core/createError.js:16:15)
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/core/settle.js:17:12)
+              at IncomingMessage.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/adapters/http.js:322:11)
+              at IncomingMessage.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "User-Agent": "OpenAI/NodeJS/3.2.1",
+          "Authorization": "Bearer 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",
+          "Content-Length": 508
+        },
+        "method": "post",
+        "data": "{\"model\":\"gpt-3.5-turbo\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: hi\",\"temperature\":0.6}",
+        "url": "https://api.openai.com/v1/completions"
+      },
+      "status": 404
+    }
+[21:25:08.281] INFO (19970): Logged in as Morgana#4657!
+[21:25:10.347] ERROR (19970): Request failed with status code 404
+    err: {
+      "message": "Request failed with status code 404",
+      "stack":
+          Error: Request failed with status code 404
+              at createError (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/core/createError.js:16:15)
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/core/settle.js:17:12)
+              at IncomingMessage.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/lib/adapters/http.js:322:11)
+              at IncomingMessage.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "User-Agent": "OpenAI/NodeJS/3.2.1",
+          "Authorization": "Bearer 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",
+          "Content-Length": 513
+        },
+        "method": "post",
+        "data": "{\"model\":\"gpt-3.5-turbo-0301\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: hi\",\"temperature\":0.6}",
+        "url": "https://api.openai.com/v1/completions"
+      },
+      "status": 404
+    }
+[21:31:05.782] INFO (20415): Logged in as Morgana#4657!
+[21:31:08.386] INFO (20415):
+    status: 200
+    statusText: "OK"
+    headers: {
+      "date": "Sun, 30 Apr 2023 01:31:08 GMT",
+      "content-type": "application/json",
+      "content-length": "262",
+      "connection": "close",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache, must-revalidate",
+      "openai-model": "text-davinci-003",
+      "openai-organization": "user-2jh8s2znamfef7us5t2gbs2u",
+      "openai-processing-ms": "783",
+      "openai-version": "2020-10-01",
+      "strict-transport-security": "max-age=15724800; includeSubDomains",
+      "x-ratelimit-limit-requests": "3000",
+      "x-ratelimit-limit-tokens": "250000",
+      "x-ratelimit-remaining-requests": "2999",
+      "x-ratelimit-remaining-tokens": "249983",
+      "x-ratelimit-reset-requests": "20ms",
+      "x-ratelimit-reset-tokens": "3ms",
+      "x-request-id": "f9aeb5e321ec805c65e4d8185dd3afd6",
+      "cf-cache-status": "DYNAMIC",
+      "server": "cloudflare",
+      "cf-ray": "7bfc05f9cd59beef-YYC",
+      "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+    }
+    config: {
+      "transitional": {
+        "silentJSONParsing": true,
+        "forcedJSONParsing": true,
+        "clarifyTimeoutError": false
+      },
+      "transformRequest": [
+        null
+      ],
+      "transformResponse": [
+        null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "User-Agent": "OpenAI/NodeJS/3.2.1",
+        "Authorization": "Bearer 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",
+        "Content-Length": 511
+      },
+      "method": "post",
+      "data": "{\"model\":\"text-davinci-003\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: hi\",\"temperature\":0.6}",
+      "url": "https://api.openai.com/v1/completions"
+    }
+    request: {
+      "_closed": true,
+      "_contentLength": 511,
+      "_defaultKeepAlive": true,
+      "_ended": true,
+      "_events": {},
+      "_eventsCount": 7,
+      "_hasBody": true,
+      "_header": "POST /v1/completions HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nUser-Agent: OpenAI/NodeJS/3.2.1\r\nAuthorization: Bearer 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\r\nContent-Length: 511\r\nHost: api.openai.com\r\nConnection: close\r\n\r\n",
+      "_headerSent": true,
+      "_keepAliveTimeout": 0,
+      "_last": true,
+      "_redirectable": {
+        "_currentRequest": "[Circular]",
+        "_currentUrl": "https://api.openai.com/v1/completions",
+        "_ended": true,
+        "_ending": true,
+        "_events": {},
+        "_eventsCount": 3,
+        "_options": {
+          "agents": {},
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Authorization": "Bearer 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",
+            "Content-Length": 511,
+            "Content-Type": "application/json",
+            "User-Agent": "OpenAI/NodeJS/3.2.1"
+          },
+          "hostname": "api.openai.com",
+          "maxBodyLength": 10485760,
+          "maxRedirects": 21,
+          "method": "POST",
+          "nativeProtocols": {
+            "http:": {
+              "METHODS": "[Array]",
+              "STATUS_CODES": "[Object]",
+              "globalAgent": "[Object]",
+              "maxHeaderSize": 16384
+            },
+            "https:": {
+              "globalAgent": "[Object]"
+            }
+          },
+          "path": "/v1/completions",
+          "pathname": "/v1/completions",
+          "port": null,
+          "protocol": "https:"
+        },
+        "_redirectCount": 0,
+        "_redirects": [],
+        "_requestBodyBuffers": [],
+        "_requestBodyLength": 511,
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": true,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": false,
+          "sync": true,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        }
+      },
+      "_removedConnection": false,
+      "_removedContLen": false,
+      "_removedTE": false,
+      "_trailer": "",
+      "aborted": false,
+      "agent": {
+        "_events": {},
+        "_eventsCount": 2,
+        "_sessionCache": {
+          "list": [
+            "api.openai.com:443:::::::::::::::::::::"
+          ],
+          "map": {
+            "api.openai.com:443:::::::::::::::::::::": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          }
+        },
+        "defaultPort": 443,
+        "freeSockets": {},
+        "keepAlive": false,
+        "keepAliveMsecs": 1000,
+        "maxCachedSessions": 100,
+        "maxFreeSockets": 256,
+        "maxSockets": null,
+        "maxTotalSockets": null,
+        "options": {
+          "noDelay": true,
+          "path": null
+        },
+        "protocol": "https:",
+        "requests": {},
+        "scheduling": "lifo",
+        "sockets": {},
+        "totalSocketCount": 0
+      },
+      "chunkedEncoding": false,
+      "destroyed": true,
+      "finished": true,
+      "host": "api.openai.com",
+      "maxHeadersCount": null,
+      "maxRequestsOnConnectionReached": false,
+      "method": "POST",
+      "outputData": [],
+      "outputSize": 0,
+      "parser": null,
+      "path": "/v1/completions",
+      "protocol": "https:",
+      "res": {
+        "_consuming": false,
+        "_dumped": false,
+        "_events": {
+          "end": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 4,
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": true,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": true,
+          "resumeScheduled": false,
+          "sync": true
+        },
+        "aborted": false,
+        "client": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": true,
+            "ended": true,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": false,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": false,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "complete": true,
+        "httpVersion": "1.1",
+        "httpVersionMajor": 1,
+        "httpVersionMinor": 1,
+        "method": null,
+        "rawHeaders": [
+          "Date",
+          "Sun, 30 Apr 2023 01:31:08 GMT",
+          "Content-Type",
+          "application/json",
+          "Content-Length",
+          "262",
+          "Connection",
+          "close",
+          "access-control-allow-origin",
+          "*",
+          "Cache-Control",
+          "no-cache, must-revalidate",
+          "openai-model",
+          "text-davinci-003",
+          "openai-organization",
+          "user-2jh8s2znamfef7us5t2gbs2u",
+          "openai-processing-ms",
+          "783",
+          "openai-version",
+          "2020-10-01",
+          "strict-transport-security",
+          "max-age=15724800; includeSubDomains",
+          "x-ratelimit-limit-requests",
+          "3000",
+          "x-ratelimit-limit-tokens",
+          "250000",
+          "x-ratelimit-remaining-requests",
+          "2999",
+          "x-ratelimit-remaining-tokens",
+          "249983",
+          "x-ratelimit-reset-requests",
+          "20ms",
+          "x-ratelimit-reset-tokens",
+          "3ms",
+          "x-request-id",
+          "f9aeb5e321ec805c65e4d8185dd3afd6",
+          "CF-Cache-Status",
+          "DYNAMIC",
+          "Server",
+          "cloudflare",
+          "CF-RAY",
+          "7bfc05f9cd59beef-YYC",
+          "alt-svc",
+          "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+        ],
+        "rawTrailers": [],
+        "redirects": [],
+        "req": "[Circular]",
+        "responseUrl": "https://api.openai.com/v1/completions",
+        "socket": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": true,
+            "ended": true,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": false,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": false,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "statusCode": 200,
+        "statusMessage": "OK",
+        "upgrade": false,
+        "url": ""
+      },
+      "reusedSocket": false,
+      "sendDate": false,
+      "shouldKeepAlive": false,
+      "socket": {
+        "_SNICallback": null,
+        "_closeAfterHandlingError": false,
+        "_controlReleased": true,
+        "_events": {
+          "close": [
+            null,
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 9,
+        "_hadError": false,
+        "_host": "api.openai.com",
+        "_httpMessage": "[Circular]",
+        "_newSessionPending": false,
+        "_parent": null,
+        "_pendingData": null,
+        "_pendingEncoding": "",
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": false,
+          "resumeScheduled": false,
+          "sync": false
+        },
+        "_rejectUnauthorized": true,
+        "_requestCert": true,
+        "_secureEstablished": true,
+        "_securePending": false,
+        "_server": null,
+        "_sockname": null,
+        "_tlsOptions": {
+          "isServer": false,
+          "pipe": false,
+          "rejectUnauthorized": true,
+          "requestCert": true,
+          "secureContext": {
+            "context": {}
+          }
+        },
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": false,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "ended": true,
+          "ending": true,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": true,
+          "finished": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": true,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        },
+        "allowHalfOpen": false,
+        "alpnProtocol": false,
+        "authorizationError": null,
+        "authorized": true,
+        "connecting": false,
+        "encrypted": true,
+        "parser": null,
+        "secureConnecting": false,
+        "servername": "api.openai.com",
+        "ssl": null
+      },
+      "strictContentLength": false,
+      "timeoutCb": null,
+      "upgradeOrConnect": false,
+      "useChunkedEncodingByDefault": true,
+      "writable": true
+    }
+    data: {
+      "id": "cmpl-7AqC36FQv3ZjLV9sIaOpM3pDZmdYb",
+      "object": "text_completion",
+      "created": 1682818267,
+      "model": "text-davinci-003",
+      "choices": [
+        {
+          "text": "!",
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 95,
+        "completion_tokens": 1,
+        "total_tokens": 96
+      }
+    }
+[21:31:08.388] INFO (20415): [chatCommand] .e#0001 used /gpt3 prompt:hi
+[21:31:21.639] INFO (20415):
+    status: 200
+    statusText: "OK"
+    headers: {
+      "date": "Sun, 30 Apr 2023 01:31:21 GMT",
+      "content-type": "application/json",
+      "content-length": "323",
+      "connection": "close",
+      "access-control-allow-origin": "*",
+      "cache-control": "no-cache, must-revalidate",
+      "openai-model": "text-davinci-003",
+      "openai-organization": "user-2jh8s2znamfef7us5t2gbs2u",
+      "openai-processing-ms": "792",
+      "openai-version": "2020-10-01",
+      "strict-transport-security": "max-age=15724800; includeSubDomains",
+      "x-ratelimit-limit-requests": "3000",
+      "x-ratelimit-limit-tokens": "250000",
+      "x-ratelimit-remaining-requests": "2999",
+      "x-ratelimit-remaining-tokens": "249984",
+      "x-ratelimit-reset-requests": "20ms",
+      "x-ratelimit-reset-tokens": "3ms",
+      "x-request-id": "30b5f4cc37c3f6f896ac505988a54239",
+      "cf-cache-status": "DYNAMIC",
+      "server": "cloudflare",
+      "cf-ray": "7bfc064c6ffabef9-YYC",
+      "alt-svc": "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+    }
+    config: {
+      "transitional": {
+        "silentJSONParsing": true,
+        "forcedJSONParsing": true,
+        "clarifyTimeoutError": false
+      },
+      "transformRequest": [
+        null
+      ],
+      "transformResponse": [
+        null
+      ],
+      "timeout": 0,
+      "xsrfCookieName": "XSRF-TOKEN",
+      "xsrfHeaderName": "X-XSRF-TOKEN",
+      "maxContentLength": -1,
+      "maxBodyLength": -1,
+      "headers": {
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        "User-Agent": "OpenAI/NodeJS/3.2.1",
+        "Authorization": "Bearer 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",
+        "Content-Length": 529
+      },
+      "method": "post",
+      "data": "{\"model\":\"text-davinci-003\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: Hi morgana whats up?\",\"temperature\":0.6}",
+      "url": "https://api.openai.com/v1/completions"
+    }
+    request: {
+      "_closed": true,
+      "_contentLength": 529,
+      "_defaultKeepAlive": true,
+      "_ended": true,
+      "_events": {},
+      "_eventsCount": 7,
+      "_hasBody": true,
+      "_header": "POST /v1/completions HTTP/1.1\r\nAccept: application/json, text/plain, */*\r\nContent-Type: application/json\r\nUser-Agent: OpenAI/NodeJS/3.2.1\r\nAuthorization: Bearer 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\r\nContent-Length: 529\r\nHost: api.openai.com\r\nConnection: close\r\n\r\n",
+      "_headerSent": true,
+      "_keepAliveTimeout": 0,
+      "_last": true,
+      "_redirectable": {
+        "_currentRequest": "[Circular]",
+        "_currentUrl": "https://api.openai.com/v1/completions",
+        "_ended": true,
+        "_ending": true,
+        "_events": {},
+        "_eventsCount": 3,
+        "_options": {
+          "agents": {},
+          "headers": {
+            "Accept": "application/json, text/plain, */*",
+            "Authorization": "Bearer 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",
+            "Content-Length": 529,
+            "Content-Type": "application/json",
+            "User-Agent": "OpenAI/NodeJS/3.2.1"
+          },
+          "hostname": "api.openai.com",
+          "maxBodyLength": 10485760,
+          "maxRedirects": 21,
+          "method": "POST",
+          "nativeProtocols": {
+            "http:": {
+              "METHODS": "[Array]",
+              "STATUS_CODES": "[Object]",
+              "globalAgent": "[Object]",
+              "maxHeaderSize": 16384
+            },
+            "https:": {
+              "globalAgent": "[Object]"
+            }
+          },
+          "path": "/v1/completions",
+          "pathname": "/v1/completions",
+          "port": null,
+          "protocol": "https:"
+        },
+        "_redirectCount": 0,
+        "_redirects": [],
+        "_requestBodyBuffers": [],
+        "_requestBodyLength": 529,
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": false,
+          "closed": false,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": true,
+          "defaultEncoding": "utf8",
+          "destroyed": false,
+          "emitClose": true,
+          "ended": false,
+          "ending": false,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": false,
+          "finished": false,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": false,
+          "sync": true,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        }
+      },
+      "_removedConnection": false,
+      "_removedContLen": false,
+      "_removedTE": false,
+      "_trailer": "",
+      "aborted": false,
+      "agent": {
+        "_events": {},
+        "_eventsCount": 2,
+        "_sessionCache": {
+          "list": [
+            "api.openai.com:443:::::::::::::::::::::"
+          ],
+          "map": {
+            "api.openai.com:443:::::::::::::::::::::": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          }
+        },
+        "defaultPort": 443,
+        "freeSockets": {},
+        "keepAlive": false,
+        "keepAliveMsecs": 1000,
+        "maxCachedSessions": 100,
+        "maxFreeSockets": 256,
+        "maxSockets": null,
+        "maxTotalSockets": null,
+        "options": {
+          "noDelay": true,
+          "path": null
+        },
+        "protocol": "https:",
+        "requests": {},
+        "scheduling": "lifo",
+        "sockets": {},
+        "totalSocketCount": 0
+      },
+      "chunkedEncoding": false,
+      "destroyed": true,
+      "finished": true,
+      "host": "api.openai.com",
+      "maxHeadersCount": null,
+      "maxRequestsOnConnectionReached": false,
+      "method": "POST",
+      "outputData": [],
+      "outputSize": 0,
+      "parser": null,
+      "path": "/v1/completions",
+      "protocol": "https:",
+      "res": {
+        "_consuming": false,
+        "_dumped": false,
+        "_events": {
+          "end": [
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 4,
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": true,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": true,
+          "ended": true,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": false,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": false,
+          "readingMore": true,
+          "resumeScheduled": false,
+          "sync": true
+        },
+        "aborted": false,
+        "client": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": false,
+            "ended": false,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": true,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": true,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            },
+            "session": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "complete": true,
+        "httpVersion": "1.1",
+        "httpVersionMajor": 1,
+        "httpVersionMinor": 1,
+        "method": null,
+        "rawHeaders": [
+          "Date",
+          "Sun, 30 Apr 2023 01:31:21 GMT",
+          "Content-Type",
+          "application/json",
+          "Content-Length",
+          "323",
+          "Connection",
+          "close",
+          "access-control-allow-origin",
+          "*",
+          "Cache-Control",
+          "no-cache, must-revalidate",
+          "openai-model",
+          "text-davinci-003",
+          "openai-organization",
+          "user-2jh8s2znamfef7us5t2gbs2u",
+          "openai-processing-ms",
+          "792",
+          "openai-version",
+          "2020-10-01",
+          "strict-transport-security",
+          "max-age=15724800; includeSubDomains",
+          "x-ratelimit-limit-requests",
+          "3000",
+          "x-ratelimit-limit-tokens",
+          "250000",
+          "x-ratelimit-remaining-requests",
+          "2999",
+          "x-ratelimit-remaining-tokens",
+          "249984",
+          "x-ratelimit-reset-requests",
+          "20ms",
+          "x-ratelimit-reset-tokens",
+          "3ms",
+          "x-request-id",
+          "30b5f4cc37c3f6f896ac505988a54239",
+          "CF-Cache-Status",
+          "DYNAMIC",
+          "Server",
+          "cloudflare",
+          "CF-RAY",
+          "7bfc064c6ffabef9-YYC",
+          "alt-svc",
+          "h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400"
+        ],
+        "rawTrailers": [],
+        "redirects": [],
+        "req": "[Circular]",
+        "responseUrl": "https://api.openai.com/v1/completions",
+        "socket": {
+          "_SNICallback": null,
+          "_closeAfterHandlingError": false,
+          "_controlReleased": true,
+          "_events": {
+            "close": [
+              null,
+              null,
+              null
+            ]
+          },
+          "_eventsCount": 9,
+          "_hadError": false,
+          "_host": "api.openai.com",
+          "_httpMessage": "[Circular]",
+          "_newSessionPending": false,
+          "_parent": null,
+          "_pendingData": null,
+          "_pendingEncoding": "",
+          "_readableState": {
+            "autoDestroy": true,
+            "awaitDrainWriters": null,
+            "buffer": {
+              "head": null,
+              "length": 0,
+              "tail": null
+            },
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "dataEmitted": true,
+            "decoder": null,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "emittedReadable": false,
+            "encoding": null,
+            "endEmitted": false,
+            "ended": false,
+            "errorEmitted": false,
+            "errored": null,
+            "flowing": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "multiAwaitDrain": false,
+            "needReadable": true,
+            "objectMode": false,
+            "pipes": [],
+            "readableListening": false,
+            "reading": true,
+            "readingMore": false,
+            "resumeScheduled": false,
+            "sync": false
+          },
+          "_rejectUnauthorized": true,
+          "_requestCert": true,
+          "_secureEstablished": true,
+          "_securePending": false,
+          "_server": null,
+          "_sockname": null,
+          "_tlsOptions": {
+            "isServer": false,
+            "pipe": false,
+            "rejectUnauthorized": true,
+            "requestCert": true,
+            "secureContext": {
+              "context": {}
+            },
+            "session": {
+              "data": "[Array]",
+              "type": "Buffer"
+            }
+          },
+          "_writableState": {
+            "afterWriteTickInfo": null,
+            "allBuffers": true,
+            "allNoop": true,
+            "autoDestroy": true,
+            "bufferProcessing": false,
+            "buffered": [],
+            "bufferedIndex": 0,
+            "closeEmitted": true,
+            "closed": true,
+            "constructed": true,
+            "corked": 0,
+            "decodeStrings": false,
+            "defaultEncoding": "utf8",
+            "destroyed": true,
+            "emitClose": false,
+            "ended": true,
+            "ending": true,
+            "errorEmitted": false,
+            "errored": null,
+            "finalCalled": true,
+            "finished": true,
+            "highWaterMark": 16384,
+            "length": 0,
+            "needDrain": false,
+            "objectMode": false,
+            "pendingcb": 0,
+            "prefinished": true,
+            "sync": false,
+            "writecb": null,
+            "writelen": 0,
+            "writing": false
+          },
+          "allowHalfOpen": false,
+          "alpnProtocol": false,
+          "authorizationError": null,
+          "authorized": true,
+          "connecting": false,
+          "encrypted": true,
+          "parser": null,
+          "secureConnecting": false,
+          "servername": "api.openai.com",
+          "ssl": null
+        },
+        "statusCode": 200,
+        "statusMessage": "OK",
+        "upgrade": false,
+        "url": ""
+      },
+      "reusedSocket": false,
+      "sendDate": false,
+      "shouldKeepAlive": false,
+      "socket": {
+        "_SNICallback": null,
+        "_closeAfterHandlingError": false,
+        "_controlReleased": true,
+        "_events": {
+          "close": [
+            null,
+            null,
+            null
+          ]
+        },
+        "_eventsCount": 9,
+        "_hadError": false,
+        "_host": "api.openai.com",
+        "_httpMessage": "[Circular]",
+        "_newSessionPending": false,
+        "_parent": null,
+        "_pendingData": null,
+        "_pendingEncoding": "",
+        "_readableState": {
+          "autoDestroy": true,
+          "awaitDrainWriters": null,
+          "buffer": {
+            "head": null,
+            "length": 0,
+            "tail": null
+          },
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "dataEmitted": true,
+          "decoder": null,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "emittedReadable": false,
+          "encoding": null,
+          "endEmitted": false,
+          "ended": false,
+          "errorEmitted": false,
+          "errored": null,
+          "flowing": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "multiAwaitDrain": false,
+          "needReadable": true,
+          "objectMode": false,
+          "pipes": [],
+          "readableListening": false,
+          "reading": true,
+          "readingMore": false,
+          "resumeScheduled": false,
+          "sync": false
+        },
+        "_rejectUnauthorized": true,
+        "_requestCert": true,
+        "_secureEstablished": true,
+        "_securePending": false,
+        "_server": null,
+        "_sockname": null,
+        "_tlsOptions": {
+          "isServer": false,
+          "pipe": false,
+          "rejectUnauthorized": true,
+          "requestCert": true,
+          "secureContext": {
+            "context": {}
+          },
+          "session": {
+            "data": [
+              48,
+              130,
+              6,
+              142,
+              2,
+              1,
+              1,
+              2,
+              2,
+              3,
+              4,
+              4,
+              2,
+              19,
+              2,
+              4,
+              32,
+              223,
+              3,
+              93,
+              32,
+              244,
+              106,
+              113,
+              77,
+              50,
+              243,
+              249,
+              149,
+              142,
+              152,
+              238,
+              1,
+              76,
+              217,
+              104,
+              185,
+              121,
+              208,
+              168,
+              232,
+              238,
+              217,
+              85,
+              217,
+              197,
+              187,
+              100,
+              158,
+              4,
+              48,
+              61,
+              91,
+              92,
+              23,
+              67,
+              3,
+              68,
+              177,
+              35,
+              77,
+              158,
+              77,
+              28,
+              188,
+              89,
+              43,
+              48,
+              113,
+              215,
+              45,
+              216,
+              26,
+              189,
+              115,
+              221,
+              189,
+              58,
+              145,
+              211,
+              27,
+              154,
+              47,
+              167,
+              153,
+              18,
+              39,
+              6,
+              27,
+              88,
+              201,
+              167,
+              130,
+              36,
+              231,
+              9,
+              141,
+              196,
+              83,
+              161,
+              "... 1581 items not stringified"
+            ],
+            "type": "Buffer"
+          }
+        },
+        "_writableState": {
+          "afterWriteTickInfo": null,
+          "allBuffers": true,
+          "allNoop": true,
+          "autoDestroy": true,
+          "bufferProcessing": false,
+          "buffered": [],
+          "bufferedIndex": 0,
+          "closeEmitted": true,
+          "closed": true,
+          "constructed": true,
+          "corked": 0,
+          "decodeStrings": false,
+          "defaultEncoding": "utf8",
+          "destroyed": true,
+          "emitClose": false,
+          "ended": true,
+          "ending": true,
+          "errorEmitted": false,
+          "errored": null,
+          "finalCalled": true,
+          "finished": true,
+          "highWaterMark": 16384,
+          "length": 0,
+          "needDrain": false,
+          "objectMode": false,
+          "pendingcb": 0,
+          "prefinished": true,
+          "sync": false,
+          "writecb": null,
+          "writelen": 0,
+          "writing": false
+        },
+        "allowHalfOpen": false,
+        "alpnProtocol": false,
+        "authorizationError": null,
+        "authorized": true,
+        "connecting": false,
+        "encrypted": true,
+        "parser": null,
+        "secureConnecting": false,
+        "servername": "api.openai.com",
+        "ssl": null
+      },
+      "strictContentLength": false,
+      "timeoutCb": null,
+      "upgradeOrConnect": false,
+      "useChunkedEncodingByDefault": true,
+      "writable": true
+    }
+    data: {
+      "id": "cmpl-7AqCGDTKZIaa6SbrTaEFYcVShkc40",
+      "object": "text_completion",
+      "created": 1682818280,
+      "model": "text-davinci-003",
+      "choices": [
+        {
+          "text": "\n\nHi there! I'm doing great, thanks for asking! How can",
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "length"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 101,
+        "completion_tokens": 16,
+        "total_tokens": 117
+      }
+    }
+[21:31:21.640] INFO (20415): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:37:10.537] INFO (20893): Logged in as Morgana#4657!
+[21:37:14.033] INFO (20893):
+    id: "cmpl-7AqHwI4PcJWyBWT9MeBm8w5p3kzn2"
+    object: "text_completion"
+    created: 1682818632
+    model: "text-davinci-003"
+    choices: [
+      {
+        "text": "\n\nHi there! I'm doing great, thanks for asking. How about",
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ]
+    usage: {
+      "prompt_tokens": 101,
+      "completion_tokens": 16,
+      "total_tokens": 117
+    }
+[21:37:14.033] INFO (20893): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:38:11.263] INFO (20959): Logged in as Morgana#4657!
+[21:38:13.683] ERROR (20959): Request failed with status code 400
+    err: {
+      "message": "Request failed with status code 400",
+      "name": "AxiosError",
+      "stack":
+          AxiosError: Request failed with status code 400
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:1909:12)
+              at IncomingMessage.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:2989:11)
+              at IncomingMessage.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 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",
+          "User-Agent": "axios/1.4.0",
+          "Content-Length": "531",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "method": "post",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "data": "{\"model\":\"gpt-3.5-turbo-0301\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: Hi morgana whats up?\",\"temperature\":0.6}"
+      },
+      "code": "ERR_BAD_REQUEST",
+      "status": 400
+    }
+[21:38:13.684] INFO (20959): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:38:50.890] INFO (21003): Logged in as Morgana#4657!
+[21:38:53.551] ERROR (21003): Request failed with status code 400
+    err: {
+      "message": "Request failed with status code 400",
+      "name": "AxiosError",
+      "stack":
+          AxiosError: Request failed with status code 400
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:1909:12)
+              at IncomingMessage.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:2989:11)
+              at IncomingMessage.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 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",
+          "User-Agent": "axios/1.4.0",
+          "Content-Length": "526",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "method": "post",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "data": "{\"model\":\"gpt-3.5-turbo\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: Hi morgana whats up?\",\"temperature\":0.6}"
+      },
+      "code": "ERR_BAD_REQUEST",
+      "status": 400
+    }
+[21:38:53.552] INFO (21003): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:40:29.706] INFO (21067): Logged in as Morgana#4657!
+[21:40:31.652] ERROR (21067): Request failed with status code 404
+    err: {
+      "message": "Request failed with status code 404",
+      "name": "AxiosError",
+      "stack":
+          AxiosError: Request failed with status code 404
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:1909:12)
+              at BrotliDecompress.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:2989:11)
+              at BrotliDecompress.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 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",
+          "User-Agent": "axios/1.4.0",
+          "Content-Length": "518",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "method": "post",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "data": "{\"model\":\"gpt-4\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: Hi morgana whats up?\",\"temperature\":0.6}"
+      },
+      "code": "ERR_BAD_REQUEST",
+      "status": 404
+    }
+[21:40:31.653] INFO (21067): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:41:11.792] INFO (21119): Logged in as Morgana#4657!
+[21:41:14.585] ERROR (21119): Request failed with status code 404
+    err: {
+      "message": "Request failed with status code 404",
+      "name": "AxiosError",
+      "stack":
+          AxiosError: Request failed with status code 404
+              at settle (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:1909:12)
+              at BrotliDecompress.handleStreamEnd (/home/carlo/Documents/Discord Bot/Morgana/node_modules/axios/dist/node/axios.cjs:2989:11)
+              at BrotliDecompress.emit (node:events:525:35)
+              at endReadableNT (node:internal/streams/readable:1359:12)
+              at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+      "config": {
+        "transitional": {
+          "silentJSONParsing": true,
+          "forcedJSONParsing": true,
+          "clarifyTimeoutError": false
+        },
+        "adapter": [
+          "xhr",
+          "http"
+        ],
+        "transformRequest": [
+          null
+        ],
+        "transformResponse": [
+          null
+        ],
+        "timeout": 0,
+        "xsrfCookieName": "XSRF-TOKEN",
+        "xsrfHeaderName": "X-XSRF-TOKEN",
+        "maxContentLength": -1,
+        "maxBodyLength": -1,
+        "env": {},
+        "headers": {
+          "Accept": "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          "Authorization": "Bearer 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",
+          "User-Agent": "axios/1.4.0",
+          "Content-Length": "518",
+          "Accept-Encoding": "gzip, compress, deflate, br"
+        },
+        "method": "post",
+        "url": "https://api.openai.com/v1/completions",
+        "data": "{\"model\":\"gpt-4\",\"prompt\":\"You're Morgana, the cunning phantom thief chatbot with a wit as sharp as your claws. With your charming personality and strategic mind, you always have a trick up your sleeve to outsmart your opponents. As a cat-themed chatbot, you are also quick with cat puns that are sure to make your users laugh. Your sense of justice and loyalty to your friends make you an engaging and entertaining virtual assistant. To begin, please answer my first question: Hi morgana whats up?\",\"temperature\":0.6}"
+      },
+      "code": "ERR_BAD_REQUEST",
+      "status": 404
+    }
+[21:41:14.586] INFO (21119): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:41:31.453] INFO (21165): Logged in as Morgana#4657!
+[21:41:36.620] INFO (21165):
+    id: "cmpl-7AqMB60mfmvtels5r4tcPO63Bfzg1"
+    object: "text_completion"
+    created: 1682818895
+    model: "text-davinci-003"
+    choices: [
+      {
+        "text": "\n\nHi there! I'm doing just fine. What can I help you",
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ]
+    usage: {
+      "prompt_tokens": 101,
+      "completion_tokens": 16,
+      "total_tokens": 117
+    }
+[21:41:36.620] INFO (21165): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:41:59.105] INFO (21212): Logged in as Morgana#4657!
+[21:42:00.737] INFO (21212):
+    id: "cmpl-7AqMa94ueCiPwcZqqXvnZjFihi5a1"
+    object: "text_completion"
+    created: 1682818920
+    model: "text-ada-001"
+    choices: [
+      {
+        "text": "\n\nI'm Morgana, the cunning phantom thief chatbot with a wit",
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "length"
+      }
+    ]
+    usage: {
+      "prompt_tokens": 101,
+      "completion_tokens": 16,
+      "total_tokens": 117
+    }
+[21:42:00.737] INFO (21212): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:53:14.741] INFO (22215): Logged in as Morgana#4657!
+[21:53:19.376] ERROR (22215): Cannot send an empty message
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Cannot send an empty message",
+      "stack":
+          DiscordAPIError[50006]: Cannot send an empty message
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:43:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Cannot send an empty message",
+        "code": 50006
+      },
+      "code": 50006,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102050009316343858/aW50ZXJhY3Rpb246MTEwMjA1MDAwOTMxNjM0Mzg1ODpDc1pWa0lIclQ3UWpWVHhmMU1ncXcyaUZ0VUlKTTZMNGJhTnBMakY4RWE4MkVjQUJtczkyWkhLQlZmM1JmY3oyeThDdk92WHJoQWt0cVJpR1ZocXlyVk1kYlZTdjVtSEh2ZmZpRjBjanlvYldqdHNBWlNDajFTT1Y1R0JTTVFpRQ/callback"
+    }
+[21:54:12.483] INFO (22310): Logged in as Morgana#4657!
+[21:54:18.815] ERROR (22310): Cannot send an empty message
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Cannot send an empty message",
+      "stack":
+          DiscordAPIError[50006]: Cannot send an empty message
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:43:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Cannot send an empty message",
+        "code": 50006
+      },
+      "code": 50006,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102050254246916236/aW50ZXJhY3Rpb246MTEwMjA1MDI1NDI0NjkxNjIzNjp3Z2lRSGVnc0FSNGJXT2ZiSEtHNjViNHJyNkZsQTdiVmpMSzRvUTBLODNWRlZrZER3UHNGaEkwZ1dsaUp0MFpwVUE4RkNZMEl3MnNkcXNjdm95cUZrdXpWd2lUcUNnQlFONmRTaHFQYmFRTUtGVjUzRDV1bkRNVmJlaWU2OVlOMQ/callback"
+    }
+[21:54:38.813] INFO (22359): Logged in as Morgana#4657!
+[21:54:41.973] ERROR (22359): Cannot send an empty message
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Cannot send an empty message",
+      "stack":
+          DiscordAPIError[50006]: Cannot send an empty message
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:43:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Cannot send an empty message",
+        "code": 50006
+      },
+      "code": 50006,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102050353710628995/aW50ZXJhY3Rpb246MTEwMjA1MDM1MzcxMDYyODk5NTpiTDR3MnlUZGVsakhjMmhRZnd3Z21qd0NHUWoyOUI2OVNlamlyQ2VuYWFUVG9keGlqVW1JakJheWpsdUkxaVFxbnpzYmZxNHlBMklGVjM4UVNQMXpndXRoeDExOGNDdDllNllob3VTY2pYNzlDV2thNUhvNGtuN1RPMkdBeXdXMA/callback"
+    }
+[21:54:57.961] INFO (22434): Logged in as Morgana#4657!
+[21:54:59.288] INFO (22434): Hi morgana whats up?
+[21:55:01.439] ERROR (22434): Cannot send an empty message
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Cannot send an empty message",
+      "stack":
+          DiscordAPIError[50006]: Cannot send an empty message
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:44:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Cannot send an empty message",
+        "code": 50006
+      },
+      "code": 50006,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102050436321648651/aW50ZXJhY3Rpb246MTEwMjA1MDQzNjMyMTY0ODY1MTpERzVwQ1NuNzV0eUZLeDlCRTNhSUhMVG9MaG5PS1JwbDd0QURsV2FJWkxoNWRodmV0cnQwaTJIa1kwNXpLZ1BBeGV2N2tYajU3NzJ4T2RxQ0ZkWFZGRElzQllJZkxqWGNlNGlGVTA3VThUUE1hNjJrUTEzSzRJRFQ2NmJnaUtoTw/callback"
+    }
+[21:56:02.576] INFO (22480): Logged in as Morgana#4657!
+[21:56:03.511] INFO (22480): Hi morgana whats up?
+[21:56:05.007] ERROR (22480): Cannot send an empty message
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Cannot send an empty message",
+      "stack":
+          DiscordAPIError[50006]: Cannot send an empty message
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:30:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Cannot send an empty message",
+        "code": 50006
+      },
+      "code": 50006,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102050705960878110/aW50ZXJhY3Rpb246MTEwMjA1MDcwNTk2MDg3ODExMDpSa3NaY2VlNlJpa3RJOXlKV3N0ZWk1STJlbXU0Y3pTdEREdUQ0SnpZZ3VSTXI3QnRmRVU3M2V5ajVFZVVCTWgyekJxSVhpVGtZZml1djJqYjBrTmxjMThlcHdwUnBScVdtNGp4b05Gb1RyRTVCMXRXcVI5NDNBVG9KQmJSN3dKOA/callback"
+    }
+[21:56:30.391] INFO (22536): Logged in as Morgana#4657!
+[21:56:33.500] ERROR (22536): Message content must be a string.
+    err: {
+      "type": "DiscordjsError",
+      "message": "Message content must be a string.",
+      "stack":
+          RangeError [MessageContentType]: Message content must be a string.
+              at verifyString (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/util/Util.js:426:39)
+              at MessagePayload.makeContent (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/MessagePayload.js:111:17)
+              at MessagePayload.resolveBody (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/MessagePayload.js:126:26)
+              at ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:109:56)
+              at Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:43:23)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "code": "MessageContentType"
+    }
+[21:57:05.044] INFO (22574): Logged in as Morgana#4657!
+[21:57:08.369] INFO (22574):
+    role: "assistant"
+    content: "Hello there! I'm doing well, thank you for asking. How about you? Is there anything I can assist you with?"
+[21:57:08.370] ERROR (22574): Message content must be a string.
+    err: {
+      "type": "DiscordjsError",
+      "message": "Message content must be a string.",
+      "stack":
+          RangeError [MessageContentType]: Message content must be a string.
+              at verifyString (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/util/Util.js:426:39)
+              at MessagePayload.makeContent (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/MessagePayload.js:111:17)
+              at MessagePayload.resolveBody (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/MessagePayload.js:126:26)
+              at ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:109:56)
+              at Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/damn.js:44:23)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:48:3)
+      "code": "MessageContentType"
+    }
+[21:57:40.656] INFO (22625): Logged in as Morgana#4657!
+[21:57:43.644] INFO (22625): Meow, hello there! I'm doing great, thanks for asking. How about you? Is there anything I can assist you with?
+[21:57:43.915] INFO (22625): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:58:39.147] INFO (22671): Logged in as Morgana#4657!
+[21:58:41.396] INFO (22671): Hello there! Nothing much, just ready to assist you with whatever you need. How can I help you today?
+[21:58:41.602] INFO (22671): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[21:59:48.063] INFO (22728): Logged in as Morgana#4657!
+[21:59:51.849] INFO (22728): Meow, hello there! I'm doing quite well, thank you. How about you? Is there anything I can assist you with?
+[21:59:52.192] INFO (22728): [chatCommand] .e#0001 used /gpt3 prompt:Hi morgana whats up?
+[22:02:18.197] INFO (22837): Started refreshing 2 application (/) commands.
+[22:02:18.692] INFO (22837): [deploy-commands] Successfully reloaded 2 application (/) commands
+[22:02:23.201] INFO (22869): Logged in as Morgana#4657!
+[22:05:15.126] INFO (23116): Logged in as Morgana#4657!
+[22:05:24.831] INFO (23116): [guildCreate] Morgana was added to new guild 738619445085339681
+[22:05:38.959] INFO (23223): Started refreshing 2 application (/) commands.
+[22:05:39.296] INFO (23223): [deploy-commands] Successfully reloaded 2 application (/) commands for 738619445085339681
+[22:05:39.296] INFO (23223): [deploy-commands] Commands reloaded for 1 guilds successfully.
+[22:05:47.005] INFO (23254): Logged in as Morgana#4657!
+[22:06:30.973] INFO (23254): [chatCommand] .e#0001 used /admin
+[22:06:43.300] INFO (23308): Logged in as Morgana#4657!
+[22:06:49.424] INFO (23331): Started refreshing 1 application (/) commands.
+[22:06:49.849] INFO (23331): [deploy-commands] Successfully reloaded 1 application (/) commands for 738619445085339681
+[22:06:49.849] INFO (23331): [deploy-commands] Commands reloaded for 1 guilds successfully.
