@@ -13,6 +13,8 @@ const interactionsPath = path.join(__dirname, 'interactions');
 const interactionFiles = fs.readdirSync(interactionsPath).filter(file => file.endsWith('.js'));
 
 //JSON.toString complains when running into a BigInt for some reason, this happens when JSON.toString() is called on interaction object
+
+
 BigInt.prototype.toJSON = function() { return this.toString() }
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
