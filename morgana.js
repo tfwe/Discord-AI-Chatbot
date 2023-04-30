@@ -3,8 +3,13 @@ const util = require('util')
 const path = require('node:path');
 const logger = require('./logger');
 const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
-const { token, clientId, apiKey, guildIds } = require('./config.json');
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const { token, clientId, apiKey, guildIds, ownerId } = require('./config.json');
+const client = new Client({ intents: [
+  GatewayIntentBits.Guilds,
+  GatewayIntentBits.GuildMessages,
+  GatewayIntentBits.MessageContent,
+  GatewayIntentBits.GuildMembers,
+] });
 client.commands = new Collection();
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
@@ -29,6 +34,9 @@ for (const file of commandFiles) {
 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, () => {
+  if (!apiKey) {
+    return logger.error('OpenAI key not configured in config.json');
+  }
   logger.info(`Logged in as ${client.user.tag}!`);
   client.application.commands.set([])
 });
@@ -36,7 +44,7 @@ client.once(Events.ClientReady, () => {
 client.on("guildCreate", guild => {
   if (!guildIds.includes(guild.id)) {
     guildIds.push(guild.id);
-    fs.writeFile('./config.json', JSON.stringify({ token, guildIds, clientId, apiKey }), (err) => {
+    fs.writeFile('./config.json', JSON.stringify({ token, guildIds, clientId, apiKey, ownerId }), (err) => {
       if (err) logger.error(err);
     });
     logger.info(`[guildCreate] Morgana was added to new guild ${guild.id}`)
@@ -45,6 +53,7 @@ client.on("guildCreate", guild => {
 for (const file of interactionFiles) {
   const filePath = path.join(interactionsPath, file);
   const event = require(filePath);
+  logger.info(`loading ${file}...`)
   if (event.once) {
     client.once(event.name, (...args) => event.execute(...args));
   } else {
