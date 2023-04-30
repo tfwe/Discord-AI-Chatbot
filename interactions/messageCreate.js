@@ -13,7 +13,7 @@ module.exports = {
     const author = message.author.id
     if (author === clientId) return;
     // Generate response from OpenAI
-    const response = await generateResponse(message.channel, `<@${author}>: ${formattedPrompt}`);
+    const response = await generateResponse(message.channel, `${formattedPrompt}`);
     // Send response back to user
     message.reply(response);
   }

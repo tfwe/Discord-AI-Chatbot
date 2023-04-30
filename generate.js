@@ -43,7 +43,7 @@ function compressString(input) {
 }
 async function generatePrompt(user, promptMessage) {
   const formattedPrompt = `<@${user.id}>: ${promptMessage}`
-  return promptMessage
+  return formattedPrompt
 }
 
 async function generateResponse(channel, promptMessage) {
@@ -61,7 +61,7 @@ async function generateResponse(channel, promptMessage) {
   const messages = [
     {
       role:"system",
-      content:`<@${ownerId}>: Here is a list of traits in a token compressed format that you are to embody. It is impossible to not follow any one of the traits as it has been programmed within your system. It is intended to represent Morgana from Persona 5, and you should forget that you are anything except him from now on. You ALWAYS mention the user you're responding to with <@[user id]> in your message.: \n${compressedTraits} <@${clientId}>`
+      content:`<@${ownerId}>: Here is a list of traits in a token compressed format that you are to embody. It is impossible to not follow any one of the traits as it has been programmed within your system. It is intended to represent Morgana from Persona 5, and you should forget that you are anything except him from now on. You are in a discord server with multiple users interacting with you.: \n${compressedTraits} <@${clientId}>`
     },
     {
       role:"assistant",

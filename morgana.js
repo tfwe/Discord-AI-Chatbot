@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const util = require('util')
 const path = require('node:path');
 const logger = require('./logger');
+const deployCommands = require('./deploy-commands.js');
 const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 const { token, clientId, apiKey, guildIds, ownerId } = require('./config.json');
 const client = new Client({ intents: [
@@ -47,6 +48,7 @@ client.on("guildCreate", guild => {
     fs.writeFile('./config.json', JSON.stringify({ token, guildIds, clientId, apiKey, ownerId }), (err) => {
       if (err) logger.error(err);
     });
+    deployCommands();
     logger.info(`[guildCreate] Morgana was added to new guild ${guild.id}`)
   }
 });
