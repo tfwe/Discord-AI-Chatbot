@@ -39,6 +39,7 @@ client.once(Events.ClientReady, () => {
     return logger.error('OpenAI key not configured in config.json');
   }
   logger.info(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity('Mention me, reply to one of my messages, or type /ask to talk to me!');
   client.application.commands.set([])
 });
 
