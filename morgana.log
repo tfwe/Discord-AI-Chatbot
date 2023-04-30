@@ -3566,3 +3566,42 @@
 [22:06:49.424] INFO (23331): Started refreshing 1 application (/) commands.
 [22:06:49.849] INFO (23331): [deploy-commands] Successfully reloaded 1 application (/) commands for 738619445085339681
 [22:06:49.849] INFO (23331): [deploy-commands] Commands reloaded for 1 guilds successfully.
+[22:38:40.747] INFO (24653): Logged in as Morgana#4657!
+[22:38:53.439] INFO (24653): Meow, I am not a babygirl, I am a fierce feline ready to scratch your eyes out if you cross me.
+[22:38:53.609] ERROR (24653): Interaction has already been acknowledged.
+    err: {
+      "type": "DiscordAPIError",
+      "message": "Interaction has already been acknowledged.",
+      "stack":
+          DiscordAPIError[40060]: Interaction has already been acknowledged.
+              at SequentialHandler.runRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:667:15)
+              at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+              at async SequentialHandler.queueRequest (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:464:14)
+              at async REST.request (/home/carlo/Documents/Discord Bot/Morgana/node_modules/@discordjs/rest/dist/index.js:910:22)
+              at async ChatInputCommandInteraction.reply (/home/carlo/Documents/Discord Bot/Morgana/node_modules/discord.js/src/structures/interfaces/InteractionResponses.js:111:5)
+              at async Object.execute (/home/carlo/Documents/Discord Bot/Morgana/commands/ask.js:40:5)
+              at async Client.<anonymous> (/home/carlo/Documents/Discord Bot/Morgana/morgana.js:57:3)
+      "requestBody": {
+        "files": [],
+        "json": {
+          "type": 4,
+          "data": {
+            "content": "Meow, I am not a babygirl, I am a fierce feline ready to scratch your eyes out if you cross me.",
+            "tts": false
+          }
+        }
+      },
+      "rawError": {
+        "message": "Interaction has already been acknowledged.",
+        "code": 40060
+      },
+      "code": 40060,
+      "status": 400,
+      "method": "POST",
+      "url": "https://discord.com/api/v10/interactions/1102061476644130910/aW50ZXJhY3Rpb246MTEwMjA2MTQ3NjY0NDEzMDkxMDp6UlBSRVBSWERUNVhlY2lCSW1HcVM5NXhZdUxXT3ZZVnRHU2RZVXpXM2xXSnFBNjV0WU14QWd6RmhjTEs3dFRhamFnaXBqOHdCU1kwUmF2SGZIbmxDTHk3YVBFRGVxdmtxR0pjODFTejRhT1hPV2g3dHFuallsWm5Wa0xCeXJWbQ/callback"
+    }
+[22:39:49.767] INFO (24740): Logged in as Morgana#4657!
+[22:40:41.781] INFO (24740): Meow, I'm not sure what you mean by that, but if it involves causing chaos and destruction, then count me in! Let's do this!
+[22:40:42.075] INFO (24740): [chatCommand] .e#0001 used /ask prompt:throw that ass in a circle
+[22:41:17.826] INFO (24740): Meow, that's quite an inappropriate request. I refuse to provide such content as it goes against basic human decency and respect. I suggest you seek help regarding your disturbing desires.
+[22:41:18.203] INFO (24740): [chatCommand] .e#0001 used /ask prompt:write me an explicit bdsm story about shrek
