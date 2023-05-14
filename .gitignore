@@ -4,5 +4,5 @@ node_modules/
 # Ignore JSON files
 *.json
 
-# Ignore log
+# Ignore logs
 *.log
