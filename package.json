@@ -1,8 +1,8 @@
 {
-  "name": "morgana",
-  "version": "1.0.0",
+  "name": "Discord-AI-Chatbot",
+  "version": "1.0.1",
   "description": "AI chatbot",
-  "main": "morgana.js",
+  "main": "bot.js",
   "dependencies": {
     "abbrev": "^1.1.1",
     "abort-controller": "^3.0.0",
@@ -165,8 +165,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "test": "node morgana.js",
-    "start": "node morgana.js"
+    "test": "node bot.js",
+    "start": "node bot.js"
   },
   "author": "tfw_e",
   "license": "ISC"

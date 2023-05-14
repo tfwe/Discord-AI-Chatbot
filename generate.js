@@ -26,6 +26,7 @@ function compileTraits(traitsArray) {
   return traitsString;
 }
 
+// removes all vowels in the given string
 function compressString(input) {
   // Define a map of vowels to replace with empty string
   const vowels = ['a', 'e', 'i', 'o', 'u'];
@@ -41,18 +42,26 @@ function compressString(input) {
   
   return compressed;
 }
+
+
 async function generatePrompt(user, promptMessage) {
   const formattedPrompt = `<@${user.id}>: ${promptMessage}`
   return formattedPrompt
 }
 
 async function generateResponse(channel, promptMessage) {
+  // max length of response
   const maxTokens = 140
+
+  // how many previous messages to look at in the channel
   const numPrevMessages = 3
   const prevMessages = await channel.messages.fetch({ limit: numPrevMessages });
   const userMessages = prevMessages.filter(message => message.content && message.content.trim().length > 0);
 
+  // ignore previous bot messages
   const userMessageStrings = userMessages.map(message => ({ role: message.author.id === clientId ? "assistant" : "user", content: `<${message.author.id}>: ${compressString(message.content)}` }));
+
+  // compress previous messages to use less tokens
   const compressedPrompt = [...userMessageStrings, { role: "user", content: promptMessage }];
 
   const traitsString = compileTraits(traits);

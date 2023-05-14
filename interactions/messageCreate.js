@@ -15,6 +15,6 @@ module.exports = {
     // Generate response from OpenAI
     const response = await generateResponse(message.channel, `${formattedPrompt}`);
     // Send response back to user
-    message.reply(response);
+    await message.reply(response);
   }
 }

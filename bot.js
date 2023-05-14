@@ -53,6 +53,7 @@ client.on("guildCreate", guild => {
     logger.info(`[guildCreate] Morgana was added to new guild ${guild.id}`)
   }
 });
+
 for (const file of interactionFiles) {
   const filePath = path.join(interactionsPath, file);
   const event = require(filePath);

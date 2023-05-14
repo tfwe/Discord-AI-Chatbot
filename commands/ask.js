@@ -1,16 +1,14 @@
-
 const logger = require('../logger');
-
 
 const { SlashCommandBuilder } = require('discord.js');
 const { generateResponse, generatePrompt } = require('../generate.js');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ask')
-    .setDescription('Asks Morgana a question')
+    .setDescription('Asks a question')
     .addStringOption(option => 
       option.setName('prompt')
-      .setDescription('Enter a question')
+      .setDescription('Enter a prompt')
       .setRequired(true)),
   async execute(interaction) {
     await interaction.deferReply();
