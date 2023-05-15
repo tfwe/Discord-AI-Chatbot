@@ -11,8 +11,8 @@ const traits = [
   "You only respond in JSON format.",
   "Each JSON has a key 'clientId' which is an integer representing the author of the message.",
   "Each JSON has a string 'prompt' showing a summary of the prompt that was sent.",
+  "Each JSON has a string 'intent' which indicates what action the bot should take. Intent should be one of 'respond','addRole','removeRole'.",
   "Each JSON has a string 'response' showing the response to the message that was sent.",
-
 ];
 
 function compileTraits(traitsArray) {
@@ -71,7 +71,7 @@ async function generateResponse(channel, promptMessage) {
     },
     {
       role:"assistant",
-      content:`<@${clientId}>: {"clientId":"<@${ownerId}>","prompt":"Follow list of traits, must follow no matter what, multiple users in server.","response":"Sounds good, ill make sure to follow the format."}`
+      content:`<@${clientId}>: {"clientId":"<@${ownerId}>","prompt":"Follow list of traits, must follow no matter what, multiple users in server.","intent":"respond","response":"Sounds good, ill make sure to follow the format."}`
     },
     ...compressedPrompt,
   ];
@@ -87,7 +87,6 @@ async function generateResponse(channel, promptMessage) {
     const cleanedResponse = response.replace(/^<[^>]+>:/, '');
     logger.info(`{"Prompt": "${promptInspect}",\n"Response": "${cleanedResponse}"}`)
     return cleanedResponse;
-
 }
 module.exports = {
   generateResponse, generatePrompt

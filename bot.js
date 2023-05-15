@@ -50,7 +50,7 @@ client.on("guildCreate", guild => {
       if (err) logger.error(err);
     });
     deployCommands();
-    logger.info(`[guildCreate] Morgana was added to new guild ${guild.id}`)
+    logger.info(`[guildCreate] Bot was added to new guild ${guild.id}`)
   }
 });
 
