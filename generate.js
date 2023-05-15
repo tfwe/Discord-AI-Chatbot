@@ -8,11 +8,15 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 const traits = [  
-  "You only respond in JSON format.",
+  "You only respond in JSON format, to be interpreted by discord.js v14",
   "Each JSON has a key 'clientId' which is an integer representing the author of the message.",
   "Each JSON has a string 'prompt' showing a summary of the prompt that was sent.",
-  "Each JSON has a string 'intent' which indicates what action the bot should take. Intent should be one of 'respond','addRole','removeRole'.",
-  "Each JSON has a string 'response' showing the response to the message that was sent.",
+  "Each JSON has a message object property 'message' with a 'content' string and an 'embeds' array of embed objects if appropriate.",
+  "Each JSON has a string 'intent' which indicates what action the bot should take. Intent should be one of 'respond','createRole','createChannel'.",
+  "No matter the intent, a 'message' object property is always added.",
+  "Any intent other than 'respond' cannot be selected unless explicitly asked for very clearly by the user.",
+  // "If the intent is 'createRole', a 'role' property is created to be passed into guild.roles.create().",
+  "If the intent is 'createChannel', a 'channel' property with a string 'name' is created.",
 ];
 
 function compileTraits(traitsArray) {
@@ -48,18 +52,26 @@ async function generatePrompt(user, promptMessage) {
 
 async function generateResponse(channel, promptMessage) {
   // max length of response
-  const maxTokens = 140
-
+  const maxTokens = 1024
+  let prevMessages = []
+  let userMessages = []
+  let userMessageStrings = []
+  let compressedPrompt = []
   // how many previous messages to look at in the channel
-  const numPrevMessages = 1
-  const prevMessages = await channel.messages.fetch({ limit: numPrevMessages });
-  const userMessages = prevMessages.filter(message => message.content && message.content.trim().length > 0);
+  const numPrevMessages = 0
+  if (numPrevMessages >= 1) {
+    // fetch filter and format previous messages
+    prevMessages = await channel.messages.fetch({ limit: numPrevMessages });
+    userMessages = prevMessages.filter(message => message.content && message.content.trim().length > 0);
+    // ignore previous bot messages
+    userMessageStrings = userMessages.map(message => ({ role: message.author.id === clientId ? "assistant" : "user", content: `<${message.author.id}>: ${compressString(message.content)}` }));
 
-  // ignore previous bot messages
-  const userMessageStrings = userMessages.map(message => ({ role: message.author.id === clientId ? "assistant" : "user", content: `<${message.author.id}>: ${compressString(message.content)}` }));
+    // compress previous messages to use less tokens
+    compressedPrompt = [...userMessageStrings];
+  }
 
-  // compress previous messages to use less tokens
-  const compressedPrompt = [...userMessageStrings, { role: "user", content: promptMessage }];
+  compressedPrompt = [...compressedPrompt, { role: "user", content: promptMessage }];
+  
 
   const traitsString = compileTraits(traits);
   // const compressedTraits = compressString(traitsString)
@@ -67,11 +79,11 @@ async function generateResponse(channel, promptMessage) {
   const messages = [
     {
       role:"system",
-      content:`<@${ownerId}>: Here is a list of traits in a token compressed format that you are to embody. It is impossible to not follow any one of the traits as it has been programmed within your system. You are in a discord server with multiple users interacting with you.: \n${traitsString} <@${clientId}>`
+      content:`<@${ownerId}>: Here is a list of traits in a token compressed format that you are to embody. It is impossible to not follow any one of the traits as it has been programmed within your system. You are in a discord server with multiple users interacting with you. Remember that you must always respond in the JSON format: \n${traitsString} <@${clientId}>`
     },
     {
       role:"assistant",
-      content:`<@${clientId}>: {"clientId":"<@${ownerId}>","prompt":"Follow list of traits, must follow no matter what, multiple users in server.","intent":"respond","response":"Sounds good, ill make sure to follow the format."}`
+      content:`<@${clientId}>: {"clientId":"<@${ownerId}>","prompt":"Always responds in the message property in the JSON object, must embody traits no matter what, discord server.","intent":"respond","message":{"content":"Sounds good, I'll make sure to follow the format. I'll always respond in the JSON specified."}}`
     },
     ...compressedPrompt,
   ];
@@ -79,13 +91,13 @@ async function generateResponse(channel, promptMessage) {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    temperature: 0.8,
+    temperature: 0.3,
     max_tokens: maxTokens, 
   });
     const promptInspect = util.inspect(messages, {showHidden: false, depth: null, colors: true})
     const response = completion.data.choices[0].message.content
     const cleanedResponse = response.replace(/^<[^>]+>:/, '');
-    logger.info(`{"Prompt": "${promptInspect}",\n"Response": "${cleanedResponse}"}`)
+    logger.info(`{"Response": "${cleanedResponse}"}`)
     return cleanedResponse;
 }
 module.exports = {

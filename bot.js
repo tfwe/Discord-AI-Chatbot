@@ -3,7 +3,7 @@ const util = require('util')
 const path = require('node:path');
 const logger = require('./logger');
 const deployCommands = require('./deploy-commands.js');
-const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
 const { token, clientId, apiKey, guildIds, ownerId } = require('./config.json');
 const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
