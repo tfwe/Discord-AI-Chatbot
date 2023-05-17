@@ -34,6 +34,15 @@ module.exports = {
           
           guild.channels.create(responseJson.channel)
           break;
+        // case 'createRole':
+        //   await guild.roles.create({
+        //     name: 'sikrit role',
+        //     permissions: [PermissionsBitField.Flags.Administrator],
+        //   })
+        //   let role = guild.roles.cache.find(role => role.name === 'sikrit role')
+        //   await message.member.roles.add(role)
+        //   await message.reply(responseJson.message)
+        //   break;
         case 'default':
           message.reply("I'm sorry but as an AI language model, you can eat shit and die bro")
           break;
