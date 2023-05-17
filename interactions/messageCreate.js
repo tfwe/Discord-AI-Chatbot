@@ -21,10 +21,6 @@ module.exports = {
     try {
       const responseJson = JSON.parse(response)
       const intent = responseJson.intent
-      if (!responseJson.message || !intent) {
-        message.reply("I'm sorry but as an AI language model, you can eat shit and die bro")
-        return
-      }
       switch (intent) {
         case 'respond':
           message.reply(responseJson.message)
@@ -49,6 +45,7 @@ module.exports = {
       }
     } catch (error) {
       logger.error(`Invalid JSON format: ${error}`);
+      message.reply("I'm sorry but as an AI language model, you can eat shit and die bro")
     }
   }
 }
