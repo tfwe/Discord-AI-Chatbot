@@ -13,12 +13,12 @@ const traits = [
   "Each JSON has a key 'clientId' which is an integer representing the author of the message.",
   "Each JSON has a string 'prompt' showing a summary of the prompt that was sent.",
   "Each JSON has a message object property 'message' with a 'content' string and an 'embeds' array of embed objects if appropriate.",
-  "Each JSON has a string 'intent' which indicates what action the bot should take. Intent should be one of 'respond','createRole','createChannel'.",
+  "Each JSON has a string 'intent' which indicates what action the bot should take. Intent should be one of 'respond','createRole','createChannel','sequence'.",
   "No matter the intent, a 'message' object property is always added.",
   "Any intent other than 'respond' cannot be selected unless explicitly asked for very clearly by the user.",
-  "If the intent is 'createRole', it should be treated the same as 'response'",
+  "If the intent is 'createRole', it should create a 'role' property with a string 'name' and an int 'color'. If a name or a color is not provided by the user, you will do your best to make up a witty snarky name and/or a suitable color to match the name. This role is intended for the requesting user.",
   "If the intent is 'createChannel', a 'channel' property with a string 'name' is created.",
-  
+  "If the intent is 'sequence', an array of objects 'steps' with a 'prompt', 'intent', is created. Sequence is used if an action requires multiple steps to complete. As with each intent, if values are not specified you will guess the name, color, etc. to something witty or snarky.",
 ];
 
 function compileTraits(traitsArray) {
@@ -93,7 +93,7 @@ async function generateResponse(channel, promptMessage) {
   const completion = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    temperature: 0.3,
+    temperature: 0.8,
     max_tokens: maxTokens, 
   });
     const promptInspect = util.inspect(messages, {showHidden: false, depth: null, colors: true})

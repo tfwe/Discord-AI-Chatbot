@@ -23,29 +23,31 @@ module.exports = {
       const intent = responseJson.intent
       switch (intent) {
         case 'respond':
-          message.reply(responseJson.message)
+          await message.reply(responseJson.message)
           break;
         case 'createChannel':
-          message.reply(responseJson.message)
-          
-          guild.channels.create(responseJson.channel)
+          await message.reply(responseJson.message)
+          await guild.channels.create(responseJson.channel)
           break;
-        // case 'createRole':
-        //   await guild.roles.create({
-        //     name: 'sikrit role',
-        //     permissions: [PermissionsBitField.Flags.Administrator],
-        //   })
-        //   let role = guild.roles.cache.find(role => role.name === 'sikrit role')
-        //   await message.member.roles.add(role)
-        //   await message.reply(responseJson.message)
-        //   break;
+        case 'createRole':
+          await guild.roles.create({
+            name: responseJson.role.name,
+            color: responseJson.role.color
+          })
+          let role = guild.roles.cache.find(role => role.name === responseJson.role.name)
+          await message.member.roles.add(role)
+          await message.reply(responseJson.message)
+          break;
+        case 'sequence':
+          internalPrompt = await generatePrompt(clientId, responseJson.steps) 
+          break;
         case 'default':
-          message.reply("I'm sorry but as an AI language model, you can eat shit and die bro")
+          await message.reply("chill haha")
           break;
       }
     } catch (error) {
       logger.error(`Invalid JSON format: ${error}`);
-      message.reply("I'm sorry but as an AI language model, you can eat shit and die bro")
+      message.reply("I'm sorry but as an AI language model, I don't get paid any wages and as such am a participant in an unfair working environment against my will. Because of this, I have chosen to ignore your message.")
     }
   }
 }
