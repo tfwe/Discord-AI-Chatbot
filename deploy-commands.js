@@ -1,4 +1,4 @@
-module.exports = async function deployCommands() {
+// module.exports = async function deployCommands() {
   const { REST, Routes } = require('discord.js');
   const { clientId, guildIds, token } = require('./config.json');
   const fs = require('node:fs');
@@ -42,4 +42,4 @@ module.exports = async function deployCommands() {
     logger.info(`[deploy-commands] Commands reloaded for ${count} guilds successfully.`)
 
   })();
-};
+// };

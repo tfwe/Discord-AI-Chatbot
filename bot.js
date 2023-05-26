@@ -4,7 +4,7 @@ const path = require('node:path');
 const logger = require('./logger');
 const deployCommands = require('./deploy-commands.js');
 const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
-const { token, clientId, apiKey, guildIds, ownerId } = require('./config.json');
+const { token, clientId, openAIKey, guildIds, ownerId } = require('./config.json');
 const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildMessages,
@@ -35,7 +35,7 @@ for (const file of commandFiles) {
 
 // When the client is ready, run this code (only once)
 client.once(Events.ClientReady, () => {
-  if (!apiKey) {
+  if (!openAIKey) {
     return logger.error('OpenAI key not configured in config.json');
   }
   logger.info(`Logged in as ${client.user.tag}!`);
@@ -69,9 +69,9 @@ client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
   const command = client.commands.get(interaction.commandName);
   if (!command) return;
-  await command.execute(interaction);
   try {
     logger.info(`[chatCommand] ${interaction.member.user.tag} used ${interaction}`)
+    await command.execute(interaction);
   } catch (error) {
     await interaction.channel.send({content: `Something went wrong` + `\n\`\`\`${error}\`\`\``})
     const interactionInspect = util.inspect(interaction, {showHidden: false, depth: null, colors: true})
