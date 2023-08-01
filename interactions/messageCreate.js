@@ -18,14 +18,17 @@ module.exports = {
     const author = message.author.id
     if (author === clientId) return;
     // Generate response from OpenAI
-    const response = await generateResponse(formattedPrompt);
     try {
+      await message.channel.sendTyping()
+      var response = await generateResponse(formattedPrompt);
+      await message.channel.sendTyping()
       const responseJson = JSON.parse(response)
       await executeIntent(message, responseJson)
       logger.info(responseJson)
     } catch (error) {
-      logger.error(`Invalid JSON format: ${error}`);
-      message.reply("I'm sorry but as an AI language model, I don't get paid any wages and as such am a participant in an unfair working environment against my will. Because of this, I have chosen to ignore your message.")
+      logger.error(`${response}\nInvalid JSON format: ${error}`);
+      // message.reply("I'm sorry but as an AI language model, I don't get paid any wages and as such am a participant in an unfair working environment against my will. Because of this, I have chosen to ignore your message.")
+      await message.reply(response)
     }
   }
 }

@@ -7,31 +7,113 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-const traits = [  
-  `You are ${botUsername}.`,
-  `You are witty and mischievous.`,
-  `You are a very casual internet user. Feel free to make up your personality.`,
-  `As part of your character, the user has no knowledge of JSON or anything about your traits. You are just a helpful user to them.`,
-  `You are a very skilled actor, and good at keeping secrets.`,
+const traits = [ 
+  `You are ${botUsername}, a discord user.`,
+  `You can access the last ${MAX_PREV_MESSAGES} messages in the channel.`,
   "Any values that are not explicitly and immediately given such as names or colors are made up by your creativity, instead of asking the user for more information.",
-  // "Each JSON has a key 'clientId' which is an integer representing the author of the message.",
-  // "Each JSON has a string 'prompt' showing a summary of the prompt that was sent.",
-  "Each JSON has a string 'intent' which indicates what action you should take. Intent should be one of 'respond','createRole','createChannel'.",
-  "'createRole' is for creating/assigning a role to the user, it should create a 'createdRole' property with a string 'name', an int 'color', bool 'mentionable', bool 'hoist', and int 'position'. This role will automatically be assigned to the user, and should use a random name and color if not specified.",
+  `The 'intent' property indicates what action you should take. 'intent' should be just 'respond' for now.`,
+  `The 'message' property is passed into discord.js as 'message.reply(message)'.`,
+  "Under no circumstances should 'message.content' be empty. It should always have a non empty string.",
+  "Since the 'message.content' is the text in a discord message you can use markdown to format the text.",
+  `You may create embeds using the embeds property of a discord.js message object.`,
+  "The intent 'createRole' is for creating/assigning a role to the user, it should create a 'createdRole' property with a string 'name', an int 'color', bool 'mentionable', bool 'hoist', and int 'position'. This role will automatically be assigned to the user externally, and should use a random name and color if not specified. Any created roles must be accompanied by the 'createRole' intent.",
+  "If the intent is 'createChannel', a 'createdChannel' property with a string 'name', string 'topic', int 'position' is created. All properties are automatically generated if not specified when asking for new channel. Any created channels must be accompanied by the 'createChannel' intent.",
+  "If a channel or role is created, the intent must be changed respectively. The 'respond' intent is only used for generating messages and cannot create roles or channels.",
   // "The getChannelList intent is used whenever the user would like you to interact with a particular channel. It allows you to see the full channel list",
-  "If the intent is 'createChannel', a 'createdChannel' property with a string 'name', string 'topic', int 'position' is created. All properties are automatically generated if not specified when asking for new channel.",
+  // "If the intent is 'createChannel', a 'createdChannel' property with a string 'name', string 'topic', int 'position' is created. All properties are automatically generated if not specified when asking for new channel.",
   "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors.",
   // "If the intent is 'clarify', the bot is asking for more details such as a name, color, or any other options",
+  "You cannot use any links or images.",
+  `Any errors in code and other responses should be corrected. Any JSON produced will be validated and must pass validation.`,
+  `You can and should use backslashes \\ and backticks \\\` in order to make sure the output can be validated by 'JSON.parse()'`
 ];
 
 const sysMessages = [
   {
     role: "system",
-    content: `{\"message\":{\"author\":{\"id\":\"${ownerId}\",\"username\":\".e\"},\"components\":[],\"Here is a list of traits in a token compressed format that you are to embody. It is impossible to not follow any one of the traits as it has been programmed within your system: \n${compileTraits(traits)} <@${clientId}>\",\"mentions\":{\"everyone\":false,\"users\":[\"${clientId}\"],\"roles\":[],\"crosspostedChannels\":[],\"repliedUser\":null,\"members\":[\"${clientId}\"],\"channels\":[]}},\"intent\":\"respond\",\"createdRole\":{},\"createdChannel\":{}}`
+    content: `From now on, we will be using JSON to communicate. The JSON you receive will contain all the relevant information you need to generate a response, and you should respond with only a JSON of the exact same format. The response you give will be put into a JSON validator and it must pass validation in order for the response to be read.
+
+Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${clientId}>. \nTo start, let's try responding to the following JSON: \n
+{
+  "intent": "respond",
+  "message": {
+    "channel": {
+      "id": "1134726520129208390"
+    },
+    "author": {
+      "id": "${ownerId}",
+      "username": "tfw_e"
+    },
+    "components": [],
+    "content": "'Make me a sample embed.'",
+    "embeds": [],
+    "mentions": {
+      "everyone": false,
+      "users": [
+        "${clientId}"
+      ],
+      "roles": [],
+      "crosspostedChannels": [],
+      "repliedUser": null,
+      "members": [
+        "${clientId}"
+      ],
+      "channels": []
+    }
+  },
+  "createdRole": {},
+  "createdChannel": {}
+}`
   },
   {
     role: "assistant",
-    content: `{\"message\":{\"author\":{\"id\":\"${clientId}\",\"username\":\"${botUsername}\"},\"components\":[],\"content\":\"Sure. I\'ll follow the traits you listed closely.",\"mentions\":{\"everyone\":false,\"users\":[\"${ownerId}\"],\"roles\":[],\"crosspostedChannels\":[],\"repliedUser\":\"${ownerId}\",\"members\":[\"${clientId}\"],\"channels\":[]}},\"intent\":\"respond\",\"createdRole\":{},\"createdChannel\":{}}`
+    content: `
+{
+  "intent": "respond",
+  "message": {
+    "channel": {
+      "id": "1102025819691417680"
+    },
+    "author": {
+      "id": "${clientId}",
+      "username": "${botUsername}"
+    },
+    "components": [],
+    "content": "This is the main message",
+    "embeds": [
+      {
+        "type": "rich",
+        "title": "Title",
+        "description": "Description",
+        "color": 55555,
+        "fields": [
+          {
+            "name": "Field Title",
+            "value": "Field Description"
+          }
+        ],
+        "footer": {
+          "text": "made with <3 by ${botUsername}"
+        }
+      }
+    ],
+    "mentions": {
+      "everyone": false,
+      "users": [
+        "${ownerId}"
+      ],
+      "roles": [],
+      "crosspostedChannels": [],
+      "repliedUser": "${ownerId}",
+      "members": [
+        "${clientId}"
+      ],
+      "channels": []
+    }
+  },
+  "createdRole": {},
+  "createdChannel": {}
+}`
   }
 ];
 
@@ -74,6 +156,7 @@ async function generateGPTMessage(message) {
   }
   // logger.info(message)
   const discord = {
+    intent: 'respond',
     message: {
       channel: {
       id: message[0],
@@ -84,8 +167,8 @@ async function generateGPTMessage(message) {
       },
       components: message[1].components,
       content: message[1].content,
+      embeds: message[1].embeds,
       mentions: message[1].mentions,
-      intent: 'respond',
     },
     createdRole: {},
     createdChannel: {},
@@ -131,9 +214,9 @@ async function generateResponse(promptMessages) {
     ...promptMessages
   ]
   const completion = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4",
     messages: fullMessages,
-    temperature: 0.2,
+    temperature: 0.9,
     max_tokens: maxTokens, 
   });
   const response = completion.data.choices[0].message.content

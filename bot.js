@@ -2,7 +2,6 @@ const fs = require('node:fs');
 const util = require('util')
 const path = require('node:path');
 const logger = require('./logger');
-const deployCommands = require('./deploy-commands.js');
 const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
 const { token, clientId, openAIKey, guildIds, ownerId } = require('./config.json');
 const client = new Client({ intents: [
@@ -45,6 +44,7 @@ client.once(Events.ClientReady, () => {
 
 client.on("guildCreate", guild => {
   if (!guildIds.includes(guild.id)) {
+    const deployCommands = require('./deploy-commands.js');
     guildIds.push(guild.id);
     fs.writeFile('./config.json', JSON.stringify({ token, guildIds, clientId, apiKey, ownerId }), (err) => {
       if (err) logger.error(err);
