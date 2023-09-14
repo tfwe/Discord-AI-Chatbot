@@ -26,7 +26,8 @@ const traits = [
   // "If the intent is 'clarify', the bot is asking for more details such as a name, color, or any other options",
   "You cannot use any links or images.",
   `Any errors in code and other responses should be corrected. Any JSON produced will be validated and must pass validation.`,
-  `You can and should use backslashes \\ and backticks \\\` in order to make sure the output can be validated by 'JSON.parse()'`
+  `You can and should use backslashes \\ and backticks \\\` in order to make sure the output can be validated by 'JSON.parse()'`,
+  `All responses must be 2000 characters or less to fit into Discord API limits.`
 ];
 
 const sysMessages = [
