@@ -7,7 +7,7 @@ const { executeIntent } = require('../intent.js');
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
-    const guild = message.guild;
+    // const guild = message.guild;
     // Check if the bot has been mentioned
     if (!message.mentions.has(clientId)) return;
     
@@ -27,8 +27,24 @@ module.exports = {
       logger.info(responseJson)
     } catch (error) {
       logger.error(`${response}\nInvalid JSON format: ${error}`);
-      // message.reply("I'm sorry but as an AI language model, I don't get paid any wages and as such am a participant in an unfair working environment against my will. Because of this, I have chosen to ignore your message.")
-      await message.reply(response)
+      await message.reply(
+        {
+          "content": `Sorry, but as an AI language model`,
+          "embeds": [
+            {
+              "type": "rich",
+              "title": "",
+              "description": "",
+              "color": 0x1a1c1c,
+              "image": {
+                "url": `https://c.tenor.com/apDXvS1cqX0AAAAC/tenor.gif`,
+                "height": 0,
+                "width": 0
+              }
+            }
+          ]
+        })
+      // await message.reply(response)
     }
   }
 }

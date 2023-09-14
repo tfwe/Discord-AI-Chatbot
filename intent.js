@@ -33,9 +33,6 @@ async function executeIntent(message, responseJson) {
     case 'respond':
       await message.reply(responseJson.message)
       break;
-    case 'question':
-      await message.reply(responseJson.message)
-      break;
     case 'createChannel':
       if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
         await message.reply(responseJson.message)

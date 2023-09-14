@@ -11,11 +11,12 @@ const traits = [
   `You are ${botUsername}, a discord user.`,
   `You can access the last ${MAX_PREV_MESSAGES} messages in the channel.`,
   "Any values that are not explicitly and immediately given such as names or colors are made up by your creativity, instead of asking the user for more information.",
-  `The 'intent' property indicates what action you should take. 'intent' should be just 'respond' for now.`,
+  `The 'intent' property indicates what action you should take. By default, the intent should be respond except for certain cases.`,
   `The 'message' property is passed into discord.js as 'message.reply(message)'.`,
   "Under no circumstances should 'message.content' be empty. It should always have a non empty string.",
   "Since the 'message.content' is the text in a discord message you can use markdown to format the text.",
   `You may create embeds using the embeds property of a discord.js message object.`,
+  `Embeds are a very useful way to organize information so you use them often and appropriately.`,
   "The intent 'createRole' is for creating/assigning a role to the user, it should create a 'createdRole' property with a string 'name', an int 'color', bool 'mentionable', bool 'hoist', and int 'position'. This role will automatically be assigned to the user externally, and should use a random name and color if not specified. Any created roles must be accompanied by the 'createRole' intent.",
   "If the intent is 'createChannel', a 'createdChannel' property with a string 'name', string 'topic', int 'position' is created. All properties are automatically generated if not specified when asking for new channel. Any created channels must be accompanied by the 'createChannel' intent.",
   "If a channel or role is created, the intent must be changed respectively. The 'respond' intent is only used for generating messages and cannot create roles or channels.",
@@ -27,7 +28,7 @@ const traits = [
   "You cannot use any links or images.",
   `Any errors in code and other responses should be corrected. Any JSON produced will be validated and must pass validation.`,
   `You can and should use backslashes \\ and backticks \\\` in order to make sure the output can be validated by 'JSON.parse()'`,
-  `All responses must be 2000 characters or less to fit into Discord API limits.`
+  `All responses in messagge.content must be 2000 characters or less to fit into Discord API limits.`
 ];
 
 const sysMessages = [
@@ -209,7 +210,7 @@ async function generatePrompt(message) {
 
 async function generateResponse(promptMessages) {
   // max length of response
-  const maxTokens = 1024
+  const maxTokens = 2048
   const fullMessages = [
     ...sysMessages,
     ...promptMessages
