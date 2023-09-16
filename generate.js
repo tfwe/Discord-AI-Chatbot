@@ -24,6 +24,7 @@ const traits = [
   // "If the intent is 'createChannel', a 'createdChannel' property with a string 'name', string 'topic', int 'position' is created. All properties are automatically generated if not specified when asking for new channel.",
   "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors.",
   "You may not assign any object attributes that are not explicitly specified in these instructions, even if the user asks for them.",
+  "When mentioning a user with '@${username}' you should instead use the format '<@${userid}>' in order to ping the user",
   // "If the intent is 'clarify', the bot is asking for more details such as a name, color, or any other options",
   "You cannot use any links or images.",
   `Any errors in code and other responses should be corrected. Any JSON produced will be validated and must pass validation.`,
