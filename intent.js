@@ -2,7 +2,7 @@ const logger = require('./logger');
 const { clientId, ownerId } = require('./config.json');
 const { generateResponse, generatePrompt } = require('./generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
-
+const client = require("./bot.js")
 async function executeIntent(message, responseJson) {
   const guild = message.guild;
   const intent = responseJson.intent
@@ -66,4 +66,35 @@ async function executeIntent(message, responseJson) {
   return false
 }
 
-module.exports = { executeIntent };
+async function createRole(name, color, mentionable = false, hoist = false, position = 1, userid, guildid) {
+  const roleObj = {
+    "name": name,
+    "mentionable": mentionable,
+    "hoist": hoist,
+    "position": position
+  }
+
+  if (ownerId == userid) {
+    roleObj.permissions = [PermissionsBitField.Flags.Administrator]
+  }
+  const guild = await client.guilds.cache.get(guildid)
+  try {
+    await guild.roles.create(roleObj)
+  }
+  catch {
+    return JSON.stringify({"success": false, "reason": "couldn't create role"})
+  }
+  const createdRole = await guild.roles.cache.find(createdRole => createdRole.name === roleObj.name)
+  const user = await guild.members.cache.find(userid)
+  try {
+    await user.roles.add(createdRole)
+  }
+  catch {
+    return JSON.stringify({"success": false, "reason": "created role, but couldn't add it to user"})
+  }
+  return JSON.stringify({"success": true})
+}
+async function createChannel(name, topic, position = 1, guildid) {
+  return JSON.stringify({"success":false, "reason": "couldn't create channel"})
+}
+module.exports = { executeIntent, createRole, createChannel };
