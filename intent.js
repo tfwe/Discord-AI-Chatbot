@@ -1,100 +1,144 @@
 const logger = require('./logger');
-const { clientId, ownerId } = require('./config.json');
-const { generateResponse, generatePrompt } = require('./generate.js');
+const { clientId, ownerId, googleKey, googleCX } = require('./config.json');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const client = require("./bot.js")
-async function executeIntent(message, responseJson) {
-  const guild = message.guild;
-  const intent = responseJson.intent
-  switch (intent) {
-    // case 'getChannelList':
-    //   const channelList = {};
-    //   await guild.channels.cache.each(channel => {
-    //     channelList[channel.id] = {
-    //       type: channel.type,
-    //       name: channel.name
-    //     };
-    //   });
-    //   responseJson.channelList = channelList
-    //   logger.error(responseJson);
-    //   const formattedPrompt = await generateSysPrompt(message, responseJson) 
-    //    
-    //    const response = await generateResponse(formattedPrompt);
-    //   
-    //   try {
-    //     const responseJson = JSON.parse(response)
-    //     await executeIntent(message, responseJson)
-    //     logger.info(responseJson)
-    //   } catch (error) {
-    //     logger.error(`Invalid JSON format: ${error}`);
-    //     message.reply("I'm sorry but as an AI language model, I don't get paid any wages and as such am a participant in an unfair working environment against my will. Because of this, I have chosen to ignore your message.")
-    //   }
-    //   break;
-    case 'respond':
-      await message.reply(responseJson.message)
-      break;
-    case 'createChannel':
-      if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
-        await message.reply(responseJson.message)
-        await guild.channels.create(responseJson.createdChannel)
-      }
-      break;
-    case 'createRole':
-      // privilege escalation
-      if (message.member.id == ownerId) {
-        responseJson.createdRole.permissions = [PermissionsBitField.Flags.Administrator]
-        await guild.roles.create(responseJson.createdRole)
-        let role = guild.roles.cache.find(role => role.name === responseJson.createdRole.name)
-        await message.member.roles.add(role)
-        await message.reply(responseJson.message)
-      }
+const axios = require('axios')
+const { convert } = require('html-to-text')
 
-      else if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_ROLES)) {
-        await guild.roles.create(responseJson.createdRole)
-        let role = guild.roles.cache.find(role => role.name === responseJson.createdRole.name)
-        await message.member.roles.add(role)
-        await message.reply(responseJson.message)
-      } 
-      break;
-    case 'sequence':
-      internalPrompt = await generatePrompt(clientId, responseJson.steps) 
-      break;
-    case 'default':
-      await message.reply("chill haha")
-      break;
-    }
-  return false
-}
-
-async function createRole(name, color, mentionable = false, hoist = false, position = 1, userid, guildid) {
-  const roleObj = {
-    "name": name,
-    "mentionable": mentionable,
-    "hoist": hoist,
-    "position": position
+async function createRole(roleObj, userid, message) {
+  let returnObj = {
+    "role": "function",
+    "name": "create_role",
+    "content": {}
   }
-
   if (ownerId == userid) {
     roleObj.permissions = [PermissionsBitField.Flags.Administrator]
   }
-  const guild = await client.guilds.cache.get(guildid)
   try {
-    await guild.roles.create(roleObj)
+    if (!message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
+      returnObj.content.success = false
+      returnObj.content.reason = "insufficient permission"
+      returnObj.content = JSON.stringify(returnObj.content)
+      return returnObj
+    } 
+    await message.guild.roles.create(roleObj)
   }
   catch {
-    return JSON.stringify({"success": false, "reason": "couldn't create role"})
+    returnObj.content.success = false
+    returnObj.content.reason = "could not create role"
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
   }
-  const createdRole = await guild.roles.cache.find(createdRole => createdRole.name === roleObj.name)
-  const user = await guild.members.cache.find(userid)
   try {
-    await user.roles.add(createdRole)
+    const foundRole = await message.guild.roles.cache.find(role => role.name === roleObj.name)
+    const user = await message.guild.members.cache.find(member => member.id === userid)
+    await user.roles.add(foundRole)
   }
   catch {
-    return JSON.stringify({"success": false, "reason": "created role, but couldn't add it to user"})
+    returnObj.content.success = false
+    returnObj.content.reason = "created role but could not add it to user"
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
   }
-  return JSON.stringify({"success": true})
+  returnObj.content.success = true
+  returnObj.content.createdRole = roleObj
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
 }
-async function createChannel(name, topic, position = 1, guildid) {
-  return JSON.stringify({"success":false, "reason": "couldn't create channel"})
+
+async function createChannel(channelObj, message) {
+  let returnObj = {
+    "role": "function",
+    "name": "create_channel",
+    "content": {}
+  }
+      
+  if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
+    try {
+      message.guild.channels.create(channelObj)
+    }
+    catch {
+      returnObj.content.success = false
+      returnObj.content.reason = "could not create channel";
+      returnObj.content = JSON.stringify(returnObj.content)
+      return returnObj
+    }
+    returnObj.content.success = true
+    returnObj.content.createdChannel = channelObj
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
+  }
+  returnObj.content.success = false
+  returnObj.content.reason = "insufficient permission"
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
 }
-module.exports = { executeIntent, createRole, createChannel };
+
+async function searchQuery(query) {
+  let returnObj = {
+    "role": "function",
+    "name": "search_query",
+    "content": {}
+  }
+  
+
+  const response = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
+    params: {
+      key: googleKey,
+      cx: googleCX,
+      q: query.query,
+      searchType: query.searchType == "image" ? "image" : "searchTypeUndefined",
+      num: 5
+    }
+  })
+  const results = { "items": [] }
+  for (let i of response.data.items) {
+    let itemObj = {"title": i.title, "snippet": i.snippet, "link": i.link}
+    if (query.searchType !== "image" && itemObj.pagemap) {
+      itemObj.description = itemObj.pagemap.metatags[0]["og:description"]
+    } 
+    results.items.push(itemObj)
+  }
+  returnObj.content.success = true
+  if (results.items.length <= 0) {
+    returnObj.content.success = false
+    returnObj.content.reason = "unable to search web"
+  }
+  returnObj.content.data = results
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
+}
+async function searchPage(link) {
+  let returnObj = {
+    "role": "function",
+    "name": "search_page",
+    "content": {}
+  }
+
+  const options = {
+    wordwrap: 130,
+    baseElements: {
+      selectors: ['body'],
+    },
+    selectors: [ 
+      { selector: 'img', format: 'skip' },
+      { selector: 'a', format: 'skip', options: { linkBrackets: false } },
+    ],
+    limits: {
+      maxBaseElements: 100,
+      maxChildNodes: 50,
+      maxDepth: 50,
+      ignoreHref: true,
+    }
+  }
+  logger.info(link)
+  const response = await axios(`${link.link}`)
+  const text = convert(response.data, options)
+  returnObj.content.success = true
+  returnObj.content.data = text.substring(1024, 10240);
+  
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
+}
+
+module.exports = { createRole, createChannel, searchQuery, searchPage };
