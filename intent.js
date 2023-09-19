@@ -1,9 +1,12 @@
 const logger = require('./logger');
-const { clientId, ownerId, googleKey, googleCX } = require('./config.json');
+const { clientId, ownerId } = require('./config.json');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const client = require("./bot.js")
 const axios = require('axios')
 const { convert } = require('html-to-text')
+const GOOGLE_KEY = process.env.GOOGLE_KEY
+const GOOGLE_CX = process.env.GOOGLE_CX
+
 
 async function createRole(roleObj, userid, message) {
   let returnObj = {
@@ -84,8 +87,8 @@ async function searchQuery(query) {
 
   const response = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
     params: {
-      key: googleKey,
-      cx: googleCX,
+      key: process.env.GOOGLE_KEY,
+      cx: process.env.GOOGLE_CX,
       q: query.query,
       searchType: query.searchType == "image" ? "image" : "searchTypeUndefined",
       num: 5

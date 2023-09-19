@@ -1,6 +1,6 @@
 // module.exports = async function deployCommands() {
   const { REST, Routes } = require('discord.js');
-  const { clientId, guildIds, token } = require('./config.json');
+  // const { clientId, guildIds, token } = require('./config.json');
   const fs = require('node:fs');
   const logger = require('./logger.js')
 

@@ -33,6 +33,7 @@
     "detect-libc": "^2.0.1",
     "discord-api-types": "^0.37.30",
     "discord.js": "^14.7.1",
+    "dotenv": "^16.3.1",
     "dottie": "^2.0.2",
     "duplexify": "^4.1.2",
     "emoji-regex": "^8.0.0",

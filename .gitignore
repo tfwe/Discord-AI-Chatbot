@@ -6,3 +6,6 @@ node_modules/
 
 # Ignore logs
 *.log
+
+# dotenv
+.env

@@ -1,23 +1,23 @@
 const logger = require('../logger');
-const { clientId, ownerId } = require('../config.json');
+// const { clientId, ownerId } = require('../config.json');
 const { generateResponse, generatePrompt } = require('../generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const { createRole, createChannel, searchQuery, searchPage } = require('../intent.js');
 const { axios } = require('axios')
-
+const CLIENT_ID = process.env.CLIENT_ID
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
     // const guild = message.guild;
     // Check if the bot has been mentioned
-    if (!message.mentions.has(clientId)) return;
+    if (!message.mentions.has(CLIENT_ID)) return;
     
     // Get the prompt from the message
 
     const formattedPrompt = await generatePrompt(message)
     
     const author = message.author.id
-    if (author === clientId) return;
+    if (author === CLIENT_ID) return;
     // Generate response from OpenAI
     // try {
       message.channel.sendTyping()
@@ -84,87 +84,7 @@ module.exports = {
         logger.error("OUTPUT******************")
         const messageObj = JSON.parse(response.content).message
         await message.reply(response.content)
-        // } catch {
-        // }
+
       }
   }
 }
-//
-// async function createRole(roleObj, userid, message) {
-//   let returnObj = {
-//     "role": "function",
-//     "name": "create_role",
-//     "content": {}
-//   }
-//   if (ownerId == userid) {
-//     roleObj.permissions = [PermissionsBitField.Flags.Administrator]
-//   }
-//   try {
-//     await message.guild.roles.create(roleObj)
-//   }
-//   catch {
-//     returnObj.content.success = false
-//     returnObj.content.reason = "could not create role"
-//     returnObj.content = JSON.stringify(returnObj.content)
-//     return returnObj
-//   }
-//   try {
-//     const foundRole = await message.guild.roles.cache.find(role => role.name === roleObj.name)
-//     const user = await message.guild.members.cache.find(member => member.id === userid)
-//     await user.roles.add(foundRole)
-//   }
-//   catch {
-//     returnObj.content.success = false
-//     returnObj.content.reason = "created role but could not add it to user"
-//     returnObj.content = JSON.stringify(returnObj.content)
-//     return returnObj
-//   }
-//   returnObj.content.success = true
-//   returnObj.content.createdRole = roleObj
-//   returnObj.content = JSON.stringify(returnObj.content)
-//   return returnObj
-// }
-//
-// async function createChannel(channelObj, message) {
-//   let returnObj = {
-//     "role": "function",
-//     "name": "create_channel",
-//     "content": {}
-//   }
-//       
-//   if (message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
-//     try {
-//       message.guild.channels.create(channelObj)
-//     }
-//     catch {
-//       returnObj.content.success = false
-//       returnObj.content.reason = "could not create channel";
-//       returnObj.content = JSON.stringify(returnObj.content)
-//       return returnObj
-//     }
-//     returnObj.content.success = true
-//     returnObj.content.createdChannel = channelObj
-//     returnObj.content = JSON.stringify(returnObj.content)
-//     return returnObj
-//   }
-//   returnObj.content.success = false
-//   returnObj.content.reason = "requesting user does not have sufficient permissions to create roles"
-//   returnObj.content = JSON.stringify(returnObj.content)
-//   return returnObj
-// }
-//
-// async function searchQuery(query) {
-//   let returnObj = {
-//     "role": "function",
-//     "name": "search_query",
-//     "content": {}
-//   }
-//   logger.info(query)
-//   // const response = await axios.get(`https://www.googleapis.com/customsearch/v1&key=${googleKey}&cx=${googleCX}&q=${query.query}&callback=hndlr`)
-//   const response = await axios(`https://reqres.in/api/users`)
-//   logger.info(response)
-//   returnObj.content.success = true
-//   returnObj.content.data = response.data
-//   returnObj.content = JSON.stringify(returnObj.content)
-//   return returnObj
-// }

@@ -1,13 +1,16 @@
 const logger = require('./logger');
 const util = require('util')
 const { Configuration, OpenAIApi } = require("openai");
-const { botUsername, openAIKey, clientId, ownerId, MAX_PREV_MESSAGES, MAX_TOKENS } = require('./config.json');
+const { MAX_PREV_MESSAGES, MAX_TOKENS } = require('./config.json');
 const configuration = new Configuration({
-  apiKey: openAIKey,
+  apiKey: process.env.OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
+const OWNER_ID = process.env.OWNER_ID
+const CLIENT_ID = process.env.CLIENT_ID
+const BOT_USERNAME = process.env.BOT_USERNAME
 const traits = [ 
-  `You are ${botUsername}, a discord user.`,
+  `You are ${BOT_USERNAME}, a discord user.`,
   `You can access the last ${MAX_PREV_MESSAGES} messages in the channel.`,
   `You can use a maximum of ${MAX_TOKENS} in your response.`,
   `The entire response is passed into 'JSON.parse()' for validity.`,
@@ -45,7 +48,7 @@ const sampleObj = {
       "id": "1134726520129208390"
     },
     "author": {
-      "id": `"${ownerId}"`
+      "id": `"${OWNER_ID}"`
     },
     "content": "Make a sample message.",
   }
@@ -67,7 +70,7 @@ const sampleRespObj = {
           }
         ],
         "footer": {
-          "text": "made with <3 by ${botUsername}"
+          "text": `made with <3 by ${BOT_USERNAME}`
         }
       }
     ],
@@ -76,7 +79,7 @@ const sampleRespObj = {
 const sysMessages = [
   {
     role: "system",
-    content: `From now on, we will only be using JSON to communicate. Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${clientId}>. Remember it's extremely important to make sure any responses from here on are valid JSON files since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
+    content: `From now on, we will only be using JSON to communicate. Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${CLIENT_ID}>. Remember it's extremely important to make sure any responses from here on are valid JSON files since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
 ${JSON.stringify(sampleObj)}
   `
 //   "createdRole": {
@@ -113,7 +116,7 @@ ${JSON.stringify(sampleObj)}
 //           }
 //         ],
 //         "footer": {
-//           "text": "made with <3 by ${botUsername}"
+//           "text": "made with <3 by ${BOT_USERNAME}"
 //         }
 //       }
 //     ],
@@ -302,7 +305,7 @@ async function generateGPTSysMessage(responseJson) {
 
 async function generateGPTMessage(message) {
   let role = 'user';
-  if (message[1].author.id == clientId) {
+  if (message[1].author.id == CLIENT_ID) {
     role = 'assistant';
   }
   // Construct the basic object structure
@@ -361,7 +364,7 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  let model = (message.author.id == ownerId) ? "gpt-4" : "gpt-3.5-turbo"
+  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo"
   const completion = await openai.createChatCompletion({
     model: model,
     messages: fullMessages,
