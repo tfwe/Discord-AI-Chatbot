@@ -18,7 +18,7 @@ async function createRole(roleObj, userid, message) {
     roleObj.permissions = [PermissionsBitField.Flags.Administrator]
   }
   try {
-    if (!message.member.permissions.has(PermissionsBitField.Flags.MANAGE_CHANNELS)) {
+    if (!message.member.permissions.has(PermissionsBitField.Flags.MANAGE_ROLES)) {
       returnObj.content.success = false
       returnObj.content.reason = "insufficient permission"
       returnObj.content = JSON.stringify(returnObj.content)
