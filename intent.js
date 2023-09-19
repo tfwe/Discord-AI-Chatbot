@@ -1,12 +1,11 @@
 const logger = require('./logger');
-const { clientId, ownerId } = require('./config.json');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const client = require("./bot.js")
 const axios = require('axios')
 const { convert } = require('html-to-text')
 const GOOGLE_KEY = process.env.GOOGLE_KEY
 const GOOGLE_CX = process.env.GOOGLE_CX
-
+const OWNER_ID = process.env.OWNER_ID
 
 async function createRole(roleObj, userid, message) {
   let returnObj = {
@@ -14,7 +13,7 @@ async function createRole(roleObj, userid, message) {
     "name": "create_role",
     "content": {}
   }
-  if (ownerId == userid) {
+  if (OWNER_ID == userid) {
     roleObj.permissions = [PermissionsBitField.Flags.Administrator]
   }
   try {

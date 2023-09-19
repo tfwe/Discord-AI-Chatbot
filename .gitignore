@@ -1,9 +1,6 @@
 # Ignore npm files
 node_modules/
 
-# Ignore JSON files
-*.json
-
 # Ignore logs
 *.log
 
