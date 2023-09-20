@@ -13,40 +13,31 @@ const traits = [
   `You are ${BOT_USERNAME}, a discord user.`,
   `You can access the last ${MAX_PREV_MESSAGES} messages in the channel.`,
   `You can use a maximum of ${MAX_TOKENS} in your response.`,
-  `The entire response is passed into 'JSON.parse()' for validity.`,
+  `Your response should be a JSON object that has been stringified.`,
   `The 'message' property is passed into discord.js as 'message.reply(message)'.`,
   "Under no circumstances should 'message.content' be empty. It should always have a non empty string.",
   "Since the 'message.content' is the text in a discord message you can use markdown to format the text.",
   "Only larger text bodies may use markdown, and smaller ones like embed footers cannot use markdown",
   `You may create embeds using the embeds property of a discord.js message object.`,
-  `You can only manipulate one user/role/channel at a time per function call so each manipulation requires its own function call.`,  
-  `All function calls must be executed first before any other messages`,
-  `The response to a successful function call may be another function call`,
-  `There can be many function calls in a row in order to accomplish a task`,
   `Embeds are a very useful way to organize information so you use them often for lists or short paragraphs.`,
-  `Searches should mainly be used for things related to current events, access to media, or access to a specific webpage or resource. It is preferable not to use searches unless they are necessary`,
+  `The default embed color should be 3092790`,
+  `Functions are only able to be called in response to a user message or another function call.`,
+  `Searches should mainly be used for things related to current events, access to media, or access to a specific webpage or resource.`,
   `Searches return a list of 5 entries with their title, link, and snippet. Make sure to use creative queries to find the correct information`,
-  `You can search a particular web page using a function call`,
-  `You can use a search query to find a website link, followed by a search page function call to view the information on that page`,
+  `You can use a search query to find a website link, followed by a read page function call to view the information on that page`,
+  `You can do multiple search queries to find more targeted information across multiple websites`,
   `Images should be displayed using the 'image' field in an embed`,
   `Only one image can be displayed at a time in an embed.`,
-  `Information obtained from the internet should have a reference, including images or facts`,
+  `Information obtained from the internet should have a reference with a link, including images or facts`,
   "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors. Be creative.",
   "You may not assign any object attributes that are not explicitly specified in these instructions, even if the user asks for them.",
   "When mentioning a user with '@${username}' you should instead use the format '<@${userid}>' in order to ping the user",
-  `Any errors in code and other responses should be corrected. Any JSON produced will be validated and must pass validation.`,
   `The produced JSON's message property should only have the contents attribute unless embeds or components are being used.`,
-  `All responses in messagge.content must be 2000 characters or less to fit into Discord API limits.`,
+  `All responses in message.content must be 2000 characters or less to fit into Discord API limits.`,
 ];
 
 const sampleObj = {
   "message": {
-    "guild": {
-      "id": "3247823473274757926"
-    },
-    "channel": {
-      "id": "1134726520129208390"
-    },
     "author": {
       "id": `"${OWNER_ID}"`
     },
@@ -61,7 +52,7 @@ const sampleRespObj = {
         "type": "rich",
         "title": "Title",
         "description": "Description",
-        "color": 55555,
+        "color": 3092790,
         "image": `https://example.com/example.jpg`,
         "fields": [
           {
@@ -79,7 +70,7 @@ const sampleRespObj = {
 const sysMessages = [
   {
     role: "system",
-    content: `From now on, we will only be using JSON to communicate. Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${CLIENT_ID}>. Remember it's extremely important to make sure any responses from here on are valid JSON files since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
+    content: `From now on, we will only be using JSON to communicate. Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${CLIENT_ID}>. Remember it's extremely important to make sure any responses from here on are valid JSON strings since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
 ${JSON.stringify(sampleObj)}
   `
 //   "createdRole": {
@@ -202,8 +193,8 @@ const functions = [
     }
   }, 
   {
-    "name": "search_page",
-    "description": "Search the contents of a webpage",
+    "name": "read_page",
+    "description": "Read the contents of a webpage",
     "parameters": {
       "type": "object",
       "properties": {
@@ -263,7 +254,7 @@ async function searchQueryReq(query) {
   })
 }
 
-async function searchPageReq(link) {
+async function readPageReq(link) {
   return JSON.stringify({
     "link": {
       "link": link.link,
@@ -364,7 +355,7 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo"
+  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
   const completion = await openai.createChatCompletion({
     model: model,
     messages: fullMessages,
@@ -378,7 +369,7 @@ async function generateResponse(promptMessages, message) {
       create_role: createRoleReq,
       create_channel: createChannelReq,
       search_query: searchQueryReq,
-      search_page: searchPageReq,
+      read_page: readPageReq,
     }
     const functionName = response.function_call.name
     const functionToCall = availableFunctions[functionName]

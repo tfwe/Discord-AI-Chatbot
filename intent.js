@@ -107,13 +107,14 @@ async function searchQuery(query) {
     returnObj.content.reason = "unable to search web"
   }
   returnObj.content.data = results
+  logger.info(results)
   returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 }
-async function searchPage(link) {
+async function readPage(link) {
   let returnObj = {
     "role": "function",
-    "name": "search_page",
+    "name": "read_page",
     "content": {}
   }
 
@@ -138,9 +139,10 @@ async function searchPage(link) {
   const text = convert(response.data, options)
   returnObj.content.success = true
   returnObj.content.data = text.substring(1024, 10240);
+  logger.info(returnObj.content.data)
   
   returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 }
 
-module.exports = { createRole, createChannel, searchQuery, searchPage };
+module.exports = { createRole, createChannel, searchQuery, readPage };

@@ -2,7 +2,7 @@ const logger = require('../logger');
 // const { clientId, ownerId } = require('../config.json');
 const { generateResponse, generatePrompt } = require('../generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
-const { createRole, createChannel, searchQuery, searchPage } = require('../intent.js');
+const { createRole, createChannel, searchQuery, readPage } = require('../intent.js');
 const { axios } = require('axios')
 const CLIENT_ID = process.env.CLIENT_ID
 module.exports = {
@@ -46,9 +46,9 @@ module.exports = {
           const searchQueryResultObj = await searchQuery(responseObj.query)
           formattedPrompt.push(searchQueryResultObj)
         }
-        if (response.name == "search_page") {
-          const searchPageResultObj = await searchPage(responseObj.link)
-          formattedPrompt.push(searchPageResultObj)
+        if (response.name == "read_page") {
+          const readPageResultObj = await readPage(responseObj.link)
+          formattedPrompt.push(readPageResultObj)
         }
         response = await generateResponse(formattedPrompt, message)
         logger.error("INPUT******************")
