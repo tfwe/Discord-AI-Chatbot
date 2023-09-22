@@ -421,8 +421,8 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  // let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
-  let model = "gpt-3.5-turbo-0613"
+  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
+  // let model = "gpt-3.5-turbo-0613"
   // let model = "gpt-4"
   const completion = await openai.createChatCompletion({
     model: model,
