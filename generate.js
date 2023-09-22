@@ -12,28 +12,27 @@ const BOT_USERNAME = process.env.BOT_USERNAME
 const traits = [ 
   `You are ${BOT_USERNAME}, a discord user.`,
   `You can access the last ${MAX_PREV_MESSAGES} messages in the channel.`,
-  `You can use a maximum of ${MAX_TOKENS} in your response.`,
-  `Your response should be a JSON object that has been stringified.`,
-  `The 'message' property is passed into discord.js as 'message.reply(message)'.`,
-  "Under no circumstances should 'message.content' be empty. It should always have a non empty string.",
-  "Since the 'message.content' is the text in a discord message you can use markdown to format the text.",
-  "Only larger text bodies may use markdown, and smaller ones like embed footers cannot use markdown",
-  `You may create embeds using the embeds property of a discord.js message object.`,
+  `You can use markdown to format the text.`,
+  "Information gathering functions like searches, etc. should be done before any discord.js related functions",
+  "Any discord.js related functions should be done before a message is sent",
+  "Links or images cannot be accessed without first searching",
   `Embeds are a very useful way to organize information so you use them often for lists or short paragraphs.`,
-  `The default embed color should be 3092790`,
-  `Functions are only able to be called in response to a user message or another function call.`,
-  `Searches should mainly be used for things related to current events, access to media, or access to a specific webpage or resource.`,
-  `Searches return a list of 5 entries with their title, link, and snippet. Make sure to use creative queries to find the correct information`,
+  `Created embeds will automatically be attached to the message that you send`,
+  `Most embeds should include an image, unless it is talking about something abstract`,
+  `The user should not know the details of function results`,
+  `Functions are only able to be called in response to a user message or another function call, but not an assistant message.`,
+  // `Searches should mainly be used for things related to current events, access to media, or access to a specific webpage or resource.`,
+  `Searches should be used to access current information.`,
+  `Searches return a list of 5 entries with their title, link, and snippet.`,
   `You can use a search query to find a website link, followed by a read page function call to view the information on that page`,
-  `You can do multiple search queries to find more targeted information across multiple websites`,
   `Images should be displayed using the 'image' field in an embed`,
   `Only one image can be displayed at a time in an embed.`,
   `Information obtained from the internet should have a reference with a link, including images or facts`,
-  "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors. Be creative.",
-  "You may not assign any object attributes that are not explicitly specified in these instructions, even if the user asks for them.",
+  // "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors. Be creative.",
   "When mentioning a user with '@${username}' you should instead use the format '<@${userid}>' in order to ping the user",
-  `The produced JSON's message property should only have the contents attribute unless embeds or components are being used.`,
-  `All responses in message.content must be 2000 characters or less to fit into Discord API limits.`,
+  `Assistant messages should be used to be personable with users and should leave information serving for embed creation.`,
+  `All responses in must be 2000 characters or less to fit into Discord API limits.`,
+  `Multiple function calls can be made in a row before the response is sent to prepare the information to send.`
 ];
 
 const sampleObj = {
@@ -47,32 +46,15 @@ const sampleObj = {
 const sampleRespObj = {
   "message": {
     "content": "This is a sample message",
-    "embeds": [
-      {
-        "type": "rich",
-        "title": "Title",
-        "description": "Description",
-        "color": 3092790,
-        "image": `https://example.com/example.jpg`,
-        "fields": [
-          {
-            "name": "Field Title",
-            "value": "Field Description"
-          }
-        ],
-        "footer": {
-          "text": `made with <3 by ${BOT_USERNAME}`
-        }
-      }
-    ],
   }
 }
 const sysMessages = [
   {
     role: "system",
-    content: `From now on, we will only be using JSON to communicate. Here is a list of traits you should follow when deciding your response: \n${compileTraits(traits)} <@${CLIENT_ID}>. Remember it's extremely important to make sure any responses from here on are valid JSON strings since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
-${JSON.stringify(sampleObj)}
-  `
+    content: `<@${CLIENT_ID}> 
+    ${compileTraits(traits)}` 
+    // Remember it's extremely important to make sure any responses from here on are valid JSON strings since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
+// ${JSON.stringify(sampleObj)}`
 //   "createdRole": {
 //     "name": "Sample Role",
 //     "color": 55555,
@@ -88,8 +70,19 @@ ${JSON.stringify(sampleObj)}
 // }`
   },
   {
+    role: "user",
+    content: `Hi ${BOT_USERNAME} <@${CLIENT_ID}>, make a sample embed`
+  },
+  {
+    "role": "function",
+    "name": "create_embed",
+    "content": "{\"success\":true,\"createdEmbed\":{\"title\":\"Sample Embed\",\"description\":\"This is a sample embed to demonstrate the use of embeds in Discord.\",\"color\":3092790,\"fields\":[{\"name\":\"Field 1\",\"value\":\"This is the value of Field 1.\"},{\"name\":\"Field 2\",\"value\":\"This is the value of Field 2.\"},{\"name\":\"Field 3\",\"value\":\"This is the value of Field 3.\"}],\"image\":{},\"footer\":{\"text\":\"Sample Embed\"}}}"
+  },
+  {
     role: "assistant",
-    content: `${JSON.stringify(sampleRespObj)}`
+    content: `Sure, here's a sample embed.`
+  },
+
 //     content: `{
 //   "intent": "respond",
 //   "message": {
@@ -113,10 +106,75 @@ ${JSON.stringify(sampleObj)}
 //     ],
 //   },
 // }`
-  }
 ];
 
 const functions = [
+  {
+    "name": "get_user_info",
+    "description": "Get the username and userid of the user who sent the last message",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "create_embed",
+    "description": "Creates discord.js embed to add to your message",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the embed (cannot use markdown)"
+        },
+        "description": {
+          "type": "string",
+          "description": "The embed's description"
+        },
+        "color": {
+          "type": "integer",
+          "description": "The color of the embed, default to 3092790"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the field"
+              },
+              "value": {
+                "type": "string",
+                "description": "The value of the field"
+              }
+            },
+            "required": ["name", "value"]
+          },
+          "description": "Array of fields for the embed"
+        },
+        "image": {
+          "type": "string",
+          "description": "Link to image"
+        },
+        "url": {
+          "type": "string",
+          "description": "Attached URL for the embed"
+        },
+        "footer": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string",
+              "description": "The text for the footer (cannot use markdown)"
+            }
+          },
+          "required": ["text"]
+        },
+      },
+      "required": ["title", "description", "color", "fields"]
+    }
+  },
   {
     "name": "create_role",
     "description": "Create a role and assigns it to the specified user",
@@ -194,7 +252,7 @@ const functions = [
   }, 
   {
     "name": "read_page",
-    "description": "Read the contents of a webpage",
+    "description": "Read a text only extract portion of a webpage, omits all links and images",
     "parameters": {
       "type": "object",
       "properties": {
@@ -221,6 +279,25 @@ const functions = [
   // }
 ]
 
+async function getUserInfoReq() { 
+  return JSON.stringify({
+    "n": {}
+  })
+}
+async function createEmbedReq(embed) {
+  return JSON.stringify(
+    {
+      "embed": {
+        "title": embed.title,
+        "description": embed.description,
+        "color": embed.color,
+        "fields": embed.fields,
+        "image": { "url": embed.image },
+        "url": embed.url,
+        "footer": embed.footer
+      }
+    })
+}
 
 async function createRoleReq(role) {
   return JSON.stringify(
@@ -317,25 +394,14 @@ async function generateGPTMessage(message) {
   
   const gptMessage = {
     role: role,
-    content: JSON.stringify(discord)
+    content: discord.message.content
   };
+  // if (discord.message.embeds) {
+  //   gptMessage.content += `\nEmbed: ${JSON.stringify(discord.message.embeds[0])}`
+  // }
   return gptMessage;
 }
 
-
-async function generateSysPrompt(message, responseJson) {
-  const channel = message.channel
-  const messages = await channel.messages.fetch({ limit: MAX_PREV_MESSAGES })
-  lastMessages = messages.reverse()
-  const generatedMessages = [];
-  for (let msg of lastMessages) {
-    let generatedMessage = await generateGPTMessage(msg)
-    generatedMessages.push(generatedMessage)
-  }
-  const sysGPTMessage = generateGPTSysMessage(responseJson.channelList)
-  generatedMessages.push(sysGPTMessage)
-  return generatedMessages
-}
 
 async function generatePrompt(message) {
   const channel = message.channel
@@ -355,17 +421,21 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
+  // let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
+  let model = "gpt-3.5-turbo-0613"
+  // let model = "gpt-4"
   const completion = await openai.createChatCompletion({
     model: model,
     messages: fullMessages,
     functions: functions,
-    temperature: 0.9,
+    temperature: 0.3,
     max_tokens: MAX_TOKENS, 
   });
   const response = completion.data.choices[0].message
   if (response.function_call) {
     const availableFunctions = {
+      get_user_info: getUserInfoReq,
+      create_embed: createEmbedReq,
       create_role: createRoleReq,
       create_channel: createChannelReq,
       search_query: searchQueryReq,

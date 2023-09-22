@@ -20,6 +20,8 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 const interactionsPath = path.join(__dirname, 'interactions');
 const interactionFiles = fs.readdirSync(interactionsPath).filter(file => file.endsWith('.js'));
 
+//JSON.stringify complains when running into a BigInt for some reason, this happens when JSON.toString() is called on interaction object
+BigInt.prototype.toJSON = function() { return this.toString() }
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
   const command = require(filePath);

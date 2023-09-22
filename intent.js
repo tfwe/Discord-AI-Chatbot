@@ -1,11 +1,45 @@
 const logger = require('./logger');
 const { ChannelType, PermissionsBitField } = require('discord.js');
+const { MAX_PREV_MESSAGES } = require('./config.json')
 const client = require("./bot.js")
 const axios = require('axios')
 const { convert } = require('html-to-text')
 const GOOGLE_KEY = process.env.GOOGLE_KEY
 const GOOGLE_CX = process.env.GOOGLE_CX
 const OWNER_ID = process.env.OWNER_ID
+
+async function getUserInfo(message) {
+  let returnObj = {
+    "role": "function",
+    "name": "get_user_info",
+    "content": {}
+  }
+  // if (n.n >= MAX_PREV_MESSAGES || n.n <= 0) {
+  //   returnObj.content.success = false;
+  //   returnObj.content.reason = 'index out of bounds'
+  //   returnObj.content = JSON.stringify(returnObj.content)
+  //   return returnObj
+  // }
+  returnObj.content.success = true
+  returnObj.content.author = {
+    "username": message.author.username,
+    "id": `${message.author.id}`
+  }
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
+}
+
+async function createEmbed(embedObj) {
+  let returnObj = {
+    "role": "function",
+    "name": "create_embed",
+    "content": {}
+  }
+  returnObj.content.success = true
+  returnObj.content.createdEmbed = embedObj
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
+}
 
 async function createRole(roleObj, userid, message) {
   let returnObj = {
@@ -93,6 +127,12 @@ async function searchQuery(query) {
       num: 5
     }
   })
+  if (!response.data) {
+    returnObj.content.success = false
+    returnObj.content.reason = "unable to search"
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
+  }
   const results = { "items": [] }
   for (let i of response.data.items) {
     let itemObj = {"title": i.title, "snippet": i.snippet, "link": i.link}
@@ -101,11 +141,13 @@ async function searchQuery(query) {
     } 
     results.items.push(itemObj)
   }
-  returnObj.content.success = true
   if (results.items.length <= 0) {
     returnObj.content.success = false
-    returnObj.content.reason = "unable to search web"
+    returnObj.content.reason = "search returned 0 results"
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
   }
+  returnObj.content.success = true
   returnObj.content.data = results
   logger.info(results)
   returnObj.content = JSON.stringify(returnObj.content)
@@ -138,11 +180,11 @@ async function readPage(link) {
   const response = await axios(`${link.link}`)
   const text = convert(response.data, options)
   returnObj.content.success = true
-  returnObj.content.data = text.substring(1024, 10240);
+  returnObj.content.data = text.substring(4096, 8192);
   logger.info(returnObj.content.data)
   
   returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 }
 
-module.exports = { createRole, createChannel, searchQuery, readPage };
+module.exports = { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage };
