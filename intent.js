@@ -1,11 +1,13 @@
 const logger = require('./logger');
-const { ChannelType, PermissionsBitField } = require('discord.js');
-const { MAX_PREV_MESSAGES } = require('./config.json')
-const client = require("./bot.js")
+const { PermissionsBitField } = require('discord.js');
+// const { MAX_PREV_MESSAGES } = require('./config.json')
 const axios = require('axios')
 const { convert } = require('html-to-text')
 const GOOGLE_KEY = process.env.GOOGLE_KEY
 const GOOGLE_CX = process.env.GOOGLE_CX
+const XRAPID_KEY = process.env.XRAPID_KEY
+const NEWSAPI_KEY = process.env.NEWSAPI_KEY
+const POLYGON_KEY = process.env.POLYGON_KEY
 const OWNER_ID = process.env.OWNER_ID
 
 async function getUserInfo(message) {
@@ -36,7 +38,7 @@ async function createEmbed(embedObj) {
     "content": {}
   }
   returnObj.content.success = true
-  returnObj.content.createdEmbed = embedObj
+  // returnObj.content.createdEmbed = embedObj
   returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 }
@@ -116,42 +118,116 @@ async function searchQuery(query) {
     "name": "search_query",
     "content": {}
   }
-  
+  let options = {}
+  let responseObj = {}
+  switch (query.api) {
+    case "google":
+      responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
+        params: {
+          key: GOOGLE_KEY,
+          cx: GOOGLE_CX,
+          q: query.query,
+          searchType: "searchTypeUndefined",
+          num: 5
+        }
+      })
+      break;
+    case "image":
+      responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
+        params: {
+          key: GOOGLE_KEY,
+          cx: GOOGLE_CX,
+          q: query.query,
+          searchType: "image",
+          num: 5
+        }
+      })
+      break;
+    case "wikipedia":
+      options = {
+        method: 'GET',
+        url: 'https://wiki-briefs.p.rapidapi.com/search',
+        params: {
+          q: query.query,
+          topk: '5'
+        },
+        headers: {
+          'X-RapidAPI-Key': XRAPID_KEY,
+          'X-RapidAPI-Host': 'wiki-briefs.p.rapidapi.com'
+        }
+      }
+      responseObj = await axios.request(options)
+      break;
+    case "news":
+      responseObj = await axios.get(`https://newsapi.org/v2/everything`, {
+        params: {
+          apiKey: NEWSAPI_KEY,
+          q: query.query,
+          pageSize: 5,
+        }
+      })
+    default:
+      break;
+  }
 
-  const response = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
-    params: {
-      key: process.env.GOOGLE_KEY,
-      cx: process.env.GOOGLE_CX,
-      q: query.query,
-      searchType: query.searchType == "image" ? "image" : "searchTypeUndefined",
-      num: 5
-    }
-  })
-  if (!response.data) {
+
+  if (!responseObj.data) {
     returnObj.content.success = false
     returnObj.content.reason = "unable to search"
     returnObj.content = JSON.stringify(returnObj.content)
     return returnObj
   }
-  const results = { "items": [] }
-  for (let i of response.data.items) {
-    let itemObj = {"title": i.title, "snippet": i.snippet, "link": i.link}
-    if (query.searchType !== "image" && itemObj.pagemap) {
-      itemObj.description = itemObj.pagemap.metatags[0]["og:description"]
-    } 
-    results.items.push(itemObj)
-  }
-  if (results.items.length <= 0) {
-    returnObj.content.success = false
-    returnObj.content.reason = "search returned 0 results"
+  if (query.api == "google" || query.api == "image") {
+    const results = { "items": [] }
+    for (let i of responseObj.data.items) {
+      let itemObj = {"title": i.title, "snippet": i.snippet, "link": i.link}
+      if (query.api !== "image" && itemObj.pagemap) {
+        itemObj.description = itemObj.pagemap.metatags[0]["og:description"]
+      } 
+      results.items.push(itemObj)
+    }
+    if (results.items.length <= 0) {
+      returnObj.content.success = false
+      returnObj.content.reason = "search returned 0 results"
+      returnObj.content = JSON.stringify(returnObj.content)
+      return returnObj
+    }
+    returnObj.content.success = true
+    returnObj.content.data = results
+    logger.info(results)
     returnObj.content = JSON.stringify(returnObj.content)
     return returnObj
   }
-  returnObj.content.success = true
-  returnObj.content.data = results
-  logger.info(results)
-  returnObj.content = JSON.stringify(returnObj.content)
-  return returnObj
+  else if (query.api == "wikipedia") {
+    returnObj.content.success = true
+    returnObj.content.data = {
+      title: responseObj.data.title,
+      url: responseObj.data.url,
+      imageURL: responseObj.data.image,
+      summary: responseObj.data.summary
+    }
+    logger.info(returnObj.content.data)
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
+  }
+  else if (query.api == "news") {
+    let articles = []
+    returnObj.content.success = true
+    for (let i of responseObj.data.articles) {
+      articles.push({
+        source: i.source.name,
+        author: i.author,
+        publishedAt: i.publishedAt,
+        title: i.title,
+        description: i.description,
+        url: i.url,
+      })
+    }
+    logger.info(returnObj.content.data)
+    returnObj.content.data = articles
+    returnObj.content = JSON.stringify(returnObj.content)
+    return returnObj
+  }
 }
 async function readPage(link) {
   let returnObj = {
@@ -187,4 +263,47 @@ async function readPage(link) {
   return returnObj
 }
 
-module.exports = { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage };
+async function stockSearch(stock) {
+  let returnObj = {
+    "role": "function",
+    "name": "stock_search",
+    "content": {}
+  }
+  responseObj = await axios.get(`https://api.polygon.io/v2/aggs/ticker/`, {
+    params: {
+      apiKey: POLYGON_KEY,
+      stocksTicker: stock.stocksTicker,
+      multiplier: stock.multiplier,
+      timespan: stock.timespan,
+      from: stock.from,
+      to: stock.to,
+      limit: 20,
+    }
+  })
+  returnObj.content.success = true
+  // returnObj.content.stock = {
+  //
+  // }
+  return returnObj
+
+}
+async function getCurrentTime(time) {
+  let returnObj = {
+    "role": "function",
+    "name": "get_current_time",
+    "content": {}
+  }
+  responseObj = await axios.get(`https://www.timeapi.io/api/Time/current/zone`, {
+    params: {
+      timeZone: "America/Toronto",
+    }
+  })
+  returnObj.content.success = true
+  returnObj.content.time = {
+    dateTime: responseObj.data.dateTime
+  }
+  returnObj.content = JSON.stringify(returnObj.content)
+  return returnObj
+}
+
+module.exports = { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime };

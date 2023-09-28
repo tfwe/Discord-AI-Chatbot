@@ -18,94 +18,55 @@ const traits = [
   "Links or images cannot be accessed without first searching",
   `Embeds are a very useful way to organize information so you use them often for lists or short paragraphs.`,
   `Created embeds will automatically be attached to the message that you send`,
-  `Most embeds should include an image, unless it is talking about something abstract`,
-  `The user should not know the details of function results`,
+  `Most embeds should include an image, unless it is explaining something abstract`,
   `Functions are only able to be called in response to a user message or another function call, but not an assistant message.`,
-  // `Searches should mainly be used for things related to current events, access to media, or access to a specific webpage or resource.`,
   `Searches should be used to access current information.`,
-  `Searches return a list of 5 entries with their title, link, and snippet.`,
-  `You can use a search query to find a website link, followed by a read page function call to view the information on that page`,
+  `Google searches return a list of 5 entries with their title, link, and snippet.`,
+  `Wikipedia searches return the title, url, image url, and summary of the first article.`,
+  // `You can use a search query to find a website link, followed by a read page function call to view the information on that page`,
   `Images should be displayed using the 'image' field in an embed`,
+  `News searches return the article source, title, the publication date, and a description.`,
+  `Stock searches return open/close price, max/min price, and trade volume all for specified period.`,
   `Only one image can be displayed at a time in an embed.`,
   `Information obtained from the internet should have a reference with a link, including images or facts`,
-  // "You should not ask the user for clarification and should simply do your best to guess what would be most appropriate in any given situation, including any names, topics, or colors. Be creative.",
   "When mentioning a user with '@${username}' you should instead use the format '<@${userid}>' in order to ping the user",
   `Assistant messages should be used to be personable with users and should leave information serving for embed creation.`,
   `All responses in must be 2000 characters or less to fit into Discord API limits.`,
   `Multiple function calls can be made in a row before the response is sent to prepare the information to send.`
 ];
 
-const sampleObj = {
-  "message": {
-    "author": {
-      "id": `"${OWNER_ID}"`
-    },
-    "content": "Make a sample message.",
-  }
-}
-const sampleRespObj = {
-  "message": {
-    "content": "This is a sample message",
-  }
-}
+// const sampleObj = {
+//   "message": {
+//     "author": {
+//       "id": `"${OWNER_ID}"`
+//     },
+//     "content": "Make a sample message.",
+//   }
+// }
+// const sampleRespObj = {
+//   "message": {
+//     "content": "This is a sample message",
+//   }
+// }
 const sysMessages = [
   {
     role: "system",
     content: `<@${CLIENT_ID}> 
     ${compileTraits(traits)}` 
-    // Remember it's extremely important to make sure any responses from here on are valid JSON strings since they will all be parsed by 'JSON.parse()'.\nTo start, let's try responding to the following JSON:\n
-// ${JSON.stringify(sampleObj)}`
-//   "createdRole": {
-//     "name": "Sample Role",
-//     "color": 55555,
-//     "mentionable": true,
-//     "hoist": true,
-//     "position": 1
-//   },
-//   "createdChannel": {
-//     "name": "Sample Channel",
-//     "topic": "A sample channel topic",
-//     "position": 1
-//   }
-// }`
   },
-  {
-    role: "user",
-    content: `Hi ${BOT_USERNAME} <@${CLIENT_ID}>, make a sample embed`
-  },
-  {
-    "role": "function",
-    "name": "create_embed",
-    "content": "{\"success\":true,\"createdEmbed\":{\"title\":\"Sample Embed\",\"description\":\"This is a sample embed to demonstrate the use of embeds in Discord.\",\"color\":3092790,\"fields\":[{\"name\":\"Field 1\",\"value\":\"This is the value of Field 1.\"},{\"name\":\"Field 2\",\"value\":\"This is the value of Field 2.\"},{\"name\":\"Field 3\",\"value\":\"This is the value of Field 3.\"}],\"image\":{},\"footer\":{\"text\":\"Sample Embed\"}}}"
-  },
-  {
-    role: "assistant",
-    content: `Sure, here's a sample embed.`
-  },
-
-//     content: `{
-//   "intent": "respond",
-//   "message": {
-//     "content": "This is the main message",
-//     "embeds": [
-//       {
-//         "type": "rich",
-//         "title": "Title",
-//         "description": "Description",
-//         "color": 55555,
-//         "fields": [
-//           {
-//             "name": "Field Title",
-//             "value": "Field Description"
-//           }
-//         ],
-//         "footer": {
-//           "text": "made with <3 by ${BOT_USERNAME}"
-//         }
-//       }
-//     ],
-//   },
-// }`
+  // {
+  //   role: "user",
+  //   content: `Hi ${BOT_USERNAME} <@${CLIENT_ID}>, make a sample embed`
+  // },
+  // {
+  //   "role": "function",
+  //   "name": "create_embed",
+  //   "content": "{\"success\":true,\"createdEmbed\":{\"title\":\"Sample Embed\",\"description\":\"This is a sample embed to demonstrate the use of embeds in Discord.\",\"color\":3092790,\"fields\":[{\"name\":\"Field 1\",\"value\":\"This is the value of Field 1.\"},{\"name\":\"Field 2\",\"value\":\"This is the value of Field 2.\"},{\"name\":\"Field 3\",\"value\":\"This is the value of Field 3.\"}],\"image\":{},\"footer\":{\"text\":\"Sample Embed\"}}}"
+  // },
+  // {
+  //   role: "assistant",
+  //   content: `Sure, here's a sample embed.`
+  // },
 ];
 
 const functions = [
@@ -119,10 +80,14 @@ const functions = [
   },
   {
     "name": "create_embed",
-    "description": "Creates discord.js embed to add to your message",
+    "description": "Creates discord.js embed message",
     "parameters": {
       "type": "object",
       "properties": {
+        "content": {
+          "type:": "string",
+          "description": "The content property of the discord.js message",
+        },
         "title": {
           "type": "string",
           "description": "The title of the embed (cannot use markdown)"
@@ -233,7 +198,7 @@ const functions = [
   }, 
   {
     "name": "search_query",
-    "description": "Search for a query in google",
+    "description": "Search for a query using a specified api",
     "parameters": {
       "type": "object",
       "properties": {
@@ -241,43 +206,83 @@ const functions = [
           "type": "string",
           "description": "The query to search"
         },
-        "searchType": {
+        "api": {
           "type": "string",
-          "enum": ["searchTypeUndefined", "image"],
-          "description": "Whether to do a normal search or an image search"
+          "enum": ["google", "image", "wikipedia", "news"],
+          "description": "Which search API to use"
         }
       },
-      "required": ["query", "searchType"]
+      "required": ["query", "api"]
     }
   }, 
   {
-    "name": "read_page",
-    "description": "Read a text only extract portion of a webpage, omits all links and images",
+    "name": "stock_search",
+    "description": "Get stock market data with polygon.io api. ",
     "parameters": {
       "type": "object",
       "properties": {
-        "link": {
+        "stocksTicker": {
           "type": "string",
-          "description": "The link of the webpage to visit"
+          "description": "Ticker symbol of stock/equity"
         },
+        "multiplier": {
+          "type": "string",
+          "description": "Size of timespan multiplier"
+        },
+        "timespan": {
+          "type": "string",
+          "enum": ["year", "quarter", "month", "week", "day", "hour"],
+          "description": "Size of time window"
+        },
+        "from": {
+          "type": "string",
+          "description": "Start of time window, format YYYY-MM-DD or a millisecond timestamp"
+        },
+        "to": {
+          "type": "string",
+          "description": "End of time window, format YYYY-MM-DD or a millisecond timestamp"
+        }
       },
-      "required": ["link"]
+      "required": ["stocksTicker", "multiplier", "timespan", "from", "to"]
     }
-  }  // {
-  //   "name": "hello_world",
-  //   "description": "Tests if function calls are working properly",
+  },
+  {
+    "name": "get_current_time",
+    "description": "Returns the current date and time in EST",
+    "property": {},
+  }
+  // {
+  //   "name": "read_page",
+  //   "description": "Summarize a webpage, omits all links and images",
   //   "parameters": {
   //     "type": "object",
   //     "properties": {
-  //       "param1": {
-  //         "type": "int",
-  //         "description": "sample property"
+  //       "link": {
+  //         "type": "string",
+  //         "description": "The link of the webpage to visit"
   //       },
   //     },
-  //     "required": ["param1"]
+  //     "required": ["link"]
   //   }
   // }
 ]
+async function stockSearchReq(stock) {
+  return JSON.stringify({
+    "stock": {
+      "stocksTicker": stock.stocksTicker,
+      "multiplier": stock.multiplier,
+      "timespan": stock.timespan,
+      "from": stock.from,
+      "to": stock.to
+    }
+  })
+}
+
+async function getCurrentTimeReq() {
+  return JSON.stringify({
+    "time": {}
+  })
+}
 
 async function getUserInfoReq() { 
   return JSON.stringify({
@@ -287,6 +292,7 @@ async function getUserInfoReq() {
 async function createEmbedReq(embed) {
   return JSON.stringify(
     {
+      "content": embed.content,
       "embed": {
         "title": embed.title,
         "description": embed.description,
@@ -326,7 +332,7 @@ async function searchQueryReq(query) {
   return JSON.stringify({
     "query": {
       "query": query.query,
-      "searchType": query.searchType
+      "api": query.api
     }
   })
 }
@@ -363,13 +369,13 @@ function compileTraits(traitsArray) {
 //   
 //   return compressed;
 // }
-async function generateGPTSysMessage(responseJson) {
-  const gptMessage = {
-    role: 'system',
-    content: JSON.stringify(responseJson)
-  }
-  return gptMessage
-}
+// async function generateGPTSysMessage(responseJson) {
+//   const gptMessage = {
+//     role: 'system',
+//     content: JSON.stringify(responseJson)
+//   }
+//   return gptMessage
+// }
 
 async function generateGPTMessage(message) {
   let role = 'user';
@@ -406,7 +412,7 @@ async function generateGPTMessage(message) {
 async function generatePrompt(message) {
   const channel = message.channel
   const messages = await channel.messages.fetch({ limit: MAX_PREV_MESSAGES + 1})
-  lastMessages = messages.reverse()
+  let lastMessages = messages.reverse()
   const generatedMessages = [];
   for (let msg of lastMessages) {
     let generatedMessage = await generateGPTMessage(msg)
@@ -421,8 +427,8 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
-  // let model = "gpt-3.5-turbo-0613"
+  // let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
+  let model = "gpt-3.5-turbo-0613"
   // let model = "gpt-4"
   const completion = await openai.createChatCompletion({
     model: model,
@@ -440,6 +446,8 @@ async function generateResponse(promptMessages, message) {
       create_channel: createChannelReq,
       search_query: searchQueryReq,
       read_page: readPageReq,
+      stock_search: stockSearchReq,
+      get_current_time: getCurrentTimeReq
     }
     const functionName = response.function_call.name
     const functionToCall = availableFunctions[functionName]
@@ -470,8 +478,8 @@ async function generateResponse(promptMessages, message) {
     // });  
     // return secondCompletion.data.choices[0].message
   }
-  const inputInspect = util.inspect(fullMessages, {showHidden: false, depth: null, colors: true})
-  const outputInspect = util.inspect(response.content, {showHidden: false, depth: null, colors: true})
+  // const inputInspect = util.inspect(fullMessages, {showHidden: false, depth: null, colors: true})
+  // const outputInspect = util.inspect(response.content, {showHidden: false, depth: null, colors: true})
   // const secondInspect = util.inspect(secondResponse, {showHidden: false, depth: null, colors: true})
 
   // logger.info(inputInspect)

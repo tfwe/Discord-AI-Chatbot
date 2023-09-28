@@ -2,7 +2,7 @@ const logger = require('../logger');
 const { MAX_PREV_MESSAGES } = require('../config.json');
 const { generateResponse, generatePrompt } = require('../generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
-const { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage } = require('../intent.js');
+const { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime } = require('../intent.js');
 const { axios } = require('axios')
 const CLIENT_ID = process.env.CLIENT_ID
 module.exports = {
@@ -38,15 +38,13 @@ module.exports = {
         // formattedPrompt.push(response)
         message.channel.sendTyping()
         if (response.name == "get_user_info") {
-          const messages = await channel.messages.fetch({ limit: MAX_PREV_MESSAGES + 1})
-          lastMessages = messages.reverse()
-          logger.info(channel.messages)
           const getUserInfoResultObj = await getUserInfo(message) 
           formattedPrompt.push(getUserInfoResultObj)
         }
         if (response.name == "create_embed") {
           const createEmbedResultObj = await createEmbed(responseObj.embed)
           formattedPrompt.push(createEmbedResultObj)
+          break
         }
         if (response.name == "create_role") {
           const createRoleResultObj = await createRole(responseObj.role, responseObj.userid, message)
@@ -64,6 +62,13 @@ module.exports = {
           const readPageResultObj = await readPage(responseObj.link)
           formattedPrompt.push(readPageResultObj)
         }
+        if (response.name == "stock_search") {
+          const stockSearchResultObj = await stockSearch(responseObj.stock)
+          formattedPrompt.push(stockSearchResultObj)
+        }
+        if (response.name == "get_current_time") {
+          const getCurrentTimeResultObj = await getCurrentTime(responseObj.time)
+        }
         response = await generateResponse(formattedPrompt, message)
         logger.error("INPUT******************")
         logger.error(formattedPrompt)
@@ -79,6 +84,7 @@ module.exports = {
         }
         if (responseObj.embed) {
           messageObj.embeds = [ responseObj.embed ]
+          messageObj.content = responseObj.content
         }
         logger.error(messageObj)
         if (messageObj) await message.reply(messageObj)
