@@ -68,6 +68,7 @@ module.exports = {
         }
         if (response.name == "get_current_time") {
           const getCurrentTimeResultObj = await getCurrentTime(responseObj.time)
+          formattedPrompt.push(getCurrentTimeResultObj)
         }
         response = await generateResponse(formattedPrompt, message)
         logger.error("INPUT******************")

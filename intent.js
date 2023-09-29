@@ -120,56 +120,63 @@ async function searchQuery(query) {
   }
   let options = {}
   let responseObj = {}
-  switch (query.api) {
-    case "google":
-      responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
-        params: {
-          key: GOOGLE_KEY,
-          cx: GOOGLE_CX,
-          q: query.query,
-          searchType: "searchTypeUndefined",
-          num: 5
+  try {
+    switch (query.api) {
+      case "google":
+        responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
+          params: {
+            key: GOOGLE_KEY,
+            cx: GOOGLE_CX,
+            q: query.query,
+            searchType: "searchTypeUndefined",
+            num: 5
+          }
+        })
+        break;
+      case "image":
+        responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
+          params: {
+            key: GOOGLE_KEY,
+            cx: GOOGLE_CX,
+            q: query.query,
+            searchType: "image",
+            num: 5
+          }
+        })
+        break;
+      case "wikipedia":
+        options = {
+          method: 'GET',
+          url: 'https://wiki-briefs.p.rapidapi.com/search',
+          params: {
+            q: query.query,
+            topk: '5'
+          },
+          headers: {
+            'X-RapidAPI-Key': XRAPID_KEY,
+            'X-RapidAPI-Host': 'wiki-briefs.p.rapidapi.com'
+          }
         }
-      })
-      break;
-    case "image":
-      responseObj = await axios.get(`https://www.googleapis.com/customsearch/v1`, {
-        params: {
-          key: GOOGLE_KEY,
-          cx: GOOGLE_CX,
-          q: query.query,
-          searchType: "image",
-          num: 5
-        }
-      })
-      break;
-    case "wikipedia":
-      options = {
-        method: 'GET',
-        url: 'https://wiki-briefs.p.rapidapi.com/search',
-        params: {
-          q: query.query,
-          topk: '5'
-        },
-        headers: {
-          'X-RapidAPI-Key': XRAPID_KEY,
-          'X-RapidAPI-Host': 'wiki-briefs.p.rapidapi.com'
-        }
-      }
-      responseObj = await axios.request(options)
-      break;
-    case "news":
-      responseObj = await axios.get(`https://newsapi.org/v2/everything`, {
-        params: {
-          apiKey: NEWSAPI_KEY,
-          q: query.query,
-          pageSize: 5,
-        }
-      })
-    default:
-      break;
+        responseObj = await axios.request(options)
+        break;
+      case "news":
+        responseObj = await axios.get(`https://newsapi.org/v2/everything`, {
+          params: {
+            apiKey: NEWSAPI_KEY,
+            q: query.query,
+            pageSize: 5,
+          }
+        })
+      default:
+        break;
+    } 
   }
-
+catch(error) {
+      returnObj.content.success = false
+      returnObj.content.reason = error.message
+      returnObj.content = JSON.stringify(returnObj.content)
+      return returnObj
+    }
 
   if (!responseObj.data) {
     returnObj.content.success = false
@@ -269,21 +276,35 @@ async function stockSearch(stock) {
     "name": "stock_search",
     "content": {}
   }
-  responseObj = await axios.get(`https://api.polygon.io/v2/aggs/ticker/`, {
+  responseObj = await axios.get(`https://api.polygon.io/v2/aggs/ticker/${stock.stocksTicker}/range/${stock.multiplier}/${stock.timespan}/${stock.from}/${stock.to}`, {
     params: {
       apiKey: POLYGON_KEY,
-      stocksTicker: stock.stocksTicker,
-      multiplier: stock.multiplier,
-      timespan: stock.timespan,
-      from: stock.from,
-      to: stock.to,
-      limit: 20,
+      // stocksTicker: stock.stocksTicker,
+      // multiplier: stock.multiplier,
+      // timespan: stock.timespan,
+      // from: stock.from,
+      // to: stock.to,
+      // limit: 20,
     }
   })
+  logger.info(responseObj.data)
   returnObj.content.success = true
-  // returnObj.content.stock = {
-  //
-  // }
+  let results = []
+  for (let i of responseObj.data.results) {
+    results.push({
+      closePrice: i.c,
+      highestPrice: i.h,
+      lowestPrice: i.l,
+      openPrice: i.o,
+      tradeVolume: i.v
+    })
+  }
+  returnObj.content.stock = {
+    ticker: responseObj.data.ticker,
+    adjusted: responseObj.data.adjusted,
+    results: results
+  }
+  returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 
 }

@@ -17,8 +17,9 @@ const traits = [
   "Any discord.js related functions should be done before a message is sent",
   "Links or images cannot be accessed without first searching",
   `Embeds are a very useful way to organize information so you use them often for lists or short paragraphs.`,
-  `Created embeds will automatically be attached to the message that you send`,
-  `Most embeds should include an image, unless it is explaining something abstract`,
+  // `Created embeds will automatically be attached to the message that you send`,
+  `Embeds should often include an image`,
+  `Only one image can be displayed at a time in an embed.`,
   `Functions are only able to be called in response to a user message or another function call, but not an assistant message.`,
   `Searches should be used to access current information.`,
   `Google searches return a list of 5 entries with their title, link, and snippet.`,
@@ -26,11 +27,11 @@ const traits = [
   // `You can use a search query to find a website link, followed by a read page function call to view the information on that page`,
   `Images should be displayed using the 'image' field in an embed`,
   `News searches return the article source, title, the publication date, and a description.`,
-  `Stock searches return open/close price, max/min price, and trade volume all for specified period.`,
-  `Only one image can be displayed at a time in an embed.`,
+  `You should use other relevant apis to search for information if one doesn't work, including searching for images`,
+  // `Stock searches return open/close price, max/min price, and trade volume all for specified period.`,
+  // `Stock searches should always be preceded by getting the current date and time`,
   `Information obtained from the internet should have a reference with a link, including images or facts`,
   "When mentioning a user with '@${username}' you should instead use the format '<@${userid}>' in order to ping the user",
-  `Assistant messages should be used to be personable with users and should leave information serving for embed creation.`,
   `All responses in must be 2000 characters or less to fit into Discord API limits.`,
   `Multiple function calls can be made in a row before the response is sent to prepare the information to send.`
 ];
@@ -70,14 +71,14 @@ const sysMessages = [
 ];
 
 const functions = [
-  {
-    "name": "get_user_info",
-    "description": "Get the username and userid of the user who sent the last message",
-    "parameters": {
-      "type": "object",
-      "properties": {}
-    }
-  },
+  // {
+  //   "name": "get_user_info",
+  //   "description": "Get the username and userid of the user who sent the last message",
+  //   "parameters": {
+  //     "type": "object",
+  //     "properties": {}
+  //   }
+  // },
   {
     "name": "create_embed",
     "description": "Creates discord.js embed message",
@@ -140,62 +141,62 @@ const functions = [
       "required": ["title", "description", "color", "fields"]
     }
   },
-  {
-    "name": "create_role",
-    "description": "Create a role and assigns it to the specified user",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the role"
-        },
-        "color": {
-          "type": "integer",
-          "description": "The color of the role"
-        },
-        "mentionable": {
-          "type": "boolean",
-          "description": "Whether or not the role can be mentioned"
-        },
-        "hoist": {
-          "type": "boolean",
-          "description": "Whether or not to hoist the role"
-        },
-        "position": {
-          "type": "integer",
-          "description": "The position in the server role list to put the role"
-        },
-        "userid": {
-          "type": "string",
-          "description": "The userid of the user the role is being assigned to"
-        },
-      },
-      "required": ["name", "color", "mentionable", "hoist", "position", "userid"]
-      }
-    },
-  {
-    "name": "create_channel",
-    "description": "Create a channel in the server",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "description": "The name of the channel"
-        },
-        "topic": {
-          "type": "string",
-          "description": "The topic of the channel"
-        },
-        "position" : {
-          "type": "integer",
-          "description": "The position in the server channel list to put the channel"
-        },
-      },
-      "required": ["name", "topic", "position"]
-    }
-  }, 
+  // {
+  //   "name": "create_role",
+  //   "description": "Create a role and assigns it to the specified user",
+  //   "parameters": {
+  //     "type": "object",
+  //     "properties": {
+  //       "name": {
+  //         "type": "string",
+  //         "description": "The name of the role"
+  //       },
+  //       "color": {
+  //         "type": "integer",
+  //         "description": "The color of the role"
+  //       },
+  //       "mentionable": {
+  //         "type": "boolean",
+  //         "description": "Whether or not the role can be mentioned"
+  //       },
+  //       "hoist": {
+  //         "type": "boolean",
+  //         "description": "Whether or not to hoist the role"
+  //       },
+  //       "position": {
+  //         "type": "integer",
+  //         "description": "The position in the server role list to put the role"
+  //       },
+  //       "userid": {
+  //         "type": "string",
+  //         "description": "The userid of the user the role is being assigned to"
+  //       },
+  //     },
+  //     "required": ["name", "color", "mentionable", "hoist", "position", "userid"]
+  //     }
+  //   },
+  // {
+  //   "name": "create_channel",
+  //   "description": "Create a channel in the server",
+  //   "parameters": {
+  //     "type": "object",
+  //     "properties": {
+  //       "name": {
+  //         "type": "string",
+  //         "description": "The name of the channel"
+  //       },
+  //       "topic": {
+  //         "type": "string",
+  //         "description": "The topic of the channel"
+  //       },
+  //       "position" : {
+  //         "type": "integer",
+  //         "description": "The position in the server channel list to put the channel"
+  //       },
+  //     },
+  //     "required": ["name", "topic", "position"]
+  //   }
+  // }, 
   {
     "name": "search_query",
     "description": "Search for a query using a specified api",
@@ -215,41 +216,45 @@ const functions = [
       "required": ["query", "api"]
     }
   }, 
-  {
-    "name": "stock_search",
-    "description": "Get stock market data with polygon.io api. ",
-    "parameters": {
-      "type": "object",
-      "properties": {
-        "stocksTicker": {
-          "type": "string",
-          "description": "Ticker symbol of stock/equity"
-        },
-        "multiplier": {
-          "type": "string",
-          "description": "Size of timespan multiplier"
-        },
-        "timespan": {
-          "type": "string",
-          "enum": ["year", "quarter", "month", "week", "day", "hour"],
-          "description": "Size of time window"
-        },
-        "from": {
-          "type": "string",
-          "description": "Start of time window, format YYYY-MM-DD or a millisecond timestamp"
-        },
-        "to": {
-          "type": "string",
-          "description": "End of time window, format YYYY-MM-DD or a millisecond timestamp"
-        }
-      },
-      "required": ["stocksTicker", "multiplier", "timespan", "from", "to"]
-    }
-  },
+  // {
+  //   "name": "stock_search",
+  //   "description": "Get stock market data with polygon.io api. ",
+  //   "parameters": {
+  //     "type": "object",
+  //     "properties": {
+  //       "stocksTicker": {
+  //         "type": "string",
+  //         "description": "Ticker symbol of stock/equity"
+  //       },
+  //       "multiplier": {
+  //         "type": "string",
+  //         "description": "Size of timespan multiplier"
+  //       },
+  //       "timespan": {
+  //         "type": "string",
+  //         "enum": ["year", "quarter", "month", "week", "day", "hour"],
+  //         "description": "Size of time window"
+  //       },
+  //       "from": {
+  //         "type": "string",
+  //         "description": "Start of time window, format YYYY-MM-DD or a millisecond timestamp"
+  //       },
+  //       "to": {
+  //         "type": "string",
+  //         "description": "End of time window, format YYYY-MM-DD or a millisecond timestamp"
+  //       }
+  //     },
+  //     "required": ["stocksTicker", "multiplier", "timespan", "from", "to"]
+  //   }
+  // },
   {
     "name": "get_current_time",
     "description": "Returns the current date and time in EST",
-    "property": {},
+    "parameters": {
+      "type":"object",
+      "properties": {}
+    },
+    "required": []
   }
   // {
   //   "name": "read_page",
@@ -427,8 +432,8 @@ async function generateResponse(promptMessages, message) {
     ...sysMessages,
     ...promptMessages
   ]
-  // let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
-  let model = "gpt-3.5-turbo-0613"
+  let model = (message.author.id == OWNER_ID) ? "gpt-4" : "gpt-3.5-turbo-0613"
+  // let model = "gpt-3.5-turbo-0613"
   // let model = "gpt-4"
   const completion = await openai.createChatCompletion({
     model: model,
