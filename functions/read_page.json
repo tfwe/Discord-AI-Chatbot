@@ -1,0 +1,14 @@
+{
+  "name": "read_page",
+  "description": "Summarize a webpage, omits all links and images",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "link": {
+        "type": "string",
+        "description": "The link of the webpage to visit"
+      }
+    },
+    "required": ["link"]
+  }
+}

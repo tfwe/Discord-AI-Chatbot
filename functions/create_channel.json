@@ -1,0 +1,22 @@
+{
+  "name": "create_channel",
+  "description": "Create a channel in the server",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The name of the channel"
+      },
+      "topic": {
+        "type": "string",
+        "description": "The topic of the channel"
+      },
+      "position" : {
+        "type": "integer",
+        "description": "The position in the server channel list to put the channel"
+      }
+    },
+    "required": ["name", "topic", "position"]
+  }
+}

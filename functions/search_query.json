@@ -1,0 +1,19 @@
+{
+  "name": "search_query",
+  "description": "Search for a query using a specified api",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "The query to search"
+      },
+      "api": {
+        "type": "string",
+        "enum": ["image", "wikipedia", "news"],
+        "description": "Which search API to use"
+      }
+    },
+    "required": ["query", "api"]
+  }
+}

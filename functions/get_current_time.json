@@ -1,0 +1,9 @@
+{
+  "name": "get_current_time",
+  "description": "Returns the current date and time in EST",
+  "parameters": {
+    "type":"object",
+    "properties": {}
+  },
+  "required": []
+}

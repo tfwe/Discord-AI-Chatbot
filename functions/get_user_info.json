@@ -1,0 +1,8 @@
+{
+  "name": "get_user_info",
+  "description": "Get the username and userid of the user who sent the last message",
+  "parameters": {
+    "type": "object",
+    "properties": {}
+  }
+}

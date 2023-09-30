@@ -1,0 +1,34 @@
+{
+  "name": "create_role",
+  "description": "Create a role and assigns it to the specified user",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "The name of the role"
+      },
+      "color": {
+        "type": "integer",
+        "description": "The color of the role"
+      },
+      "mentionable": {
+        "type": "boolean",
+        "description": "Whether or not the role can be mentioned"
+      },
+      "hoist": {
+        "type": "boolean",
+        "description": "Whether or not to hoist the role"
+      },
+      "position": {
+        "type": "integer",
+        "description": "The position in the server role list to put the role"
+      },
+      "userid": {
+        "type": "string",
+        "description": "The userid of the user the role is being assigned to"
+      }
+    },
+    "required": ["name", "color", "mentionable", "hoist", "position", "userid"]
+  }
+}

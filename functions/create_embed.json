@@ -1,0 +1,62 @@
+{
+  "name": "create_embed",
+  "description": "Creates discord.js embed message",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "content": {
+        "type:": "string",
+        "description": "The content property of the discord.js message"
+      },
+      "title": {
+        "type": "string",
+        "description": "The title of the embed (cannot use markdown)"
+      },
+      "description": {
+        "type": "string",
+        "description": "The embed's description"
+      },
+      "color": {
+        "type": "integer",
+        "description": "The color of the embed, use mostly 3092790"
+      },
+      "fields": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the field (cannot use markdown)"
+            },
+            "value": {
+              "type": "string",
+              "description": "The value of the field"
+            }
+          },
+          "required": ["name", "value"]
+        },
+        "description": "Array of fields for the embed"
+      },
+      "image": {
+        "type": "string",
+        "description": "Link to image"
+      },
+      "url": {
+        "type": "string",
+        "description": "Attached URL for the embed"
+      },
+      "footer": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "description": "The text for the footer (cannot use markdown)"
+          }
+        },
+        "required": ["text"]
+      }
+    },
+    "required": ["title", "description", "fields"]
+  }
+}
