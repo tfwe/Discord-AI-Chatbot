@@ -269,7 +269,13 @@ async function readPage(link) {
   returnObj.content = JSON.stringify(returnObj.content)
   return returnObj
 }
-
+async function splitMessage(message) {
+  let returnObj = {
+    "role": "function",
+    "name": "split_message",
+    "content": message.content
+  }
+}
 async function stockSearch(stock) {
   let returnObj = {
     "role": "function",
@@ -327,4 +333,4 @@ async function getCurrentTime(time) {
   return returnObj
 }
 
-module.exports = { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime };
+module.exports = { splitMessage, getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime };

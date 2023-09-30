@@ -1,11 +1,14 @@
-const fs = require('node:fs');
-const util = require('util')
-const path = require('node:path');
 require('dotenv').config()
 const logger = require('./logger');
+const fs = require('node:fs');
+const path = require('node:path');
 const { Client, Events, GatewayIntentBits, Collection, ChannelType, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, StringSelectMenuBuilder, TextInputBuilder, TextInputStyle, } = require('discord.js');
+const util = require('util')
 const TOKEN = process.env.TOKEN
 const OPENAI_KEY = process.env.OPENAI_KEY
+
+//JSON.stringify complains when running into a BigInt for some reason, this happens when JSON.toString() is called on interaction object
+BigInt.prototype.toJSON = function() { return this.toString() }
 
 const client = new Client({ intents: [
   GatewayIntentBits.Guilds,
@@ -20,8 +23,6 @@ const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('
 const interactionsPath = path.join(__dirname, 'interactions');
 const interactionFiles = fs.readdirSync(interactionsPath).filter(file => file.endsWith('.js'));
 
-//JSON.stringify complains when running into a BigInt for some reason, this happens when JSON.toString() is called on interaction object
-BigInt.prototype.toJSON = function() { return this.toString() }
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
   const command = require(filePath);
@@ -33,28 +34,6 @@ for (const file of commandFiles) {
   }
 }
 
-// When the client is ready, run this code (only once)
-client.once(Events.ClientReady, () => {
-  if (!OPENAI_KEY) {
-    return logger.error('OpenAI key not configured in .env');
-  }
-  logger.info(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity('Mention me, reply to one of my messages, or type /ask to talk to me!');
-  client.application.commands.set([])
-});
-
-// client.on("guildCreate", guild => {
-//   if (!guildIds.includes(guild.id)) {
-//     const deployCommands = require('./deploy-commands.js');
-//     guildIds.push(guild.id);
-//     fs.writeFile('./config.json', JSON.stringify({ token, guildIds, clientId, apiKey, ownerId }), (err) => {
-//       if (err) logger.error(err);
-//     });
-//     deployCommands();
-//     logger.info(`[guildCreate] Bot was added to new guild ${guild.id}`)
-//   }
-// });
-//
 for (const file of interactionFiles) {
   const filePath = path.join(interactionsPath, file);
   const event = require(filePath);
@@ -66,6 +45,16 @@ for (const file of interactionFiles) {
   }
 }
 
+// When the client is ready, run this code (only once)
+client.once(Events.ClientReady, () => {
+  if (!OPENAI_KEY) {
+    return logger.error('OpenAI key not configured in .env');
+  }
+  logger.info(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity('Type /ask to talk to me!');
+  client.application.commands.set([])
+});
+
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
   const command = client.commands.get(interaction.commandName);
@@ -74,14 +63,14 @@ client.on(Events.InteractionCreate, async interaction => {
     logger.info(`[chatCommand] ${interaction.member.user.tag} used ${interaction}`)
     await command.execute(interaction);
   } catch (error) {
-    await interaction.channel.send({content: `Something went wrong` + `\n\`\`\`${error}\`\`\``})
+    await interaction.editReply({content: `Something went wrong` + `\n\`\`\`${error}\`\`\``})
     const interactionInspect = util.inspect(interaction, {showHidden: false, depth: null, colors: true})
-    logger.error(`[WARN] ${error} from ${interaction.member.user.tag} on message ${interaction.customId} ${interactionInspect}`);
+    logger.error(`[WARN] ${error} from ${interaction.member.user.tag} on ${interactionInspect}`);
     return
   }
 });
 
-client.on(Events.Debug, m => logger.debug(m));
+client.on(Events.Debug, m => logger.trace(m));
 client.on(Events.Warn, m => logger.warn(m));
 client.on(Events.Error, m => logger.error(m));
 client.login(TOKEN);

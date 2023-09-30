@@ -5,6 +5,7 @@ const { ChannelType, PermissionsBitField } = require('discord.js');
 const { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime } = require('../intent.js');
 const { axios } = require('axios')
 const CLIENT_ID = process.env.CLIENT_ID
+const OWNER_ID = process.env.OWNER_ID
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
@@ -13,6 +14,7 @@ module.exports = {
     // const guild = message.guild;
     // Check if the bot has been mentioned
     if (!message.mentions.has(CLIENT_ID)) return;
+    return await message.reply(`Please use \`/ask [prompt]\` instead`)
     
     // Get the prompt from the message
 
@@ -20,6 +22,8 @@ module.exports = {
     
     const author = message.author.id
     if (author === CLIENT_ID) return;
+    // if (author === OWNER_ID) {
+    // }
     // Generate response from OpenAI
     // try {
       message.channel.sendTyping()

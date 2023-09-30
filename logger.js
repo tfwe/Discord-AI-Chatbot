@@ -7,5 +7,6 @@ const transport = pino.transport({
   dedupe: true
 });
 const logger = pino(transport);
+logger.level = 'info'
 module.exports = logger;
 
