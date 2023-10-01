@@ -183,12 +183,12 @@ module.exports = {
     logger.debug(`sent message: ${JSON.stringify(messageObj)}`)
     if (response.content.length <= 2000)
       return await interaction.editReply({content: response.content, embeds: messageObj.embeds})
-    // await interaction.editReply(messageObj.content.slice(0,1999))
-    // messageObj.content = messageObj.content.slice(1999, messageObj.content.length - 1)
-    // await interaction.channel.send(messageObj.content.slice(0,1999))
-    // while (messageObj.content.length > 2000) {
-    //   messageObj.content = messageObj.content.slice(2000, messageObj.content.length - 1)
-    //   await interaction.channel.send(messageObj.content.slice(0,1999))
-    // }
+    await interaction.editReply(response.content.slice(0,1999))
+    response.content = response.content.slice(1999, response.content.length - 1)
+    await interaction.channel.send(response.content.slice(0,1999))
+    while (response.content.length > 2000) {
+      response.content = response.content.slice(1999, response.content.length - 1)
+      await interaction.channel.send(response.content.slice(0,1999))
+    }
   }
 }

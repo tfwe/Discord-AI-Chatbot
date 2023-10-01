@@ -161,18 +161,17 @@ async function askGPT(interaction, gptMessages, functionsList, model) {
     }
     const functionName = response.function_call.name
     const functionToCall = availableFunctions[functionName]
-    try {
-
-    let functionArgs = JSON.parse(response.function_call.arguments)
-    var functionResponse = await functionToCall(functionArgs)
-    }
-    catch {
-      return {
-        "role": "function",
-        "name": functionName,
-        "content": "{\"result\": \"failed to execute function\"}",
-      }
-    }
+    // try {
+      let functionArgs = JSON.parse(response.function_call.arguments)
+      var functionResponse = await functionToCall(functionArgs)
+    // }
+    // catch (error) {
+    //   return {
+    //     "role": "function",
+    //     "name": functionName,
+    //     "content": error.message,
+    //   }
+    // }
     return {
       "role": "function",
       "name": functionName,
