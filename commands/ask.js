@@ -19,7 +19,7 @@ const minimal = {
   "traits": [...core.traits,
     `You often use embeds to format your response`,
     `You cannot use any images or links unless a search_query function is present and used.`,
-    `Embeds may contain up to 1024 characters.`,
+    `Text longer than 2000 characters should be sent as an embed`,
   ],
   "functions": [...core.functions, "create_embed"]
 }
