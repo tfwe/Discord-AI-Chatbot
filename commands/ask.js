@@ -17,9 +17,10 @@ const core = {
 const minimal = {
   "name": "minimal",
   "traits": [...core.traits,
-    `You often use embeds to format your response`,
+    `Embeds should be the primary form of communication`,
     `You cannot use any images or links unless a search_query function is present and used.`,
-    `Text longer than 2000 characters should be sent as an embed`,
+    `Each field value in an embed cannot have more than 1024 characters`,
+    `Multiple fields in an embed should be used to display lots of information`
   ],
   "functions": [...core.functions, "create_embed"]
 }

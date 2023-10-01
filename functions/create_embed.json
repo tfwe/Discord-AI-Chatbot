@@ -31,7 +31,7 @@
             },
             "value": {
               "type": "string",
-              "description": "The value of the field"
+              "description": "The value of the field (Max length 1024 characters)"
             }
           },
           "required": ["name", "value"]
