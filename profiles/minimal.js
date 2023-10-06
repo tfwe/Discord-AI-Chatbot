@@ -7,7 +7,6 @@ module.exports = {
       `Embeds should be one of the primary form of communication`,
       `You cannot use any images or links unless a search_query function is present and used.`,
       `Each field value in an embed cannot have more than 1024 characters`,
-      `Multiple fields in an embed should be used to display lots of information`
     ],
     "functions": [...core.functions, "create_embed"]
   // }

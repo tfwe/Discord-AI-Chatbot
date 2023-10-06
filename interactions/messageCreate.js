@@ -6,12 +6,25 @@ const { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPa
 const { axios } = require('axios')
 const CLIENT_ID = process.env.CLIENT_ID
 const OWNER_ID = process.env.OWNER_ID
+async function getReplyChain(message) {
+  const replyChain = [];
+  let currentMessage = message;
+
+  while (currentMessage.reference && replyChain.length < 2) {
+    replyChain.push({
+      author: currentMessage.author,
+      content: currentMessage.content
+    })
+    // const user = await message.guild.members.cache.find(member => member.id === userid)
+    currentMessage = await currentMessage.channel.messages.fetch(currentMessage.reference.messageID)
+    if (!currentMessage) break
+  }
+  return replyChain;
+}
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
     const channel = message.channel
-
-    // const guild = message.guild;
     // Check if the bot has been mentioned
     if (!message.mentions.has(CLIENT_ID)) return;
     // return await message.reply(`Please use \`/ask [prompt]\` instead`)
@@ -19,7 +32,7 @@ module.exports = {
     const promptMsg = message.content
     let profile = "minimal"
     let model = "gpt-3.5-turbo-0613"
-    let messageNum = 2
+    let messageNum = 1
     logger.debug(`preparing GPT Messages from prompt:${promptMsg} profile:${profile} model:${model}`)
     const formattedPrompt = await askGPTMessage(message, promptMsg, profile, messageNum)
     logger.debug(`formattedPrompt: ${JSON.stringify(formattedPrompt)}`)

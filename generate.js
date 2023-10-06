@@ -189,6 +189,7 @@ async function askGPTMessage(interaction, promptMsg, profileName, messageNum) {
     const messages = await channel.messages.fetch({ limit: messageNum })
     let lastMessages = messages.reverse()
     for (let msg of lastMessages) {
+      if (msg[1].content == promptMsg) continue
       let generatedMessage = await generateGPTMessage(msg)
       generatedMessages.push(generatedMessage)
     }
