@@ -10,6 +10,15 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const CLIENT_ID = process.env.CLIENT_ID
 
+const profiles = []
+const profilesPath = path.join(__dirname, './profiles/');
+const profileFiles = fs.readdirSync(profilesPath).filter(file => file.endsWith('.js'));
+for (const file of profileFiles) {
+  const filePath = path.join(profilesPath, file);
+  const profile = require(filePath)
+  profiles.push(profile)
+}
+
 async function stockSearchReq(stock) {
   return JSON.stringify({
     "stock": {
@@ -105,16 +114,77 @@ function compileTraits(traitsArray) {
   return traitsString;
 }
 
+function embedToMarkdown(embed) {
+    let markdown = "";
 
-async function askGPTMessage(interaction, promptMsg, traits) {
+    // Add title
+    if (embed.title) {
+        markdown += `# ${embed.title}\n\n`;
+    }
+
+    // Add description
+    if (embed.description) {
+        markdown += `${embed.description}\n\n`;
+    }
+
+    // Add fields
+    if (embed.fields && embed.fields.length > 0) {
+        embed.fields.forEach(field => {
+            markdown += `## ${field.name}\n`;
+            markdown += `${field.value}\n\n`;
+        });
+    }
+
+    // Add footer
+    if (embed.footer) {
+        markdown += `---\n${embed.footer.text}\n`;
+    }
+
+    return markdown;
+}
+
+async function generateGPTMessage(discordMessageObj) {
+  let authorid
+  if (discordMessageObj.interaction) { // discordMessageObj is either a ping or an application command
+    // if (discordMessageObj[1].interaction.type == 1) { // type 1 is ping
+    //
+    // }
+    if (discordMessageObj[1].interaction.type == 2) { // type 2 is application command
+      authorid = discordMessageObj[1].interaction.user.id
+    }
+  }
+  else {
+    authorid = discordMessageObj[1].author.id
+  }
+  let embedText
+  if (discordMessageObj.embeds && discordMessageObj.embeds.length > 0) {
+    for (let i of discordMessageObj.embeds) {
+      embedText += embedToMarkdown(i)
+    }
+  }
+  const gptMessage = {
+    role: (authorid == CLIENT_ID)? "assistant" : "user",
+    content: `${discordMessageObj.content}\n${embedText}`
+  }
+  return gptMessage
+}
+
+async function askGPTMessage(interaction, promptMsg, profileName, messageNum) {
+  let profile = {}
+  for (let i of profiles) {
+    if (profileName == i.name) {
+      profile = i
+      break
+    }
+  }
   const generatedMessages = [];
   generatedMessages.push({
     role: "system",
-    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. ${compileTraits(traits)}` 
+    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. ${compileTraits(profile.traits)}` 
   })
   const channel = interaction.channel
-  if (MAX_PREV_MESSAGES >= 1) {
-    const messages = await channel.messages.fetch({ limit: MAX_PREV_MESSAGES })
+  if (messageNum >= 1 && messageNum <= MAX_PREV_MESSAGES) {
+    const messages = await channel.messages.fetch({ limit: messageNum })
     let lastMessages = messages.reverse()
     for (let msg of lastMessages) {
       let generatedMessage = await generateGPTMessage(msg)
@@ -128,7 +198,14 @@ async function askGPTMessage(interaction, promptMsg, traits) {
   return generatedMessages
 }
 
-async function askGPT(interaction, gptMessages, functionsList, model) {
+async function askGPT(gptMessages, profileName, model) {
+  let profile = {}
+  for (let i of profiles) {
+    if (profileName == i.name) {
+      profile = i
+      break
+    }
+  }
   const functions = []
   const functionsPath = path.join(__dirname, './functions/');
   const functionFiles = fs.readdirSync(functionsPath).filter(file => file.endsWith('.json'));
@@ -136,7 +213,7 @@ async function askGPT(interaction, gptMessages, functionsList, model) {
     const filePath = path.join(functionsPath, file);
     const jsonString = fs.readFileSync(filePath)
     const functionObj = JSON.parse(jsonString)
-    if (functionsList.length == 0 || functionsList.includes(functionObj.name)) {
+    if (profile.functions.length == 0 || profile.functions.includes(functionObj.name)) {
       functions.push(functionObj)
     }
   }

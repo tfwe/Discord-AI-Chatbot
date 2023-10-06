@@ -1,6 +1,6 @@
 const logger = require('../logger');
 const { MAX_PREV_MESSAGES } = require('../config.json');
-const { generateResponse, generatePrompt } = require('../generate.js');
+const { askGPTMessage, askGPT } = require('../generate.js');
 const { ChannelType, PermissionsBitField } = require('discord.js');
 const { getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime } = require('../intent.js');
 const { axios } = require('axios')
@@ -14,107 +14,84 @@ module.exports = {
     // const guild = message.guild;
     // Check if the bot has been mentioned
     if (!message.mentions.has(CLIENT_ID)) return;
-    return await message.reply(`Please use \`/ask [prompt]\` instead`)
-    
-    // Get the prompt from the message
-
-    const formattedPrompt = await generatePrompt(message)
-    
-    const author = message.author.id
-    if (author === CLIENT_ID) return;
-    // if (author === OWNER_ID) {
-    // }
-    // Generate response from OpenAI
-    // try {
-      message.channel.sendTyping()
-      var response = await generateResponse(formattedPrompt, message);
-      logger.error("INPUT******************")
-      logger.error(formattedPrompt)
-      logger.error("INPUT******************")
-      logger.error("OUTPUT******************")
-      logger.error(response)
-      logger.error("OUTPUT******************")
-    //   const responseJson = JSON.parse(response)
-    //   logger.info(formattedPrompt)  
-      var responseObj = {}
-      while (response.role == "function") {
-        responseObj = JSON.parse(response.content)
-        // formattedPrompt.push(response)
-        message.channel.sendTyping()
-        if (response.name == "get_user_info") {
-          const getUserInfoResultObj = await getUserInfo(message) 
-          formattedPrompt.push(getUserInfoResultObj)
-        }
-        if (response.name == "create_embed") {
-          const createEmbedResultObj = await createEmbed(responseObj.embed)
-          formattedPrompt.push(createEmbedResultObj)
-          break
-        }
-        if (response.name == "create_role") {
-          const createRoleResultObj = await createRole(responseObj.role, responseObj.userid, message)
-          formattedPrompt.push(createRoleResultObj)
-        }
-        if (response.name == "create_channel") {
-          const createChannelResultObj = await createChannel(responseObj.channel, message)
-          formattedPrompt.push(createChannelResultObj)
-        }
-        if (response.name == "search_query") {
-          const searchQueryResultObj = await searchQuery(responseObj.query)
-          formattedPrompt.push(searchQueryResultObj)
-        }
-        if (response.name == "read_page") {
-          const readPageResultObj = await readPage(responseObj.link)
-          formattedPrompt.push(readPageResultObj)
-        }
-        if (response.name == "stock_search") {
-          const stockSearchResultObj = await stockSearch(responseObj.stock)
-          formattedPrompt.push(stockSearchResultObj)
-        }
-        if (response.name == "get_current_time") {
-          const getCurrentTimeResultObj = await getCurrentTime(responseObj.time)
-          formattedPrompt.push(getCurrentTimeResultObj)
-        }
-        response = await generateResponse(formattedPrompt, message)
-        logger.error("INPUT******************")
-        logger.error(formattedPrompt)
-        logger.error("INPUT******************")
-        logger.error("OUTPUT******************")
-        logger.error(response)
-        logger.error("OUTPUT******************")
-        // responseObj = JSON.parse(response.content)
+    // return await message.reply(`Please use \`/ask [prompt]\` instead`)
+    await message.channel.sendTyping();
+    const promptMsg = message.content
+    let profile = "minimal"
+    let model = "gpt-3.5-turbo-0613"
+    let messageNum = 2
+    logger.debug(`preparing GPT Messages from prompt:${promptMsg} profile:${profile} model:${model}`)
+    const formattedPrompt = await askGPTMessage(message, promptMsg, profile, messageNum)
+    logger.debug(`formattedPrompt: ${JSON.stringify(formattedPrompt)}`)
+    logger.debug(`profile: ${JSON.stringify(profile)}`)
+    logger.info(`askGPT input: Asking ${profile} profile ${model}: ${promptMsg}`)
+    var response = await askGPT(formattedPrompt, profile, model);
+    logger.info(`askGPT output: ${response.content}`)
+    logger.debug(`raw output: ${JSON.stringify(response)}`)
+    var responseObj = {}
+    while (response.role == "function") {
+      logger.info(`running function ${response.name}..`)
+      responseObj = JSON.parse(response.content)
+      let functionReturnObj = {}
+      if (response.name == "get_user_info") {
+        functionReturnObj = await getUserInfo(message) 
+        formattedPrompt.push(functionReturnObj)
       }
-      // try {
-        const messageObj = {
-          content: response.content 
-        }
-        if (responseObj.embed) {
-          messageObj.embeds = [ responseObj.embed ]
-          messageObj.content = responseObj.content
-        }
-        logger.error(messageObj)
-        if (messageObj) await message.reply(messageObj)
-      //
-      // } catch {
-      //   let returnObj = {
-      //     "role": "function",
-      //     "name": "send_message",
-      //     "content": {
-      //       "success":false,
-      //       "reason":"could not parse JSON",
-      //       "data": response.content
-      //     }
-      //   }
-        // returnObj.content = JSON.stringify(returnObj.content)
-        // formattedPrompt.push(returnObj)
-        // response = await generateResponse(formattedPrompt, message)
-        // logger.error("INPUT******************")
-        // logger.error(formattedPrompt)
-        // logger.error("INPUT******************")
-        // logger.error("OUTPUT******************")
-        // logger.error(response)
-        // logger.error("OUTPUT******************")
-        // const messageObj = JSON.parse(response.content).message
-        // await message.reply(response.content)
-
+      if (response.name == "create_embed") {
+        functionReturnObj = await createEmbed(responseObj.embed)
+        formattedPrompt.push(functionReturnObj)
+        logger.debug(`${response.name} return: ${JSON.stringify(functionReturnObj)}`)
+        break // embeds count as message output
       }
+      if (response.name == "create_role") {
+        functionReturnObj = await createRole(responseObj.role, responseObj.userid, message)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "create_channel") {
+        functionReturnObj = await createChannel(responseObj.channel, message)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "search_query") {
+        functionReturnObj = await searchQuery(responseObj.query)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "read_page") {
+        functionReturnObj = await readPage(responseObj.link)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "stock_search") {
+        functionReturnObj = await stockSearch(responseObj.stock)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "get_current_time") {
+        functionReturnObj = await getCurrentTime(responseObj.time)
+        formattedPrompt.push(functionReturnObj)
+      }
+      if (response.name == "split_message") {
+        functionReturnObj = await splitMessage(responseObj.message)
+        formattedPrompt.push(functionReturnObj)
+      }
+      logger.debug(`${response.name} return: ${JSON.stringify(functionReturnObj)}`)
+      logger.debug(`formattedPrompt: ${JSON.stringify(formattedPrompt)}`)
+      logger.info(`askGPT input: Asking ${profile} profile ${model}: ${JSON.stringify(functionReturnObj)}`)
+      var response = await askGPT(formattedPrompt, profile, model);
+      logger.info(`askGPT output: ${response.content}`)
+      logger.debug(`raw output: ${JSON.stringify(response)}`)
+    }
+    let messageObj = {}
+    if (responseObj.embed) {
+      messageObj.embeds = [ responseObj.embed ]
+      response.content = ""
+    }
+    logger.debug(`sent message: ${JSON.stringify(messageObj)}`)
+    if (response.content.length <= 2000)
+      return await message.reply({content: response.content, embeds: messageObj.embeds})
+    await message.editReply(response.content.slice(0,2000))
+    response.content = response.content.slice(2000, response.content.length - 1)
+    await message.channel.send(response.content.slice(0,2000))
+    while (response.content.length > 2000) {
+      response.content = response.content.slice(2000, response.content.length - 1)
+      await message.channel.send(response.content.slice(0,2000))
+    }      
   }
+}
