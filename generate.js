@@ -145,6 +145,7 @@ function embedToMarkdown(embed) {
 
 async function generateGPTMessage(discordMessageObj) {
   let authorid
+  logger.error(discordMessageObj)
   if (discordMessageObj.interaction) { // discordMessageObj is either a ping or an application command
     // if (discordMessageObj[1].interaction.type == 1) { // type 1 is ping
     //
@@ -156,15 +157,16 @@ async function generateGPTMessage(discordMessageObj) {
   else {
     authorid = discordMessageObj[1].author.id
   }
-  let embedText
+  let embedText = ""
   if (discordMessageObj.embeds && discordMessageObj.embeds.length > 0) {
+    embedText += '\n'
     for (let i of discordMessageObj.embeds) {
       embedText += embedToMarkdown(i)
     }
   }
   const gptMessage = {
     role: (authorid == CLIENT_ID)? "assistant" : "user",
-    content: `${discordMessageObj.content}\n${embedText}`
+    content: `${discordMessageObj[1].content}${embedText}`
   }
   return gptMessage
 }
