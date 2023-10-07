@@ -27,7 +27,6 @@ module.exports = {
     const channel = message.channel
     // Check if the bot has been mentioned
     if (!message.mentions.has(CLIENT_ID)) return;
-    // return await message.reply(`Please use \`/ask [prompt]\` instead`)
     await message.channel.sendTyping();
     const promptMsg = message.content
     let profile = "minimal"
@@ -38,6 +37,7 @@ module.exports = {
     logger.debug(`formattedPrompt: ${JSON.stringify(formattedPrompt)}`)
     logger.debug(`profile: ${JSON.stringify(profile)}`)
     logger.info(`askGPT input: Asking ${profile} profile ${model}: ${promptMsg}`)
+    // return await message.reply(`Please use \`/ask [prompt]\` instead`)
     var response = await askGPT(formattedPrompt, profile, model);
     logger.info(`askGPT output: ${response.content}`)
     logger.debug(`raw output: ${JSON.stringify(response)}`)

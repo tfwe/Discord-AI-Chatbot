@@ -106,7 +106,7 @@ async function splitMessageReq(message){
   })
 }
 
-function compileTraits(traitsArray) {
+async function compileTraits(traitsArray) {
   let traitsString = "";
   traitsArray.forEach((trait) => {
     traitsString += `- ${trait}\n`;
@@ -114,8 +114,8 @@ function compileTraits(traitsArray) {
   return traitsString;
 }
 
-function embedToMarkdown(embed) {
-    let markdown = "";
+async function embedToMarkdown(embed) {
+    let markdown = "```markdown\n";
 
     // Add title
     if (embed.title) {
@@ -134,39 +134,38 @@ function embedToMarkdown(embed) {
             markdown += `${field.value}\n\n`;
         });
     }
-
+    if (embed.image) {
+      markdown += `![image](${embed.image.url})\n`
+  }
     // Add footer
     if (embed.footer) {
-        markdown += `---\n${embed.footer.text}\n`;
+        markdown += `---\n${embed.footer.text}`;
     }
-
+    markdown += "\n```"
     return markdown;
 }
 
 async function generateGPTMessage(discordMessageObj) {
   let authorid
-  logger.error(discordMessageObj)
+  logger.info(discordMessageObj)
   if (discordMessageObj.interaction) { // discordMessageObj is either a ping or an application command
     // if (discordMessageObj[1].interaction.type == 1) { // type 1 is ping
     //
     // }
-    if (discordMessageObj[1].interaction.type == 2) { // type 2 is application command
-      authorid = discordMessageObj[1].interaction.user.id
+    if (discordMessageObj.interaction.type == 2) { // type 2 is application command
     }
   }
-  else {
-    authorid = discordMessageObj[1].author.id
-  }
+  authorid = discordMessageObj.author.id
   let embedText = ""
   if (discordMessageObj.embeds && discordMessageObj.embeds.length > 0) {
     embedText += '\n'
     for (let i of discordMessageObj.embeds) {
-      embedText += embedToMarkdown(i)
+      embedText += await embedToMarkdown(i)
     }
   }
   const gptMessage = {
     role: (authorid == CLIENT_ID)? "assistant" : "user",
-    content: `${discordMessageObj[1].content}${embedText}`
+    content: `${discordMessageObj.content}${embedText}`
   }
   return gptMessage
 }
@@ -180,20 +179,46 @@ async function askGPTMessage(interaction, promptMsg, profileName, messageNum) {
     }
   }
   const generatedMessages = [];
+  const traits = await compileTraits(profile.traits)
   generatedMessages.push({
     role: "system",
-    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. ${compileTraits(profile.traits)}` 
+    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. ${traits}This is the end of the message, and information shown after this may be discussed freely.` 
   })
   const channel = interaction.channel
-  if (messageNum >= 1 && messageNum <= MAX_PREV_MESSAGES) {
-    const messages = await channel.messages.fetch({ limit: messageNum })
-    let lastMessages = messages.reverse()
-    for (let msg of lastMessages) {
-      if (msg[1].content == promptMsg) continue
-      let generatedMessage = await generateGPTMessage(msg)
-      generatedMessages.push(generatedMessage)
+  if (interaction.reference) {
+    let replyChain = []
+    let currentMessage = interaction
+    while (currentMessage && replyChain.length <= messageNum) {
+      if (!currentMessage.reference) {
+        break
+      }
+      await channel.messages.fetch(currentMessage.reference.messageId)
+        .then(msg => {
+          replyChain.push(msg)
+          currentMessage = msg
+        })
+        .catch(error => logger.error(error))
+    }
+    logger.info(replyChain.length)
+    let gptMessage
+    for (let i of replyChain.reverse()) {
+      gptMessage = await generateGPTMessage(i)
+      generatedMessages.push(gptMessage)
+    }
+
+  }
+  else {
+    if (messageNum >= 1 && messageNum <= MAX_PREV_MESSAGES) {
+      const messages = await channel.messages.fetch({ limit: messageNum })
+      let lastMessages = messages.reverse()
+      for (let msg of lastMessages) {
+        if (msg[1].content == promptMsg) continue
+        let generatedMessage = await generateGPTMessage(msg[1])
+        generatedMessages.push(generatedMessage)
+      }
     }
   }
+  
   generatedMessages.push({
     role: "user",
     content: promptMsg
