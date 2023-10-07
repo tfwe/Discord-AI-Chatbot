@@ -29,8 +29,9 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
   let count = 0;
     try {
     const data = await rest.put(
-      Routes.applicationCommands(CLIENT_ID),
-      { body: commands },
+      Routes.applicationGuildCommands(CLIENT_ID, '1020343462119342090'),
+      // { body: commands },
+      { body: [] },
     );
       logger.info(`[deploy-commands] Successfully reloaded ${data.length} application (/) commands`);
     }

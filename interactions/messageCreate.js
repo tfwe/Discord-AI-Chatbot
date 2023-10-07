@@ -99,7 +99,7 @@ module.exports = {
     logger.debug(`sent message: ${JSON.stringify(messageObj)}`)
     if (response.content.length <= 2000)
       return await message.reply({content: response.content, embeds: messageObj.embeds})
-    await message.editReply(response.content.slice(0,2000))
+    await message.reply(response.content.slice(0,2000))
     response.content = response.content.slice(2000, response.content.length - 1)
     await message.channel.send(response.content.slice(0,2000))
     while (response.content.length > 2000) {
