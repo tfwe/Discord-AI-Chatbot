@@ -30,7 +30,8 @@ module.exports = {
     await message.channel.sendTyping();
     const promptMsg = message.content
     let profile = "minimal"
-    let model = "gpt-3.5-turbo-0613"
+    // let model = "gpt-3.5-turbo"
+    let model = "gpt-3.5-turbo-1106"
     let messageNum = 1
     logger.debug(`preparing GPT Messages from prompt:${promptMsg} profile:${profile} model:${model}`)
     const formattedPrompt = await askGPTMessage(message, promptMsg, profile, messageNum)

@@ -1,6 +1,5 @@
 const minimal = require('./minimal.js')
 module.exports = {
-  // search: {
     "name": "search",
     "description": "Embeds with internet access",
     "traits": [...minimal.traits,
@@ -19,5 +18,4 @@ module.exports = {
       `Information obtained from the internet should have a link attached`,
     ],
     "functions": [...minimal.functions, "search_query", "get_current_time", /* "read_page" */]
-  // }
 }

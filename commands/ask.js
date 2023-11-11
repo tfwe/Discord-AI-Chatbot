@@ -1,55 +1,10 @@
 const logger = require('../logger');
 const { SlashCommandBuilder } = require('discord.js');
-const { splitMessage, getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime } = require('../intent.js');
+const {  splitMessage, getUserInfo, createEmbed, createRole, createChannel, searchQuery, readPage, stockSearch, getCurrentTime } = require('../intent.js');
 const { askGPTMessage, askGPT } = require('../generate.js');
 
 const BOT_USERNAME = process.env.BOT_USERNAME
 const OWNER_ID = process.env.OWNER_ID
-// const core = {
-//   "name": "core",
-//   "traits": [
-//     `You are ${BOT_USERNAME}, a discord user.`,
-//     `You can use markdown to format the text.`,
-//   ],
-//   "functions": ["get_user_info"]
-// }
-
-// const minimal = {
-//   "name": "minimal",
-//   "traits": [...core.traits,
-//     `Embeds should be one of the primary form of communication`,
-//     `You cannot use any images or links unless a search_query function is present and used.`,
-//     `Each field value in an embed cannot have more than 1024 characters`,
-//     `Multiple fields in an embed should be used to display lots of information`
-//   ],
-//   "functions": [...core.functions, "create_embed"]
-// }
-// const search = {
-//   "name": "search",
-//   "traits": [...minimal.traits,
-//     "Information gathering functions like searches, etc. should be done before any discord.js related functions",
-//     "Any discord.js related functions should be done before a message is sent",
-//     "Links should only ever be retrieved from search functions",
-//     `Functions are only able to be called in response to a user message or another function call, but not an assistant message.`,
-//     `Searches should be used to access current information.`,
-//     `Google searches return a list of 5 entries with their title, link, and snippet.`,
-//     `Wikipedia searches return the title, url, image url, and summary of the first article.`,
-//     `Images should be displayed using the 'image' field in an embed`,
-//     `News searches return the article source, title, the publication date, and a description.`,
-//     `You should use other relevant apis to search for information if one doesn't work, including searching for images`,
-//     `Information obtained from the internet should have a link attached`,
-//     `An embed should include an image unless it is inappropriate for the embed topic`,
-//   ],
-//   "functions": [...minimal.functions, "search_query", "get_current_time", /* "read_page" */]
-// }
-// const mod = {
-//   "name": "mod",
-//   "traits": [...minimal.traits,
-//     "Any discord.js related functions should be done before a message is sent",
-//     `Functions are only able to be called in response to a user message or another function call, but not an assistant message.`,
-//   ],
-//   "functions": [...minimal.functions, "create_role", "create_channel"]
-// }
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('ask')
@@ -71,7 +26,8 @@ module.exports = {
       option.setName('model')
       .setDescription('Which model to use')
       .addChoices(
-        {name: 'gpt-3.5-turbo-0613', value: 'gpt-3.5-turbo-0613'},
+        {name: 'gpt-3.5-turbo', value: 'gpt-3.5-turbo'},
+        {name: 'gpt-3.5-turbo-1106', value: 'gpt-3.5-turbo-1106'},
         {name: 'gpt-4', value: 'gpt-4'}
       ))
     .addIntegerOption(option =>
@@ -87,10 +43,10 @@ module.exports = {
     let model = interaction.options.getString('model')
     let messageNum = interaction.options.getInteger('messages')
     if (!profile) profile = 'minimal' 
-    if (!model) model = 'gpt-3.5-turbo-0613'
-    if (model !== 'gpt-3.5-turbo-0613' && interaction.user.id !== OWNER_ID) {
+    if (!model) model = 'gpt-3.5-turbo-1106'
+    if (model == 'gpt-4' && interaction.user.id !== OWNER_ID) {
       await interaction.deleteReply()
-      return interaction.followUp({content: "Please contact tfw_e for access to the models option", ephemeral: true})
+      return interaction.followUp({content: "Please contact @tfw_e for access to the models option", ephemeral: true})
     }
     logger.debug(`preparing GPT Messages from prompt:${promptMsg} profile:${profile} model:${model}`)
     const formattedPrompt = await askGPTMessage(interaction, promptMsg, profile, messageNum)
