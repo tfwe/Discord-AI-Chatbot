@@ -2,12 +2,12 @@ const logger = require('./logger');
 const fs = require('node:fs');
 const path = require('node:path');
 const util = require('util')
-const { Configuration, OpenAIApi } = require("openai");
+const { OpenAI } = require("openai");
 const { MAX_PREV_MESSAGES, MAX_TOKENS } = require('./config.json');
-const configuration = new Configuration({
+const client = new OpenAI({
   apiKey: process.env.OPENAI_KEY,
 });
-const openai = new OpenAIApi(configuration);
+// const openai = new OpenAIApi(configuration);
 const CLIENT_ID = process.env.CLIENT_ID
 
 const profiles = []
@@ -245,14 +245,14 @@ async function askGPT(gptMessages, profileName, model) {
       functions.push(functionObj)
     }
   }
-  const completion = await openai.createChatCompletion({
+  const completion = await client.chat.completions.create({
     model: model,
     messages: gptMessages,
     functions: functions,
     temperature: 0.3,
     max_tokens: MAX_TOKENS, 
   });
-  const response = completion.data.choices[0].message
+  const response = completion.choices[0].message
   if (response.function_call) {
     const availableFunctions = {
       get_user_info: getUserInfoReq,
