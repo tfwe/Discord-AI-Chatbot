@@ -31,7 +31,10 @@ module.exports = {
     const promptMsg = message.content
     let profile = "minimal"
     // let model = "gpt-3.5-turbo"
-    let model = "gpt-3.5-turbo-1106"
+    let model = "gpt-3.5-turbo"
+    if (message.author.id == OWNER_ID && message.content.includes("gpt-4")) {
+      model = "gpt-4-turbo-preview"
+    }
     let messageNum = 1
     logger.debug(`preparing GPT Messages from prompt:${promptMsg} profile:${profile} model:${model}`)
     const formattedPrompt = await askGPTMessage(message, promptMsg, profile, messageNum)
@@ -106,6 +109,6 @@ module.exports = {
     while (response.content.length > 2000) {
       response.content = response.content.slice(2000, response.content.length - 1)
       await message.channel.send(response.content.slice(0,2000))
-    }      
+    }
   }
 }
