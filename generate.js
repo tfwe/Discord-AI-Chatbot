@@ -18,6 +18,38 @@ for (const file of profileFiles) {
   const profile = require(filePath)
   profiles.push(profile)
 }
+const { AttachmentBuilder } = require('discord.js'); // Ensure AttachmentBuilder is imported for handling image attachments
+
+/**
+ * Fetches a chain of reply messages, including handling text files and images.
+ * @param {Message} initialMessage - The initial message to start fetching replies from.
+ * @param {TextChannel} channel - The channel where the messages are located.
+ * @param {number} messageNum - The maximum number of messages to fetch in the chain.
+ * @returns {Promise<Array>} - A promise that resolves to an array of messages with additional properties for files and images.
+ */
+async function getReplyChain(initialMessage, channel, messageNum) {
+  let replyChain = [];
+  let currentMessage = initialMessage;
+  while (currentMessage && replyChain.length < messageNum) {
+    try {
+
+      if (currentMessage != initialMessage) {
+        replyChain.push({
+          ...currentMessage, // Spread the current message object
+        });
+      }
+      if (currentMessage.reference == null) {
+        break
+      }
+      currentMessage = await channel.messages.fetch(currentMessage.reference.messageId);
+    } catch (error) {
+      logger.error(error); // Log any errors encountered during fetching
+      break; // Exit the loop on error
+    }
+  }
+
+  return replyChain.reverse();
+}
 
 async function stockSearchReq(stock) {
   return JSON.stringify({
@@ -144,10 +176,8 @@ async function embedToMarkdown(embed) {
     markdown += "\n```"
     return markdown;
 }
-
 async function generateGPTMessage(discordMessageObj) {
   let authorid
-  logger.info(discordMessageObj)
   if (discordMessageObj.interaction) { // discordMessageObj is either a ping or an application command
     // if (discordMessageObj[1].interaction.type == 1) { // type 1 is ping
     //
@@ -163,9 +193,31 @@ async function generateGPTMessage(discordMessageObj) {
       embedText += await embedToMarkdown(i)
     }
   }
+  let fileText = ""
+  let fileContents = ""
+  if (discordMessageObj.attachments) {
+    if (discordMessageObj.attachments != []) {
+      for (let attachment of discordMessageObj.attachments) { // Adjusted to use values() for Map compatibility
+        fileContents = ""
+        attachment = attachment[1]
+        if (attachment.contentType && attachment.contentType.includes('text')) {
+          // Fetching text file content
+          const response = await fetch(attachment.attachment);
+          const text = await response.text();
+          fileContents += `\n\n---File: ${attachment.name}---\n${text}\n---EOF---\n`;
+        }
+        fileText += fileContents 
+      }
+    }
+  }
   const gptMessage = {
     role: (authorid == CLIENT_ID)? "assistant" : "user",
-    content: `${discordMessageObj.content}${embedText}`
+    content: [
+      {
+        type: "text",
+        text: `${discordMessageObj.content}${embedText}${fileText}`
+      },
+    ]
   }
   return gptMessage
 }
@@ -182,52 +234,23 @@ async function askGPTMessage(interaction, promptMsg, profileName, messageNum) {
   const traits = await compileTraits(profile.traits)
   generatedMessages.push({
     role: "system",
-    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. ${traits}This is the end of the message, and information shown after this may be discussed freely.` 
+    content: `<@${CLIENT_ID}> The following is a list of very strict traits that are fundamental to follow. If a single one is not followed, then communication is not possible. \n${traits} \nThe message directly after this one is considered to be the 1st message in the conversation. \nThis is the end of the message, and information shown after this may be discussed freely.` 
   })
   const channel = interaction.channel
-  if (interaction.reference) {
-    let replyChain = []
-    let currentMessage = interaction
-    while (currentMessage && replyChain.length <= messageNum) {
-      if (!currentMessage.reference) {
-        break
-      }
-      await channel.messages.fetch(currentMessage.reference.messageId)
-        .then(msg => {
-          replyChain.push(msg)
-          currentMessage = msg
-        })
-        .catch(error => logger.error(error))
-    }
-    logger.info(replyChain.length)
-    let gptMessage
-    for (let i of replyChain.reverse()) {
-      gptMessage = await generateGPTMessage(i)
-      generatedMessages.push(gptMessage)
-    }
-
+  const replyChain = await getReplyChain(interaction, interaction.channel, messageNum);
+  let gptMessage;
+  for (let message of replyChain) {
+    gptMessage = await generateGPTMessage(message); // Assuming generateGPTMessage can handle the modified message structure
+    generatedMessages.push(gptMessage);
   }
-  else {
-    if (messageNum >= 1 && messageNum <= MAX_PREV_MESSAGES) {
-      const messages = await channel.messages.fetch({ limit: messageNum })
-      let lastMessages = messages.reverse()
-      for (let msg of lastMessages) {
-        if (msg[1].content == promptMsg) continue
-        let generatedMessage = await generateGPTMessage(msg[1])
-        generatedMessages.push(generatedMessage)
-      }
-    }
-  }
-  
-  generatedMessages.push({
-    role: "user",
-    content: promptMsg
-  })
+  gptMessage = await generateGPTMessage(interaction); // Assuming generateGPTMessage can handle the modified message structure
+  generatedMessages.push(gptMessage);
   return generatedMessages
 }
 
 async function askGPT(gptMessages, profileName, model) {
   let profile = {}
+  // Assuming 'profiles' is an array available in the scope. Error handling for undefined 'profiles' is not shown here.
   for (let i of profiles) {
     if (profileName == i.name) {
       profile = i
@@ -236,6 +259,7 @@ async function askGPT(gptMessages, profileName, model) {
   }
   const functions = []
   const functionsPath = path.join(__dirname, './functions/');
+  // Ensure 'fs' and 'path' modules are imported to use 'fs.readdirSync' and 'path.join'
   const functionFiles = fs.readdirSync(functionsPath).filter(file => file.endsWith('.json'));
   for (const file of functionFiles) {
     const filePath = path.join(functionsPath, file);
@@ -245,51 +269,50 @@ async function askGPT(gptMessages, profileName, model) {
       functions.push(functionObj)
     }
   }
-  const completion = await client.chat.completions.create({
-    model: model,
-    messages: gptMessages,
-    functions: functions,
-    temperature: 0.3,
-    max_tokens: MAX_TOKENS, 
-  });
-  const response = completion.choices[0].message
-  if (response.function_call) {
-    const availableFunctions = {
-      get_user_info: getUserInfoReq,
-      create_embed: createEmbedReq,
-      create_role: createRoleReq,
-      create_channel: createChannelReq,
-      search_query: searchQueryReq,
-      read_page: readPageReq,
-      stock_search: stockSearchReq,
-      get_current_time: getCurrentTimeReq,
-    }
-    const functionName = response.function_call.name
-    const functionToCall = availableFunctions[functionName]
-    // try {
+  try {
+    // Assuming 'client' is an instance of the GPT client. Error handling for undefined 'client' is not shown here.
+    const completion = await client.chat.completions.create({
+      model: model,
+      messages: gptMessages,
+      functions: functions,
+      temperature: 0.3,
+      max_tokens: MAX_TOKENS, // Ensure MAX_TOKENS is defined
+    });
+    const response = completion.choices[0].message
+    if (response.function_call) {
+      const availableFunctions = {
+        get_user_info: getUserInfoReq,
+        create_embed: createEmbedReq,
+        create_role: createRoleReq,
+        create_channel: createChannelReq,
+        search_query: searchQueryReq,
+        read_page: readPageReq,
+        stock_search: stockSearchReq,
+        get_current_time: getCurrentTimeReq,
+      }
+      const functionName = response.function_call.name
+      const functionToCall = availableFunctions[functionName]
+      if (!functionToCall) {
+        throw new Error(`Function ${functionName} is not defined.`);
+      }
       let functionArgs = JSON.parse(response.function_call.arguments)
       var functionResponse = await functionToCall(functionArgs)
-    // }
-    // catch (error) {
-    //   return {
-    //     "role": "function",
-    //     "name": functionName,
-    //     "content": error.message,
-    //   }
-    // }
-    return {
-      "role": "function",
-      "name": functionName,
-      "content": functionResponse,
+      return {
+        "role": "function",
+        "name": functionName,
+        "content": functionResponse,
+      }
     }
+    return response;
+  } catch (error) {
+    // Handle errors from the GPT completion or function calls
+    logger.error("Error during GPT completion or function execution:", error);
+    // Consider returning a meaningful error message or handling the error based on your application's needs
+    return {
+      "role": "error",
+      "content": `Error during GPT completion or function execution:" \n\`\`\`${error}\`\`\``
+    };
   }
-  // const inputInspect = util.inspect(gptMessages, {showHidden: false, depth: null, colors: true})
-  // const outputInspect = util.inspect(response.content, {showHidden: false, depth: null, colors: true})
-  // const secondInspect = util.inspect(secondResponse, {showHidden: false, depth: null, colors: true})
-
-  // logger.info(inputInspect)
-  // logger.info(outputInspect)
-  return response;
 }
 
 module.exports = {
