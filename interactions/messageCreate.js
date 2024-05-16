@@ -9,8 +9,7 @@ const CLIENT_ID = process.env.CLIENT_ID
 const OWNER_ID = process.env.OWNER_ID
 // Importing necessary modules from discord.js
 const { EmbedBuilder } = require('discord.js');
-const fetch = require('node-fetch'); // Assuming node-fetch is installed for fetching file contents
-
+const fetch = require('node-fetch');
 module.exports = {
   name: 'messageCreate',
   async execute(message) {
@@ -23,7 +22,7 @@ module.exports = {
     // let model = "gpt-3.5-turbo"
     let model = "gpt-3.5-turbo"
     if (message.author.id == OWNER_ID && message.content.includes("gpt-4")) {
-      model = "gpt-4-turbo-preview"
+      model = "gpt-4o"
     }
     if (message.author.id == CLIENT_ID) {
       return await message.reply("Error, tried to talk to myself")

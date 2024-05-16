@@ -177,49 +177,56 @@ async function embedToMarkdown(embed) {
     return markdown;
 }
 async function generateGPTMessage(discordMessageObj) {
-  let authorid
-  if (discordMessageObj.interaction) { // discordMessageObj is either a ping or an application command
-    // if (discordMessageObj[1].interaction.type == 1) { // type 1 is ping
-    //
-    // }
-    if (discordMessageObj.interaction.type == 2) { // type 2 is application command
+  let authorid;
+  if (discordMessageObj.interaction) {
+    // Handle different types of interactions if necessary
+    if (discordMessageObj.interaction.type == 2) { // Assuming type 2 is an application command
+      // Additional handling can be added here
     }
   }
-  authorid = discordMessageObj.author.id
-  let embedText = ""
+  authorid = discordMessageObj.author.id; // Assuming every message has an author with an ID
+  let embedText = "";
   if (discordMessageObj.embeds && discordMessageObj.embeds.length > 0) {
-    embedText += '\n'
+    embedText += '\n';
     for (let i of discordMessageObj.embeds) {
-      embedText += await embedToMarkdown(i)
+      embedText += await embedToMarkdown(i); // Convert embeds to Markdown format
     }
   }
-  let fileText = ""
-  let fileContents = ""
+  let fileText = "";
+  let imageContent = []; // Initialize an array to hold image content objects
   if (discordMessageObj.attachments) {
     if (discordMessageObj.attachments != []) {
-      for (let attachment of discordMessageObj.attachments) { // Adjusted to use values() for Map compatibility
-        fileContents = ""
-        attachment = attachment[1]
+      for (let attachment of discordMessageObj.attachments) {
+        attachment = attachment[1]; // Adjusting for Map compatibility
         if (attachment.contentType && attachment.contentType.includes('text')) {
-          // Fetching text file content
+          // Handle text files as before
           const response = await fetch(attachment.attachment);
           const text = await response.text();
-          fileContents += `\n\n---File: ${attachment.name}---\n${text}\n---EOF---\n`;
+          fileText += `\n\n---File: ${attachment.name}---\n${text}\n---EOF---\n`;
+        } else if (attachment.contentType && attachment.contentType.includes('image')) {
+          // Handle image attachments by adding them to the imageContent array
+          imageContent.push({
+            type: "image_url",
+            image_url: {
+              "url": attachment.url, // Use the URL of the image attachment
+            },
+          });
         }
-        fileText += fileContents 
       }
     }
   }
+  // Construct the GPT message with both text and image content if available
   const gptMessage = {
-    role: (authorid == CLIENT_ID)? "assistant" : "user",
+    role: (authorid == CLIENT_ID) ? "assistant" : "user",
     content: [
       {
         type: "text",
         text: `${discordMessageObj.content}${embedText}${fileText}`
       },
+      ...imageContent // Spread the imageContent array to include any image objects
     ]
-  }
-  return gptMessage
+  };
+  return gptMessage;
 }
 
 async function askGPTMessage(interaction, promptMsg, profileName, messageNum) {
@@ -275,7 +282,7 @@ async function askGPT(gptMessages, profileName, model) {
       model: model,
       messages: gptMessages,
       functions: functions,
-      temperature: 0.3,
+      temperature: 0.1,
       max_tokens: MAX_TOKENS, // Ensure MAX_TOKENS is defined
     });
     const response = completion.choices[0].message
